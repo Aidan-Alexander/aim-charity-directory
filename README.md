@@ -22,6 +22,9 @@ then fetches the live JSON and re-renders only if it changed
 | `scripts/build.mjs` | Pull Airtable → transform → rehost images → `public/charities.json` |
 | `scripts/lib/` | `airtable.mjs` (REST client), `transform.mjs` (pure transform), `images.mjs` (rehosting) |
 | `scripts/verify-allowlist.mjs` | Fails if the published JSON contains anything outside the allowlist |
+| `scripts/make-snippet.mjs` | Builds `public/snippet.html` (the Squarespace code block: widget + inline data snapshot + live URL) and `public/demo.html` (self-contained preview) |
+| `public/widget.css`, `public/widget.js` | The widget itself: dependency-free, every style scoped under `.aim-dir` |
+| `public/index.html` | Preview page that fetches `charities.json` (add `?bleed=1` for the theme-bleed stress test) |
 | `public/` | Everything that gets deployed to GitHub Pages |
 | `design/` | Figma exports (desktop + mobile) |
 

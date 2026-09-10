@@ -54,10 +54,14 @@ await writeFile(path.resolve(ROOT, args.out), snippet);
 console.log(`Wrote ${args.out} (${(Buffer.byteLength(snippet) / 1024).toFixed(0)} kB, ${data.charities.length} charities inline${args.base ? `, live: ${args.base}charities.json` : ', no live URL'})`);
 
 if (args.demo) {
-  // A page that stands in for the Squarespace page around the code block (cream background,
-  // the site's likely fonts). Written without <html>/<head>/<body> so it can also be published as-is.
-  const demo = `<title>AIM Charity Directory</title>
+  // A self-contained page that stands in for the Squarespace page around the code block
+  // (cream background, the site's likely fonts). Open it directly in a browser; no server needed.
+  const demo = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIM Charity Directory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Nunito+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -67,10 +71,14 @@ if (args.demo) {
   .note { margin: 0 0 28px; font-size: 13px; color: #7A6866; }
   @media (max-width: 899px) { .page { padding: 32px 22px 56px; } }
 </style>
+</head>
+<body>
 <div class="page">
-<p class="note">Preview of the charity directory code block. The cream page, its padding and the fonts stand in for the Squarespace page. Data snapshot: ${data.generatedAt}.</p>
+<p class="note">Self-contained preview of the charity directory code block: exactly what gets pasted into Squarespace, wrapped in a cream page with the site's likely fonts. Data snapshot: ${data.generatedAt}.</p>
 ${snippet}
 </div>
+</body>
+</html>
 `;
   await writeFile(path.resolve(ROOT, args.demo), demo);
   console.log(`Wrote demo page ${args.demo}`);
