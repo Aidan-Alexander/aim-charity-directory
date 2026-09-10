@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
+const PREVIEW_DATA = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'design', 'preview-data');
 const PORT = Number(process.env.PORT) || 8787;
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -26,8 +27,15 @@ const MIME = {
 createServer(async (req, res) => {
   let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   if (pathname.endsWith('/')) pathname += 'index.html';
-  const file = path.join(ROOT, path.normalize(pathname));
-  if (!file.startsWith(ROOT)) {
+  // /preview-data/* serves design/preview-data (the --ignore-ready fixture) so the widget can be
+  // developed against real rows: open http://localhost:8787/?data=/preview-data/charities.json
+  let base = ROOT;
+  if (pathname.startsWith('/preview-data/')) {
+    base = PREVIEW_DATA;
+    pathname = pathname.slice('/preview-data'.length);
+  }
+  const file = path.join(base, path.normalize(pathname));
+  if (!file.startsWith(base)) {
     res.writeHead(403).end('Forbidden');
     return;
   }

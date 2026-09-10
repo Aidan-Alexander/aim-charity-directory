@@ -27,13 +27,17 @@ then fetches the live JSON and re-renders only if it changed
 
 ## Running the build locally
 
-The Airtable personal access token is read from the `AIRTABLE_TOKEN` environment variable and nowhere else. Never commit it, never paste it into chat, never echo it.
+The Airtable personal access token (read-only, scoped to this one base) is read from the `AIRTABLE_TOKEN` environment variable and nowhere else. Never commit it, never paste it into chat, never echo it.
+
+One-time setup on your Mac: add `export AIRTABLE_TOKEN="..."` to `~/.zprofile` (not `~/.zshrc`, which non-interactive shells such as Claude Code's don't read). New terminal windows pick it up automatically.
+
+In GitHub Actions the same value lives in the repository secret **`AIRTABLE_TOKEN2`**, which the workflow maps to the `AIRTABLE_TOKEN` environment variable.
 
 ```bash
 export AIRTABLE_TOKEN=...      # in your own shell only
 npm run build                  # writes public/charities.json and public/img/**
 npm run verify                 # allowlist check on the output
-npm run preview                # http://localhost:8787/
+npm run preview                # http://localhost:8787/  (add ?data=/preview-data/charities.json for the design fixture)
 ```
 
 Useful flags for `scripts/build.mjs`:
