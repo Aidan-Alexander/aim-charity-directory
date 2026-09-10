@@ -1,0 +1,37 @@
+{
+  "$comment": "Publishing rules for the AIM charity directory. The build reads ONLY the fields listed under allowlist + controlFields from Airtable, publishes ONLY allowlist fields, and applies publishConditions both in the Airtable filter formula and again in code.",
+  "airtable": {
+    "baseId": "apppCVIGEKcsMaMxU",
+    "tables": {
+      "website": { "id": "tbl1gOfrePq9Kzv35", "name": "Website" },
+      "founders": { "id": "tblS1V0U66fOQ20A1", "name": "Website Founders" }
+    }
+  },
+  "publishConditions": {
+    "requireChecked": ["Website ready?"],
+    "requireUnchecked": ["Undercover?", "Exclude from website"],
+    "statusField": "Status",
+    "statusIn": ["Active", "Shutdown", "Merged"],
+    "publishFormulaField": null
+  },
+  "allowlist": {
+    "website": ["Display name", "Blurb", "Website URL", "Cause tags", "Countries", "Cohort label", "Logo", "Sort order", "Status"],
+    "founders": ["Name", "Role", "Photo", "Sort order"]
+  },
+  "controlFields": {
+    "$comment": "Fetched so the publish rules can be re-checked in code and founders joined to charities; never written to the output.",
+    "website": ["Website ready?", "Undercover?", "Exclude from website", "Status"],
+    "founders": ["Website charity"]
+  },
+  "causeTags": [
+    "Family planning and women's health",
+    "Animal welfare",
+    "Policy",
+    "Livelihoods and growth",
+    "Mental health",
+    "Global health",
+    "Effective giving",
+    "Research",
+    "Talent and capacity building"
+  ]
+}
