@@ -1,0 +1,264 @@
+/* AIM charity directory widget — every rule is scoped under .aim-dir so nothing leaks in or out.
+   Colours sampled from design/desktop.png and design/mobile.png; a few text tones are darkened
+   for WCAG AA contrast (noted inline). Fonts: the body font is inherited from the host page,
+   the heading font can be overridden with --aim-font-heading. */
+
+.aim-dir {
+  --aim-burgundy: #8C2334;
+  --aim-burgundy-soft: #9A3D4C;      /* mobile chip outline */
+  --aim-gold: #8C6A12;               /* card border */
+  --aim-cream: #FCF6F1;              /* card body (and the page behind it) */
+  --aim-white: #FFFFFF;
+  --aim-ink: #241A1B;                /* strong text */
+  --aim-text: #4E3F40;               /* body text */
+  --aim-muted: #7A6866;              /* labels/counts: mockup #8A7674 darkened for contrast */
+  --aim-line: #E4D3C6;               /* input borders */
+  --aim-chip-bg: #F1EADC;            /* cohort / country chips */
+  --aim-chip-text: #6F5440;          /* mockup #93725A darkened for contrast */
+  --aim-hover: rgba(140, 35, 52, 0.07);
+  --aim-font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --aim-gap: 28px;
+
+  display: grid;
+  grid-template-columns: 222px minmax(0, 1fr) 315px;
+  grid-template-areas:
+    "title  title   search"
+    "filters results results";
+  column-gap: 53px;
+  row-gap: 40px;
+  align-items: start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--aim-text);
+  font-family: var(--aim-font-body, inherit);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+.aim-dir *,
+.aim-dir *::before,
+.aim-dir *::after { box-sizing: border-box; }
+
+/* Neutralise host-theme styling on the elements we use (higher specificity than theme rules). */
+.aim-dir .aim-dir__reset,
+.aim-dir h2, .aim-dir h3, .aim-dir p, .aim-dir ul, .aim-dir li {
+  margin: 0; padding: 0; text-transform: none; letter-spacing: normal;
+}
+.aim-dir ul { list-style: none; }
+.aim-dir button, .aim-dir input, .aim-dir select {
+  font: inherit; color: inherit; margin: 0; border-radius: 0; box-shadow: none; text-transform: none; letter-spacing: normal;
+}
+.aim-dir a { color: inherit; text-decoration: none; }
+.aim-dir img { display: block; max-width: 100%; border: 0; }
+.aim-dir :focus-visible { outline: 2px solid var(--aim-burgundy); outline-offset: 2px; }
+.aim-dir .aim-dir__sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---- header ---- */
+.aim-dir .aim-dir__title {
+  grid-area: title;
+  align-self: center;
+  font-family: var(--aim-font-heading);
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 1.1;
+  color: var(--aim-burgundy);
+}
+.aim-dir .aim-dir__search { grid-area: search; position: relative; align-self: center; }
+.aim-dir .aim-dir__search input {
+  width: 100%; height: 44px;
+  padding: 0 42px 0 12px;
+  border: 1px solid var(--aim-line); border-radius: 4px;
+  background: var(--aim-white); color: var(--aim-ink);
+  font-size: 14px; appearance: none; -webkit-appearance: none;
+}
+.aim-dir .aim-dir__search input::placeholder { color: var(--aim-muted); opacity: 1; }
+.aim-dir .aim-dir__search input::-webkit-search-decoration { -webkit-appearance: none; }
+.aim-dir .aim-dir__search svg { position: absolute; right: 13px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); pointer-events: none; }
+
+/* ---- filters ---- */
+.aim-dir .aim-dir__filters { grid-area: filters; display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.aim-dir .aim-dir__label {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--aim-muted);
+}
+.aim-dir .aim-dir__options { display: flex; flex-direction: column; gap: 2px; }
+.aim-dir .aim-dir__opt {
+  display: flex; align-items: center; gap: 9px;
+  width: 100%; min-height: 35px; padding: 6px 10px;
+  border: 0; border-radius: 4px; background: transparent;
+  color: var(--aim-text); font-size: 15px; line-height: 1.3; text-align: left; cursor: pointer;
+}
+.aim-dir .aim-dir__opt:hover { background: var(--aim-hover); }
+.aim-dir .aim-dir__opt[aria-pressed="true"] { background: var(--aim-burgundy); color: var(--aim-white); font-weight: 700; }
+.aim-dir .aim-dir__opt[aria-pressed="true"]:hover { background: var(--aim-burgundy); }
+.aim-dir .aim-dir__opt.is-zero { color: var(--aim-muted); }
+.aim-dir .aim-dir__dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--dot, transparent); }
+.aim-dir .aim-dir__opt[aria-pressed="true"] .aim-dir__dot { box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
+.aim-dir .aim-dir__opt-text { flex: 1 1 auto; min-width: 0; }
+.aim-dir .aim-dir__count { flex: none; font-size: 14px; font-weight: 400; color: var(--aim-muted); font-variant-numeric: tabular-nums; }
+.aim-dir .aim-dir__opt[aria-pressed="true"] .aim-dir__count { color: rgba(255,255,255,0.9); }
+.aim-dir .aim-dir__select {
+  width: 100%; height: 42px; padding: 0 38px 0 12px;
+  border: 1px solid var(--aim-line); border-radius: 4px;
+  background: var(--aim-white) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23241A1B' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 14px center;
+  color: var(--aim-ink); font-size: 15px; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+}
+
+/* ---- results ---- */
+.aim-dir .aim-dir__results { grid-area: results; min-width: 0; }
+.aim-dir .aim-dir__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: var(--aim-gap);
+}
+.aim-dir .aim-dir__card {
+  position: relative;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--aim-gold); border-radius: 6px;
+  background: var(--aim-cream);
+  overflow: hidden;
+}
+.aim-dir .aim-dir__card:focus-visible { outline-offset: 3px; }
+.aim-dir .aim-dir__logo {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  height: 172px; padding: 22px 22px 30px;
+  background: var(--aim-white);
+}
+.aim-dir .aim-dir__logo img { max-width: 62%; max-height: 92px; width: auto; height: auto; object-fit: contain; }
+.aim-dir .aim-dir__monogram {
+  font-family: var(--aim-font-heading); font-size: 40px; line-height: 1;
+  color: var(--aim-burgundy); opacity: 0.6; letter-spacing: 0.02em;
+}
+.aim-dir .aim-dir__avatars { position: absolute; right: 22px; bottom: -6px; display: flex; gap: 12px; }
+.aim-dir .aim-dir__avatar {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 3px solid var(--aim-white); background: #EFE6DE;
+  box-shadow: 0 1px 3px rgba(36, 26, 27, 0.18);
+  color: var(--aim-burgundy); font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+  overflow: hidden;
+}
+.aim-dir .aim-dir__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.aim-dir .aim-dir__body { display: flex; flex: 1 1 auto; flex-direction: column; gap: 12px; padding: 30px 22px 28px; }
+.aim-dir .aim-dir__name { font-family: var(--aim-font-heading); font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--aim-burgundy); }
+.aim-dir .aim-dir__name a:hover, .aim-dir .aim-dir__name a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.aim-dir .aim-dir__founders { font-size: 15px; color: var(--aim-text); }
+.aim-dir .aim-dir__founders strong { color: var(--aim-ink); font-weight: 700; }
+.aim-dir .aim-dir__blurb { font-size: 15px; line-height: 1.55; color: var(--aim-text); }
+.aim-dir .aim-dir__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.aim-dir .aim-dir__tag {
+  display: inline-flex; align-items: center;
+  height: 22px; padding: 0 9px; border: 0; border-radius: 11px;
+  background: var(--aim-chip-bg); color: var(--aim-chip-text);
+  font-size: 12px; font-weight: 500; line-height: 1; white-space: nowrap;
+}
+.aim-dir .aim-dir__tag--cause { background: var(--chip-bg, var(--aim-chip-bg)); color: var(--chip-text, var(--aim-chip-text)); }
+.aim-dir .aim-dir__tag--dim { opacity: 0.45; }
+.aim-dir .aim-dir__tag--status { background: #ECE4DC; color: #6A5B56; font-style: italic; }
+.aim-dir .aim-dir__tag--more {
+  background: transparent; border: 1px dashed #C9B7A8; color: var(--aim-muted); cursor: pointer;
+}
+.aim-dir .aim-dir__tag--more:hover { background: var(--aim-hover); color: var(--aim-ink); }
+.aim-dir .aim-dir__site {
+  align-self: flex-start; margin-top: auto;
+  font-size: 14px; font-weight: 700; color: var(--aim-ink);
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+.aim-dir .aim-dir__site:hover { color: var(--aim-burgundy); }
+.aim-dir .aim-dir__footer { display: flex; justify-content: center; margin-top: 48px; }
+.aim-dir .aim-dir__more {
+  height: 43px; padding: 0 44px;
+  border: 1px solid var(--aim-burgundy); border-radius: 4px; background: transparent;
+  color: var(--aim-burgundy); font-size: 15px; cursor: pointer;
+}
+.aim-dir .aim-dir__more:hover { background: var(--aim-burgundy); color: var(--aim-white); }
+.aim-dir .aim-dir__empty {
+  padding: 48px 24px; text-align: center; color: var(--aim-muted);
+  border: 1px dashed var(--aim-line); border-radius: 6px;
+}
+.aim-dir .aim-dir__empty p { margin-bottom: 14px; }
+.aim-dir .aim-dir__clear {
+  height: 38px; padding: 0 20px; border: 1px solid var(--aim-burgundy); border-radius: 4px;
+  background: transparent; color: var(--aim-burgundy); font-size: 14px; cursor: pointer;
+}
+.aim-dir .aim-dir__clear:hover { background: var(--aim-burgundy); color: var(--aim-white); }
+
+/* ---- narrow layouts: stacked, filters become horizontal chip rows ---- */
+@media (max-width: 899px) {
+  .aim-dir {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "title" "filters" "search" "results";
+    row-gap: 22px;
+  }
+  .aim-dir .aim-dir__title { font-size: 32px; }
+  .aim-dir .aim-dir__filters { gap: 18px; }
+  .aim-dir .aim-dir__options {
+    flex-direction: row; gap: 8px;
+    overflow-x: auto; padding: 2px 2px 6px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .aim-dir .aim-dir__options::-webkit-scrollbar { display: none; }
+  .aim-dir .aim-dir__opt {
+    flex: none; width: auto; min-height: 33px; padding: 0 14px;
+    border: 1px solid var(--aim-burgundy-soft); border-radius: 17px;
+    background: transparent; white-space: nowrap; font-size: 14px;
+  }
+  .aim-dir .aim-dir__opt[aria-pressed="true"] { border-color: var(--aim-burgundy); }
+  .aim-dir .aim-dir__count { font-size: 13px; }
+  .aim-dir .aim-dir__footer { margin-top: 32px; }
+}
+@media (max-width: 599px) {
+  .aim-dir .aim-dir__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .aim-dir .aim-dir__opt, .aim-dir .aim-dir__more, .aim-dir .aim-dir__clear, .aim-dir .aim-dir__tag--more { transition: background-color 120ms ease, color 120ms ease; }
+}
+
+/* Belt and braces: class-level resets so host rules like ".sqs-block-content h3" can't win on order. */
+.aim-dir .aim-dir__title, .aim-dir .aim-dir__name, .aim-dir .aim-dir__founders, .aim-dir .aim-dir__blurb,
+.aim-dir .aim-dir__label, .aim-dir .aim-dir__empty p { margin: 0; padding: 0; }
+.aim-dir .aim-dir__label { margin-bottom: 8px; }
+.aim-dir .aim-dir__empty p { margin-bottom: 14px; }
+.aim-dir .aim-dir__options, .aim-dir .aim-dir__grid, .aim-dir .aim-dir__tags, .aim-dir .aim-dir__avatars,
+.aim-dir .aim-dir__options li, .aim-dir .aim-dir__grid li, .aim-dir .aim-dir__tags li, .aim-dir .aim-dir__avatars li {
+  list-style: none; padding: 0; margin: 0;
+}
+.aim-dir .aim-dir__tags { margin-top: 2px; }
+.aim-dir .aim-dir__logo img, .aim-dir .aim-dir__avatar img { border: 0; border-radius: 0; box-shadow: none; }
+.aim-dir .aim-dir__avatar img { border-radius: 50%; }
+.aim-dir .aim-dir__name a, .aim-dir .aim-dir__site { text-decoration-style: solid; }
+.aim-dir .aim-dir__name a { text-decoration: none; }
+
+/* Every text-bearing element sets the properties a host theme is likely to style, so a rule like
+   ".sqs-block-content h3 { text-transform: uppercase; letter-spacing: .3em }" cannot leak in. */
+.aim-dir .aim-dir__title, .aim-dir .aim-dir__name, .aim-dir .aim-dir__founders, .aim-dir .aim-dir__blurb,
+.aim-dir .aim-dir__opt, .aim-dir .aim-dir__count, .aim-dir .aim-dir__tag, .aim-dir .aim-dir__site,
+.aim-dir .aim-dir__more, .aim-dir .aim-dir__clear, .aim-dir .aim-dir__select, .aim-dir .aim-dir__search input,
+.aim-dir .aim-dir__empty p, .aim-dir .aim-dir__monogram, .aim-dir .aim-dir__avatar {
+  text-transform: none; letter-spacing: normal; font-style: normal; text-shadow: none; text-align: left;
+  font-variant: normal; word-spacing: normal;
+}
+.aim-dir .aim-dir__title { line-height: 1.1; }
+.aim-dir .aim-dir__name { line-height: 1.2; }
+.aim-dir .aim-dir__founders, .aim-dir .aim-dir__site { line-height: 1.5; }
+.aim-dir .aim-dir__blurb { line-height: 1.55; }
+.aim-dir .aim-dir__label { line-height: 1.4; font-family: inherit; }
+.aim-dir .aim-dir__opt { line-height: 1.3; font-weight: 400; font-family: inherit; }
+.aim-dir .aim-dir__opt[aria-pressed="true"] { font-weight: 700; }
+.aim-dir .aim-dir__tag, .aim-dir .aim-dir__more, .aim-dir .aim-dir__clear { line-height: 1; font-family: inherit; }
+.aim-dir .aim-dir__more, .aim-dir .aim-dir__clear { font-weight: 400; }
+.aim-dir .aim-dir__select, .aim-dir .aim-dir__search input { line-height: normal; font-family: inherit; font-weight: 400; }
+.aim-dir .aim-dir__empty p, .aim-dir .aim-dir__empty { text-align: center; line-height: 1.5; }
+.aim-dir .aim-dir__monogram { line-height: 1; }
+.aim-dir .aim-dir__name a { color: inherit; text-decoration: none; font: inherit; }
+.aim-dir .aim-dir__site { color: var(--aim-ink); text-decoration: underline; text-decoration-style: solid; text-decoration-thickness: 1px; }
+.aim-dir .aim-dir__site:hover { color: var(--aim-burgundy); }
+.aim-dir .aim-dir__avatar { text-align: center; line-height: 1; }
+.aim-dir .aim-dir__count { text-align: right; }

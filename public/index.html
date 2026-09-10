@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIM charity directory — preview</title>
+<!-- The two Google fonts below only emulate the AIM site's typography on this preview page.
+     The widget itself loads nothing external: it inherits the host page's body font and uses
+     --aim-font-heading (Playfair Display if the site has it, otherwise Georgia). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Nunito+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="widget.css">
+<style>
+  /* Stand-in for the Squarespace page around the code block. Not part of the widget. */
+  body { margin: 0; background: #FCF6F1; color: #241A1B; font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .page { max-width: 1280px; margin: 0 auto; padding: 48px 40px 80px; }
+  .note { margin: 0 0 28px; font-size: 13px; color: #7A6866; }
+  .note a { color: #8C2334; }
+  @media (max-width: 899px) { .page { padding: 32px 22px 56px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="note">Preview page (not part of the widget). Data: <span id="data-src"></span>.
+    <a href="?data=/preview-data/charities.json">design fixture</a> · <a href="?">published data</a> · <a href="?data=/preview-data/charities.json&amp;bleed=1">style-bleed stress test</a></p>
+  <div id="aim-dir"></div>
+</div>
+<script src="widget.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var src = params.get('data') || 'charities.json';
+  document.getElementById('data-src').textContent = src;
+  if (params.get('bleed') === '1') {
+    // Hostile "theme" rules with the specificity Squarespace templates typically use.
+    var s = document.createElement('style');
+    s.textContent = [
+      '.page h2, .page h3 { color: green; font-family: Impact, sans-serif; font-size: 60px; text-transform: uppercase; margin: 3em 0; letter-spacing: 0.3em; }',
+      '.page p { margin: 2em 0; line-height: 3; font-size: 22px; }',
+      '.page a { color: blue; text-decoration: underline wavy; }',
+      '.page ul { padding-left: 60px; list-style: disc; } .page li { margin: 1em 0; }',
+      '.page button { background: black; color: white; border: 5px solid red; padding: 20px; font-size: 30px; border-radius: 0; text-transform: uppercase; }',
+      '.page input, .page select { border: 4px solid lime; height: 80px; font-size: 30px; border-radius: 30px; }',
+      '.page img { border: 6px solid orange; }'
+    ].join('\n');
+    document.head.appendChild(s);
+  }
+  fetch(src).then(function (r) { return r.json(); }).then(function (data) {
+    window.AimDirectory.mount(document.getElementById('aim-dir'), { data: data, imageBase: src.replace(/[^/]*$/, '') });
+  }).catch(function (err) { document.getElementById('aim-dir').textContent = 'Could not load ' + src + ': ' + err.message; });
+})();
+</script>
+</body>
+</html>
