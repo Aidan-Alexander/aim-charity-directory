@@ -1,0 +1,15 @@
+{
+  "name": "aim-charity-directory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Airtable -> static JSON + images -> embeddable 'our charities' widget for the AIM Squarespace site",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:offline": "node scripts/build.mjs --from-raw raw",
+    "verify": "node scripts/verify-allowlist.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "license": "UNLICENSED"
+}

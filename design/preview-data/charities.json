@@ -1,0 +1,1872 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T18:07:23.495Z",
+  "causes": [
+    "Family planning and women's health",
+    "Animal welfare",
+    "Policy",
+    "Livelihoods and growth",
+    "Mental health",
+    "Global health",
+    "Effective giving",
+    "Research",
+    "Talent and capacity building"
+  ],
+  "continents": [
+    "Africa",
+    "Asia",
+    "Europe",
+    "Latin America & Caribbean",
+    "North America",
+    "Oceania"
+  ],
+  "countryContinent": {
+    "Armenia": "Asia",
+    "Botswana": "Africa",
+    "China": "Asia",
+    "Colombia": "Latin America & Caribbean",
+    "Democratic Republic of the Congo": "Africa",
+    "Denmark": "Europe",
+    "Ecuador": "Latin America & Caribbean",
+    "Europe": "Europe",
+    "France": "Europe",
+    "Germany": "Europe",
+    "Ghana": "Africa",
+    "Global": "Global",
+    "Guinea-Bissau": "Africa",
+    "Honduras": "Latin America & Caribbean",
+    "India": "Asia",
+    "Indonesia": "Asia",
+    "Italy": "Europe",
+    "Kenya": "Africa",
+    "Liberia": "Africa",
+    "Madagascar": "Africa",
+    "Malawi": "Africa",
+    "Malaysia": "Asia",
+    "Mongolia": "Asia",
+    "Morocco": "Africa",
+    "Netherlands": "Europe",
+    "New Zealand": "Oceania",
+    "Nigeria": "Africa",
+    "Pakistan": "Asia",
+    "Philippines": "Asia",
+    "Rwanda": "Africa",
+    "Sierra Leone": "Africa",
+    "South Africa": "Africa",
+    "Sri Lanka": "Asia",
+    "Switzerland": "Europe",
+    "Tanzania": "Africa",
+    "Thailand": "Asia",
+    "Uganda": "Africa",
+    "Ukraine": "Europe",
+    "United Kingdom": "Europe",
+    "United States": "North America",
+    "Venezuela": "Latin America & Caribbean",
+    "Vietnam": "Asia",
+    "Zimbabwe": "Africa"
+  },
+  "charities": [
+    {
+      "id": "access-to-medicines-initiative-ami",
+      "name": "Access to Medicines Initiative (AMI)",
+      "blurb": "Reduces maternal mortality and supports women's autonomy by tackling contraceptive stockouts and ensuring supply in public health facilities.",
+      "url": "https://www.accessmedicines.org/",
+      "causes": [
+        "Family planning and women's health",
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Miri Muntean",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Evan LaForge",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "accion-transformadora-actra",
+      "name": "Acción Transformadora (ACTRA)",
+      "blurb": "Implements and scales cognitive behavioural therapy programmes proven to cut violent crime and reoffending, starting in Colombia.",
+      "url": "https://www.actra.ngo/",
+      "causes": [
+        "Mental health"
+      ],
+      "countries": [
+        "Colombia"
+      ],
+      "cohort": "2024 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Laura Sofia Castro",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Henning Peters",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "alliance-for-reducing-microbial-resistance",
+      "name": "Alliance for Reducing Microbial Resistance",
+      "blurb": "Supports sustainable access to, and the development of, antimicrobials to combat antimicrobial resistance, with a focus on pull incentives.",
+      "url": "https://www.armoramr.org/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2023 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Aanika Dalal",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "David McKinney",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "Sofya Lebedeva",
+          "role": "Co-founder & Head of Expansion",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "altera-food-initiative",
+      "name": "Altera Food Initiative",
+      "blurb": null,
+      "url": null,
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "France"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Dexter Oelrichs",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Romain Balès",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "animal-advocacy-careers",
+      "name": "Animal Advocacy Careers",
+      "blurb": "Speeds up the end of unnecessary animal suffering by matching people to the roles that help animals most, through courses, a job board, career advising and recruitment support.",
+      "url": "https://www.animaladvocacycareers.org/",
+      "causes": [
+        "Animal welfare",
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2019",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Lauren Mee",
+          "role": "Co-founder & CEO",
+          "photo": null
+        },
+        {
+          "name": "Jamie Harris",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "animal-ask",
+      "name": "Animal Ask",
+      "blurb": "Conducts in-depth research to help animal charities, donors and policymakers choose and prioritise the farmed animal welfare asks that will do the most good.",
+      "url": "https://www.animalask.org/",
+      "causes": [
+        "Animal welfare",
+        "Research"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2020",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Amy Odene",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "George Bridgwater",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "animal-policy-international",
+      "name": "Animal Policy International",
+      "blurb": "Ensures animal welfare standards are upheld in international trade policy, so that imports meet the same standards as domestic production.",
+      "url": "https://www.animalpolicyinternational.org/",
+      "causes": [
+        "Animal welfare",
+        "Policy"
+      ],
+      "countries": [
+        "New Zealand",
+        "United Kingdom",
+        "Europe"
+      ],
+      "cohort": "2023 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Mandy Carter",
+          "role": "Co-founder & Executive Director",
+          "photo": null
+        },
+        {
+          "name": "Rainer Kravets",
+          "role": "Co-founder & Executive Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "ansh",
+      "name": "Ansh",
+      "blurb": "Builds healthcare capacity in India so mothers can provide Kangaroo Care, a simple, scientifically proven treatment that averts newborn deaths.",
+      "url": "https://www.ansh.health/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2023 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Supriya Bansal",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Chetan Kharbanda",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "ark-philanthropy",
+      "name": "Ark Philanthropy",
+      "blurb": "A philanthropic institution that partners with ambitious funders to solve the most important problems of our time, identifying promising people and building grantmaking infrastructure.",
+      "url": "https://www.arkphilanthropy.org/",
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "August Hochman",
+          "role": "Founder & CEO",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "benefficienza",
+      "name": "Benefficienza",
+      "blurb": "Promotes effective giving in Italy, helping donors direct their contributions to the charities with the greatest impact.",
+      "url": null,
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "Italy"
+      ],
+      "cohort": "2024 Effective Giving",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Luca Stocco",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Sebastian Trenckmann",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "better-futures-guide",
+      "name": "Better Futures Guide",
+      "blurb": "A dedicated livelihoods evaluator that synthesises research to identify the highest-impact charities helping people increase their income, and publishes recommendations for donors.",
+      "url": "https://www.betterfuturesguide.org/",
+      "causes": [
+        "Livelihoods and growth",
+        "Effective giving",
+        "Research"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2025 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Rens Bakker",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Elizabeth Weissberg",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "better-season-project",
+      "name": "Better Season Project",
+      "blurb": "Helps smallholder farmers in Kenya escape poverty by offering asset-collateralised loans for proven, income-raising tools such as water tanks and storage bags, in partnership with savings and credit cooperatives.",
+      "url": "https://betterseasonproject.org/",
+      "causes": [
+        "Livelihoods and growth"
+      ],
+      "countries": [
+        "Kenya"
+      ],
+      "cohort": "2025 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Kristina Mahony",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "William Lawless",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "canopie",
+      "name": "Canopie",
+      "blurb": "A scalable, cost-effective digital programme to prevent and treat perinatal mood disorders such as postpartum depression.",
+      "url": "https://www.canopie.app/",
+      "causes": [
+        "Mental health"
+      ],
+      "countries": [
+        "United States",
+        "United Kingdom"
+      ],
+      "cohort": "2020",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Anne Wanlund",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Ann Don Bosco",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "center-for-alcohol-policy-solutions",
+      "name": "Center for Alcohol Policy Solutions",
+      "blurb": "An evidence-based non-profit that worked to save lives and promote wellbeing through alcohol taxation, the single most effective policy for reducing alcohol-related harm.",
+      "url": "https://www.alcoholpolicysolutions.center/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Sri Lanka"
+      ],
+      "cohort": "2021",
+      "status": "Merged",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Kristína Šperková",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "center-for-effective-aid-policy",
+      "name": "Center for Effective Aid Policy",
+      "blurb": "Advocated for governments to spend the $180 billion annual development aid budget more cost-effectively.",
+      "url": "http://aidpolicy.org/",
+      "causes": [
+        "Policy",
+        "Effective giving"
+      ],
+      "countries": [
+        "Netherlands",
+        "Denmark",
+        "United Kingdom"
+      ],
+      "cohort": "2022",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Mathias Bonde",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "Jacob Wood",
+          "role": "Co-founder & Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "centre-for-aquaculture-progress",
+      "name": "Centre for Aquaculture Progress",
+      "blurb": "An independent research think tank that accelerates the adoption of science-based, practical fish welfare improvements in European aquaculture.",
+      "url": "https://centreforaquacultureprogress.org/",
+      "causes": [
+        "Animal welfare",
+        "Research"
+      ],
+      "countries": [
+        "Europe"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Martin Wicke",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Naomi Murn",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "centre-for-exploratory-altruism-research-cearch",
+      "name": "Centre for Exploratory Altruism Research (CEARCH)",
+      "blurb": "A research and grantmaking organisation that searches for and funds highly cost-effective philanthropic ideas in neglected cause areas.",
+      "url": "https://exploratory-altruism.org/",
+      "causes": [
+        "Effective giving",
+        "Research"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2022",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Joel Tan",
+          "role": "Founder & Managing Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "charity-science-health",
+      "name": "Charity Science Health",
+      "blurb": "Sent SMS reminders for routine childhood immunisations in India; merged into Suvita in 2020.",
+      "url": null,
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2016",
+      "status": "Merged",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Joey Savoie",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Katherine Savoie",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "clear-solutions",
+      "name": "Clear Solutions",
+      "blurb": "Prevents child deaths from diarrhoeal disease in Nigeria by distributing free oral rehydration salts and zinc door-to-door through community health workers.",
+      "url": "https://www.clearsolutions.global/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2023 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Charlie Jeong",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Martyn James",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "concentric-policies",
+      "name": "Concentric Policies",
+      "blurb": "Prevents and controls non-communicable diseases through data-driven policymaking, starting with tobacco taxation in high-burden countries.",
+      "url": "https://www.concentricpolicies.org/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Liberia",
+        "Guinea-Bissau"
+      ],
+      "cohort": "2023 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Sam Emerman",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "J.T. Stanley",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "ellis-impact",
+      "name": "Ellis Impact",
+      "blurb": "A New York-based philanthropy advisory that gives large donors strategic advice and tailored grant portfolios so they can give more effectively.",
+      "url": "https://www.ellisimpact.org/",
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "cohort": "2024 Effective Giving",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Fernando Martin-Gullans",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Helene Kortschak",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "family-empowerment-media",
+      "name": "Family Empowerment Media",
+      "blurb": "Prevents maternal deaths from unintended pregnancies by producing radio ads and shows that improve knowledge, attitudes and behaviour around family planning in Nigeria.",
+      "url": "https://www.familyempowermentmedia.org/",
+      "causes": [
+        "Family planning and women's health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2020",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Anna Christina Thorsheim",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "Kenneth Scheffler",
+          "role": "Co-founder & Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "farmkind",
+      "name": "FarmKind",
+      "blurb": "An online donation platform that connects donors with the most effective farmed animal charities, helping close the funding gap for the best-evidenced animal welfare work.",
+      "url": "https://www.farmkind.giving/",
+      "causes": [
+        "Animal welfare",
+        "Effective giving"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Aidan Alexander",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Thom Norman",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "first-embrace",
+      "name": "First Embrace",
+      "blurb": "Establishes Kangaroo Mother Care wards in hospitals, training nurses to provide skin-to-skin contact and breastfeeding support that saves the lives of low birth weight newborns.",
+      "url": "https://firstembrace.org.uk/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2025 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Wesley Quadros",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Ikra Gulzar",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "fish-welfare-initiative",
+      "name": "Fish Welfare Initiative",
+      "blurb": "Works with farmers, corporations and governments to improve the welfare of farmed fish as much as possible, with a focus on Asia.",
+      "url": "https://www.fishwelfareinitiative.org/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "India",
+        "China",
+        "Philippines"
+      ],
+      "cohort": "2019",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Haven King-Nobles",
+          "role": "Co-founder & Executive Director",
+          "photo": null
+        },
+        {
+          "name": "Thomas Billington",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "fortify-health",
+      "name": "Fortify Health",
+      "blurb": "Prevents and reduces anaemia at scale in India by fortifying wheat flour with iron, folic acid and vitamin B12, reaching millions of people every month.",
+      "url": "https://www.fortifyhealth.global/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2017",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Nikita Patel",
+          "role": "Co-founder & CEO",
+          "photo": null
+        },
+        {
+          "name": "Brendan Eappen",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "foundations-first",
+      "name": "Foundations First",
+      "blurb": null,
+      "url": null,
+      "causes": [
+        "Livelihoods and growth"
+      ],
+      "countries": [
+        "Kenya"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Emelie Fürst",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Jamila Abass",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "giving-green",
+      "name": "Giving Green",
+      "blurb": "An evidence-based guide that helps donors and businesses fight climate change by identifying the most impactful climate giving opportunities.",
+      "url": "https://www.givinggreen.earth/",
+      "causes": [
+        "Effective giving",
+        "Research"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2020",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Dan Stein",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Nicholas Parker",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "good-policies",
+      "name": "Good Policies",
+      "blurb": "Worked on tobacco taxation policy in Mongolia to reduce smoking-related deaths.",
+      "url": null,
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Mongolia"
+      ],
+      "cohort": "2019",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Caleb Parikh",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "happier-lives-institute",
+      "name": "Happier Lives Institute",
+      "blurb": "Connects donors, researchers and policymakers with the most cost-effective opportunities to increase global wellbeing, using subjective wellbeing data to find the problems that matter most to people.",
+      "url": "https://www.happierlivesinstitute.org/",
+      "causes": [
+        "Mental health",
+        "Research"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2019",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Michael Plant",
+          "role": "Founder & Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "healthier-hens",
+      "name": "Healthier Hens",
+      "blurb": "Worked to improve the welfare of egg-laying hens through cost-effective dietary interventions, piloting feed fortification in Kenya.",
+      "url": "https://www.healthierhens.com/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "Kenya"
+      ],
+      "cohort": "2021",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Lukas Jasiunas",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Kikiope Oluwarore",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Isaac Esparza",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "healthlearn",
+      "name": "HealthLearn",
+      "blurb": "Provides high-quality online training to health workers in developing countries, a 'Duolingo for healthcare' that improves quality of care and prevents newborn deaths.",
+      "url": "https://healthlearn.org/",
+      "causes": [
+        "Global health",
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Nigeria",
+        "Uganda"
+      ],
+      "cohort": "2023 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Marshall Thomas",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Karl Keefer",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "healthy-futures-global",
+      "name": "Healthy Futures Global",
+      "blurb": "Prevents mother-to-child transmission of syphilis by expanding access to dual HIV/syphilis testing and treatment for pregnant women.",
+      "url": "https://www.healthyfutures.global/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Philippines",
+        "Tanzania"
+      ],
+      "cohort": "2023 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Keyur Doolabh",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Nils Voelker",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "high-impact-professionals",
+      "name": "High Impact Professionals",
+      "blurb": "Enables working professionals to maximise their positive impact by supporting them to donate their time, skills and resources effectively.",
+      "url": "https://www.highimpactprofessionals.org/",
+      "causes": [
+        "Effective giving",
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2021",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Devon Fritz",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Federico Speziali",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "impactful-giving",
+      "name": "Impactful Giving",
+      "blurb": "Helps donors in India make good decisions about their giving, with a curated platform of evidence-backed opportunities and a personalised advisory service.",
+      "url": "https://www.impactfulgiving.in/",
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2024 Effective Giving",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Chetan Kharbanda",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Krishna Veni",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Jesse Pagliuca",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "institute-for-development-innovation",
+      "name": "Institute for Development Innovation",
+      "blurb": "Improves the cost-effectiveness of India's welfare spending by giving leaders evidence-based, electorally viable policy alternatives backed by polling and implementation support.",
+      "url": "https://idiinstitute.org/",
+      "causes": [
+        "Policy",
+        "Livelihoods and growth"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2025 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Haindavi Kandarpa",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Uttej Sai",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "kaya-guides",
+      "name": "Kaya Guides",
+      "blurb": "Reduces depression among young people in India through a WhatsApp-based guided self-help programme with weekly support calls from lay counsellors.",
+      "url": "https://www.kayaguides.com/",
+      "causes": [
+        "Mental health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2022",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Rachel Abbott",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Shen Javier",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "lafiya-nigeria",
+      "name": "Lafiya Nigeria",
+      "blurb": "Reduces maternal mortality in rural northern Nigeria by equipping local nurses and midwives to provide safe family planning options, including self-injectable contraceptives.",
+      "url": "https://lafiyanigeria.org/",
+      "causes": [
+        "Family planning and women's health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2023 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Klau Chmielowska",
+          "role": "Co-founder & Co-Executive Director",
+          "photo": null
+        },
+        {
+          "name": "Céline Kamsteeg",
+          "role": "Co-founder & Co-Executive Director",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "lead-acid-battery-recycling-initiative-labri",
+      "name": "Lead Acid Battery Recycling Initiative (LABRI)",
+      "blurb": "Tackles lead exposure from unsafe recycling of used lead-acid batteries in low- and middle-income countries by partnering with governments and generating evidence on solutions.",
+      "url": "https://www.labrecyclinginitiative.com/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Philippines"
+      ],
+      "cohort": "2025 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Tom Daniels",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Micaella Rogers",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "lead-exposure-elimination-project-leep",
+      "name": "Lead Exposure Elimination Project (LEEP)",
+      "blurb": "Drives effective policies to eliminate lead poisoning across the globe, with a current focus on ending the sale and manufacture of lead paint.",
+      "url": "https://leadelimination.org/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Malawi",
+        "Zimbabwe",
+        "Pakistan",
+        "Madagascar",
+        "Sierra Leone",
+        "Nigeria",
+        "Liberia",
+        "Botswana",
+        "Democratic Republic of the Congo",
+        "Vietnam",
+        "Indonesia",
+        "Malaysia",
+        "Morocco"
+      ],
+      "cohort": "2020",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Lucia Coulter",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "Jack Rafferty",
+          "role": "Co-founder & Director",
+          "photo": null
+        },
+        {
+          "name": "Clare Donaldson",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "lead-research-for-action-lera",
+      "name": "Lead Research for Action (LeRA)",
+      "blurb": "Conducts lead content studies on consumer products in low- and middle-income countries to identify and help eliminate the main drivers of childhood lead poisoning.",
+      "url": "https://www.leadresearch.org/",
+      "causes": [
+        "Global health",
+        "Research"
+      ],
+      "countries": [
+        "Kenya",
+        "Malawi"
+      ],
+      "cohort": "2024 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Isabel Arjmand",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Tammy Tan",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "learning-alliance",
+      "name": "Learning Alliance",
+      "blurb": "Tackles the foundational learning crisis in sub-Saharan Africa by bringing evidence-based teaching practices into classrooms and supporting teachers to give every child an excellent education.",
+      "url": "https://www.learningalliance.net/",
+      "causes": [
+        "Livelihoods and growth"
+      ],
+      "countries": [
+        "Uganda"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Sofia Martinez Galvez",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Ilana Kessler",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "maternal-health-initiative",
+      "name": "Maternal Health Initiative",
+      "blurb": "Worked to improve women's health, agency and income by raising the quality of contraceptive counselling and integrating family planning into postpartum care in Ghana and Sierra Leone.",
+      "url": "https://www.maternalhealthinitiative.org/",
+      "causes": [
+        "Family planning and women's health"
+      ],
+      "countries": [
+        "Ghana",
+        "Sierra Leone"
+      ],
+      "cohort": "2022",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Sarah Eustis-Guthrie",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Ben Williamson",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "mieux-donner",
+      "name": "Mieux Donner",
+      "blurb": "Informs and inspires people in France and French-speaking Switzerland to donate effectively, directing their gifts to the charities with the greatest impact.",
+      "url": "https://mieuxdonner.org/",
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "France",
+        "Switzerland"
+      ],
+      "cohort": "2024 Effective Giving",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Jennifer Stretton",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Romain Barbe",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "neev",
+      "name": "Neev",
+      "blurb": null,
+      "url": null,
+      "causes": [],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Kate Sutcliffe",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Alisha Pathak",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "notify-health",
+      "name": "Notify Health",
+      "blurb": "Increases life-saving childhood vaccination coverage in sub-Saharan Africa by sending well-evidenced, low-cost reminder messages to caregivers.",
+      "url": "https://www.notifyhealth.org/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Samuel Harvey",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Daniel Handschuh",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "novah",
+      "name": "Novah",
+      "blurb": "Novah, short for No Violence at Home, works to prevent intimate partner violence against women through evidence-based mass media campaigns.",
+      "url": "https://www.novah.ngo/",
+      "causes": [
+        "Family planning and women's health"
+      ],
+      "countries": [
+        "Rwanda"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Ivy van Regteren",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Alexis Atlani",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "opal-health",
+      "name": "Opal Health",
+      "blurb": "Prevents maternal and newborn deaths in East Africa through Participatory Learning and Action groups, where women and families identify barriers to care and build community solutions alongside government health systems.",
+      "url": "https://www.opalhealthafrica.org/",
+      "causes": [
+        "Family planning and women's health",
+        "Global health"
+      ],
+      "countries": [
+        "Uganda"
+      ],
+      "cohort": "2025 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Matt Beer",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Melissa Kaminker",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "oxygen-access-project",
+      "name": "Oxygen Access Project",
+      "blurb": "Improves access to medical oxygen in hospitals for children in low- and middle-income countries, where four out of five children who need oxygen do not receive it.",
+      "url": "https://www.oxygenaccessproject.org/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2024 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Leonie Falk",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "policy-entrepreneurship-network",
+      "name": "Policy Entrepreneurship Network",
+      "blurb": "Worked to accelerate innovation in neglected areas of public health policy, such as tobacco and alcohol taxation, in the EU's eastern neighbourhood.",
+      "url": null,
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Ukraine",
+        "Armenia"
+      ],
+      "cohort": "2019",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Michał Trzęsimiech",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Joel Burke",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "radius-institute-for-road-safety",
+      "name": "Radius Institute for Road Safety",
+      "blurb": "Provides local data, evidence-based insights and hands-on technical assistance to end road traffic deaths and serious injuries, with a focus on speed management in low- and middle-income countries.",
+      "url": "https://www.radiusinstitute.com/",
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "South Africa"
+      ],
+      "cohort": "2025 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Larissa Vaughan-Rowe",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "respira-health",
+      "name": "Respira Health",
+      "blurb": "Brings digital pulmonary rehabilitation to people with COPD in low- and middle-income countries, where 90% of the disease's 3 million annual deaths occur and access to treatment is severely limited.",
+      "url": "https://respirahealth.org/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2025 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Oli Munns",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Rowan Lund",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "safestart",
+      "name": "SafeStart",
+      "blurb": "Expands access to safe drinking water in rural Kano State, Nigeria, through a community-based chlorine access model that combines behaviour change with reliable last-mile distribution.",
+      "url": null,
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Grant Edmond",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Elisa Maffioli",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "scale-welfare",
+      "name": "Scale Welfare",
+      "blurb": "Improves the welfare of farmed fish in Asia, working with milkfish farmers in the Philippines and pangasius exporters in Vietnam.",
+      "url": "https://www.scalewelfare.org/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "Philippines",
+        "Vietnam"
+      ],
+      "cohort": "2025 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Ameer Virani",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Koen van Pelt",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "setuwelt",
+      "name": "Setuwelt",
+      "blurb": "Connects underprivileged Indian youth to Germany's apprenticeship programme through language training, cultural integration and mentorship, opening a pathway to skilled long-term employment.",
+      "url": "https://www.setuwelt.org/",
+      "causes": [
+        "Livelihoods and growth"
+      ],
+      "countries": [
+        "India",
+        "Germany"
+      ],
+      "cohort": "2024 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Anam Vadgama",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "shrimp-welfare-project",
+      "name": "Shrimp Welfare Project",
+      "blurb": "Aims to improve the lives of billions of farmed shrimps by partnering with producers to reduce stocking densities, end eyestalk ablation and adopt electrical stunning at slaughter.",
+      "url": "https://www.shrimpwelfareproject.org/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "India",
+        "Vietnam",
+        "Honduras",
+        "Ecuador",
+        "Thailand",
+        "Sri Lanka",
+        "Venezuela"
+      ],
+      "cohort": "2021",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Andrés Jiménez Zorrilla",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Aaron Boddy",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "spiro",
+      "name": "Spiro",
+      "blurb": "Expands tuberculosis prevention and care in Pakistan by screening household contacts of people with TB and offering preventive treatment, with a special focus on children under five.",
+      "url": "https://www.spiro.ngo/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Pakistan"
+      ],
+      "cohort": "2023 H2",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Habiba Banu",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Roxanne Heston",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "stronger-flocks",
+      "name": "Stronger Flocks",
+      "blurb": "Works to update egg certification standards so they include an outcome-based limit on keel bone fractures, one of the most widespread welfare problems affecting laying hens.",
+      "url": "https://strongerflocks.com/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "United Kingdom"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Paul Yates",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Jacco Rubens",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "suvita",
+      "name": "Suvita",
+      "blurb": "Works alongside governments in India to increase uptake of childhood immunisations through SMS reminders to parents and a network of community immunisation ambassadors.",
+      "url": "https://www.suvita.org/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2019",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Varsha Venugopal",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Fiona Conlon",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "taimaka",
+      "name": "Taimaka",
+      "blurb": "Has reimagined paediatric malnutrition treatment in Nigeria, making it more cost-effective and scalable by simplifying protocols so community health workers can deliver care.",
+      "url": "https://taimaka.org/",
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "Nigeria"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Abubakar Umar",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Justin Graham",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "the-mission-motor",
+      "name": "The Mission Motor",
+      "blurb": "Supports farmed and wild animal advocacy organisations to build monitoring, evaluation and learning systems so they can continuously improve their impact.",
+      "url": "https://www.themissionmotor.org/",
+      "causes": [
+        "Animal welfare",
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2023 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Nicoll Peracha",
+          "role": "Founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "training-for-good",
+      "name": "Training for Good",
+      "blurb": "An impact-focused training organisation that ran fellowships placing talented professionals into impactful careers in European policy and AI governance.",
+      "url": "https://www.trainingforgood.com/",
+      "causes": [
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2021",
+      "status": "Shutdown",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Cillian Crosson",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Steve Thompson",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Jan-Willem van Putten",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    },
+    {
+      "id": "vida-plena",
+      "name": "Vida Plena",
+      "blurb": "Builds strong mental health in Latin America by delivering group-based therapy for depression through trained community facilitators in Ecuador.",
+      "url": "https://www.vidaplena.global/",
+      "causes": [
+        "Mental health"
+      ],
+      "countries": [
+        "Ecuador"
+      ],
+      "cohort": "2022",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Joy Bittner",
+          "role": "Co-founder & Executive Director",
+          "photo": null
+        },
+        {
+          "name": "Anita Kaslin",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    }
+  ]
+}

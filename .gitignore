@@ -1,0 +1,19 @@
+# Secrets — never commit tokens
+.env
+.env.*
+*.token
+*.pem
+
+# Raw Airtable dumps (contain unpublished fields) and scratch output
+raw/
+tmp/
+*.log
+
+# Dependencies and OS noise
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

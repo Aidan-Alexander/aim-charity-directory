@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T18:07:23.420Z",
+  "causes": [
+    "Family planning and women's health",
+    "Animal welfare",
+    "Policy",
+    "Livelihoods and growth",
+    "Mental health",
+    "Global health",
+    "Effective giving",
+    "Research",
+    "Talent and capacity building"
+  ],
+  "continents": [
+    "Africa",
+    "Asia",
+    "Europe",
+    "Latin America & Caribbean",
+    "North America",
+    "Oceania"
+  ],
+  "countryContinent": {
+    "United States": "North America"
+  },
+  "charities": [
+    {
+      "id": "ellis-impact",
+      "name": "Ellis Impact",
+      "blurb": "A New York-based philanthropy advisory that gives large donors strategic advice and tailored grant portfolios so they can give more effectively.",
+      "url": "https://www.ellisimpact.org/",
+      "causes": [
+        "Effective giving"
+      ],
+      "countries": [
+        "United States"
+      ],
+      "cohort": "2024 Effective Giving",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Fernando Martin-Gullans",
+          "role": "Co-founder",
+          "photo": null
+        },
+        {
+          "name": "Helene Kortschak",
+          "role": "Co-founder",
+          "photo": null
+        }
+      ]
+    }
+  ]
+}
