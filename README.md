@@ -19,6 +19,9 @@ then fetches the live JSON and re-renders only if it changed
 | --- | --- |
 | `config/publish.json` | Base/table IDs, publish rules, **field allowlist**, agreed cause tags |
 | `data/continents.json` | Country → continent lookup (owned here, not in Airtable) |
+| `assets/logos/`, `assets/founders/` | Logos and founder photos committed to the repo (see *Images* below) |
+| `scripts/import-images.mjs` | One-off importer: matches a folder of processed images to charities/founders and copies them into `assets/` |
+| `config/image-import-overrides.json` | Manual fixes for the importer (swapped names, files to skip) |
 | `scripts/build.mjs` | Pull Airtable → transform → rehost images → `public/charities.json` |
 | `scripts/lib/` | `airtable.mjs` (REST client), `transform.mjs` (pure transform), `images.mjs` (rehosting) |
 | `scripts/verify-allowlist.mjs` | Fails if the published JSON contains anything outside the allowlist |
@@ -50,6 +53,27 @@ Useful flags for `scripts/build.mjs`:
 - `--from-raw DIR` — build from a previous raw dump instead of calling Airtable
 - `--out DIR` — output directory (default `public`)
 - `--ignore-ready` — **design preview only**: drop the *Website ready?* requirement (Undercover?, Exclude and Status still apply) and write to `design/preview-data/` instead of `public/`. Used while logos/photos are still being added so the widget can be designed against real rows.
+
+## Images
+
+Each logo or founder photo comes from one of two places, in this order:
+
+1. **An Airtable attachment** on the row (`Logo` on Website, `Photo` on Website Founders). The build downloads it at build time because Airtable attachment URLs expire within hours.
+2. **A file in this repo**, used when the row has no attachment:
+   - `assets/logos/<charity id>.webp` — the charity id is the `id` in `public/charities.json`, e.g. `assets/logos/animal-ask.webp`
+   - `assets/founders/<charity id>/<founder slug>.webp` — the founder's name slugified, e.g. `assets/founders/animal-ask/amy-odene.webp`
+   - `.png`, `.svg`, `.jpg` and `.avif` also work.
+
+Either way the build copies the file to `public/img/...` under a content-hashed name, so browsers never show a stale image. The build lists every published charity without a logo and every founder without a photo, and every repo asset that no published row uses (usually a renamed charity or a typo).
+
+To bulk-import a folder of processed images laid out as `<year>/<charity>/<files>`:
+
+```bash
+node scripts/import-images.mjs "/path/to/cropped and compressed"          # dry run: prints the matching report
+node scripts/import-images.mjs "/path/to/cropped and compressed" --apply  # copies matched files into assets/
+```
+
+Fix anything the report flags in `config/image-import-overrides.json`, then re-run. Founder photos are recognised by name (accents, nicknames and small typos are tolerated) and by shape (512×512 headshots); wide images are treated as logos.
 
 ## Publishing rules
 

@@ -4,7 +4,7 @@
 //   node scripts/build.mjs                      live: reads AIRTABLE_TOKEN from the environment
 //   node scripts/build.mjs --dump-raw raw       also save the raw records (gitignored) for debugging
 //   node scripts/build.mjs --from-raw raw       offline: build from a previous dump
-//   node scripts/build.mjs --skip-images        don't download attachments (they become null)
+//   node scripts/build.mjs --skip-images        don't download Airtable attachments (repo assets are still used)
 //   node scripts/build.mjs --out public         output directory (default: public)
 //   node scripts/build.mjs --ignore-ready       DESIGN PREVIEW ONLY: don't require "Website ready?" (Undercover/Exclude/Status
 //                                               still apply); writes to design/preview-data instead of public
@@ -98,7 +98,7 @@ async function main() {
   data.generatedAt = new Date().toISOString();
 
   await mkdir(outDir, { recursive: true });
-  const images = await rehostImages(data, { outDir, skip: args.skipImages, log });
+  const images = await rehostImages(data, { outDir, assetsDir: path.join(ROOT, 'assets'), skip: args.skipImages, log });
   warnings.push(...images.warnings);
 
   assertAllowlisted(data);
@@ -108,7 +108,11 @@ async function main() {
   log('');
   log(`Wrote ${path.relative(ROOT, outFile)}`);
   log(`  charities fetched: ${stats.fetched}, published: ${stats.published}, skipped by publish rules: ${stats.skipped}`);
-  log(`  founders published: ${stats.founders}; logos: ${stats.withLogo}; founder photos: ${stats.withPhoto}; images rehosted: ${images.count}`);
+  const logos = data.charities.filter((c) => c.logo).length;
+  const photos = data.charities.reduce((n, c) => n + c.founders.filter((f) => f.photo).length, 0);
+  log(`  founders published: ${stats.founders}; with logo: ${logos}/${stats.published}; founder photos: ${photos}/${stats.founders}; image files written: ${images.count}`);
+  for (const c of data.charities) if (!c.logo) warnings.push(`No logo for ${c.name} (add assets/logos/${c.id}.webp or an Airtable attachment)`);
+  for (const c of data.charities) for (const f of c.founders) if (!f.photo) warnings.push(`No photo for ${f.name} (${c.name})`);
   if (warnings.length) {
     log('');
     log(`${warnings.length} warning(s):`);
