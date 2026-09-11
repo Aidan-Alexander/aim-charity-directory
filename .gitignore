@@ -23,5 +23,6 @@ Thumbs.db
 # developed locally without an Airtable token.
 public/img/
 public/snippet.html
+public/snippet.txt
 public/demo.html
 design/preview-data/
