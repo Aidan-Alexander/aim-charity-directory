@@ -49,6 +49,18 @@ function firstAttachment(value) {
   };
 }
 
+/** Accept only real LinkedIn profile/company URLs; anything else becomes null. */
+function normaliseLinkedIn(raw) {
+  const url = normaliseUrl(raw);
+  if (!url) return null;
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    return host === 'linkedin.com' || host.endsWith('.linkedin.com') ? url : null;
+  } catch {
+    return null;
+  }
+}
+
 function normaliseUrl(raw) {
   if (!raw) return null;
   try {
@@ -109,7 +121,10 @@ export function transform({ website, founders }, { config, continents, ignoreRea
       warn(`Founder "${name}" is not linked to a charity; skipped`);
       continue;
     }
-    const entry = { name, role: str(f.Role) || null, sortOrder: num(f['Sort order']), photo: firstAttachment(f.Photo) };
+    const rawLinkedIn = str(f.LinkedIn);
+    const linkedin = normaliseLinkedIn(rawLinkedIn);
+    if (rawLinkedIn && !linkedin) warn(`Ignored non-LinkedIn URL on founder ${name}: ${rawLinkedIn}`);
+    const entry = { name, role: str(f.Role) || null, sortOrder: num(f['Sort order']), photo: firstAttachment(f.Photo), linkedin };
     for (const id of links) {
       if (!foundersByCharity.has(id)) foundersByCharity.set(id, []);
       foundersByCharity.get(id).push(entry);
@@ -149,7 +164,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     const charityFounders = (foundersByCharity.get(rec.id) || [])
       .slice()
       .sort(bySortThenName)
-      .map(({ name: founderName, role, photo }) => ({ name: founderName, role, photo }));
+      .map(({ name: founderName, role, photo, linkedin }) => ({ name: founderName, role, photo, linkedin }));
 
     if (!str(f.Blurb)) warn(`No blurb on ${name}`);
     if (!url) warn(`No website URL on ${name}`);
@@ -195,6 +210,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     founders: charities.reduce((n, c) => n + c.founders.length, 0),
     withLogo: charities.filter((c) => c.logo).length,
     withPhoto: charities.reduce((n, c) => n + c.founders.filter((x) => x.photo).length, 0),
+    withLinkedIn: charities.reduce((n, c) => n + c.founders.filter((x) => x.linkedin).length, 0),
   };
   return { data, warnings, stats };
 }
@@ -203,7 +219,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
 export const OUTPUT_KEYS = {
   root: ['schemaVersion', 'generatedAt', 'causes', 'continents', 'countryContinent', 'charities'],
   charity: ['id', 'name', 'blurb', 'url', 'causes', 'countries', 'cohort', 'status', 'sortOrder', 'logo', 'founders'],
-  founder: ['name', 'role', 'photo'],
+  founder: ['name', 'role', 'photo', 'linkedin'],
   image: ['src', 'width', 'height'],
 };
 

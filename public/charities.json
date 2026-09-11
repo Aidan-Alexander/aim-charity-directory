@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T14:00:01.678Z",
+  "generatedAt": "2026-09-11T14:06:52.369Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -94,7 +94,8 @@
             "src": "img/founders/access-to-medicines-initiative-ami--miri-muntean-bc1524f6d0.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/miri-muntean/"
         },
         {
           "name": "Evan LaForge",
@@ -103,7 +104,8 @@
             "src": "img/founders/access-to-medicines-initiative-ami--evan-laforge-17e7b38ac8.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/evan-laforge/"
         }
       ]
     },
@@ -134,7 +136,8 @@
             "src": "img/founders/accion-transformadora-actra--laura-sofia-castro-bed8ed63ef.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/laurasofia/"
         },
         {
           "name": "Henning Peters",
@@ -143,7 +146,8 @@
             "src": "img/founders/accion-transformadora-actra--henning-peters-9e42e1e351.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/henning-peters%F0%9F%94%B8-a77956285/"
         }
       ]
     },
@@ -175,7 +179,8 @@
             "src": "img/founders/alliance-for-reducing-microbial-resistance--aanika-dalal-1663644da5.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/aanika-dalal-82905a18a/"
         },
         {
           "name": "David McKinney",
@@ -184,7 +189,8 @@
             "src": "img/founders/alliance-for-reducing-microbial-resistance--david-mckinney-17566be990.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/david-mckinney1/"
         },
         {
           "name": "Sofya Lebedeva",
@@ -193,7 +199,8 @@
             "src": "img/founders/alliance-for-reducing-microbial-resistance--sofya-lebedeva-dadf25fed1.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/sofya-lebedeva-129859145/"
         }
       ]
     },
@@ -216,12 +223,14 @@
         {
           "name": "Dexter Oelrichs",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/dexter-oelrichs/"
         },
         {
           "name": "Romain Balès",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/romainbales/"
         }
       ]
     },
@@ -253,7 +262,8 @@
             "src": "img/founders/animal-advocacy-careers--lauren-mee-208d622465.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/laurensarahmee/"
         },
         {
           "name": "Jamie Harris",
@@ -262,7 +272,8 @@
             "src": "img/founders/animal-advocacy-careers--jamie-harris-8b6b272c9b.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jamie-harris-14b011138"
         }
       ]
     },
@@ -294,7 +305,8 @@
             "src": "img/founders/animal-ask--amy-odene-488d442e50.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/amy-odene-29901414b"
         },
         {
           "name": "George Bridgwater",
@@ -303,7 +315,8 @@
             "src": "img/founders/animal-ask--george-bridgwater-15101ff817.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/george-bridgwater-4845a8147/"
         }
       ]
     },
@@ -337,7 +350,8 @@
             "src": "img/founders/animal-policy-international--mandy-carter-a478999cec.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/mandy-carter-4275a366/"
         },
         {
           "name": "Rainer Kravets",
@@ -346,7 +360,8 @@
             "src": "img/founders/animal-policy-international--rainer-kravets-702475d1cd.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/rainer-kravets/"
         }
       ]
     },
@@ -377,7 +392,8 @@
             "src": "img/founders/ansh--supriya-bansal-024bdf462d.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/supriya-bansal-/"
         },
         {
           "name": "Chetan Kharbanda",
@@ -386,7 +402,8 @@
             "src": "img/founders/ansh--chetan-kharbanda-bd44feff7e.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/chetan-kharbanda-7044b1105/"
         }
       ]
     },
@@ -417,7 +434,8 @@
             "src": "img/founders/ark-philanthropy--august-hochman-35ef1991ea.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/augusthochman/"
         }
       ]
     },
@@ -448,7 +466,8 @@
             "src": "img/founders/benefficienza--luca-stocco-2e50912c5e.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/stocco-luca/"
         },
         {
           "name": "Sebastian Trenckmann",
@@ -457,7 +476,8 @@
             "src": "img/founders/benefficienza--sebastian-trenckmann-47ff35c091.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/sebastiantrenckmann/"
         }
       ]
     },
@@ -490,7 +510,8 @@
             "src": "img/founders/better-futures-guide--rens-bakker-65ef443135.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/rens-bakker/"
         },
         {
           "name": "Elizabeth Weissberg",
@@ -499,7 +520,8 @@
             "src": "img/founders/better-futures-guide--elizabeth-weissberg-deff63d8b8.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": null
         }
       ]
     },
@@ -530,7 +552,8 @@
             "src": "img/founders/better-season-project--kristina-mahony-7a1930519f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/kristina-mahony-a79ba9122/"
         },
         {
           "name": "William Lawless",
@@ -539,7 +562,8 @@
             "src": "img/founders/better-season-project--william-lawless-c4402d82c5.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/william-lawless-744481157/"
         }
       ]
     },
@@ -571,7 +595,8 @@
             "src": "img/founders/canopie--anne-wanlund-bcee4e88d7.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/annewanlund/"
         },
         {
           "name": "Ann Don Bosco",
@@ -580,7 +605,8 @@
             "src": "img/founders/canopie--ann-don-bosco-35196fd690.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/anndonbosco/"
         }
       ]
     },
@@ -612,7 +638,8 @@
             "src": "img/founders/center-for-alcohol-policy-solutions--kristina-sperkova-d504540527.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/kristina-sperkova-6bb70a75/"
         }
       ]
     },
@@ -646,7 +673,8 @@
             "src": "img/founders/center-for-effective-aid-policy--mathias-bonde-408e54ce3e.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/mathias-kirk-bonde/"
         },
         {
           "name": "Jacob Wood",
@@ -655,7 +683,8 @@
             "src": "img/founders/center-for-effective-aid-policy--jacob-wood-ff68db40d3.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": null
         }
       ]
     },
@@ -679,12 +708,14 @@
         {
           "name": "Martin Wicke",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/mwicke/"
         },
         {
           "name": "Naomi Murn",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/naomimurn/"
         }
       ]
     },
@@ -716,7 +747,8 @@
             "src": "img/founders/centre-for-exploratory-altruism-research-cearch--joel-tan-200803f2e5.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/joel-tan-1677368a/"
         }
       ]
     },
@@ -747,12 +779,14 @@
             "src": "img/founders/charity-science-health--joey-savoie-fb99fdd8a3.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": null
         },
         {
           "name": "Katherine Savoie",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": null
         }
       ]
     },
@@ -783,7 +817,8 @@
             "src": "img/founders/clear-solutions--charlie-jeong-4226722701.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/charliejyjeong/"
         },
         {
           "name": "Martyn James",
@@ -792,7 +827,8 @@
             "src": "img/founders/clear-solutions--martyn-james-7e154a8707.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/martyn-j-6780144/"
         }
       ]
     },
@@ -825,7 +861,8 @@
             "src": "img/founders/concentric-policies--sam-emerman-9288033506.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/sam-emerman/"
         },
         {
           "name": "J.T. Stanley",
@@ -834,7 +871,8 @@
             "src": "img/founders/concentric-policies--j-t-stanley-17108d9de8.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jtstanley/"
         }
       ]
     },
@@ -865,7 +903,8 @@
             "src": "img/founders/ellis-impact--fernando-martin-gullans-118940f73a.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/fernandomartingullans/"
         },
         {
           "name": "Helene Kortschak",
@@ -874,7 +913,8 @@
             "src": "img/founders/ellis-impact--helene-kortschak-ca3d221c16.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/helene-kortschak/"
         }
       ]
     },
@@ -905,7 +945,8 @@
             "src": "img/founders/family-empowerment-media--anna-christina-thorsheim-d622cb91c9.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/anna-christina-thorsheim/"
         },
         {
           "name": "Kenneth Scheffler",
@@ -914,7 +955,8 @@
             "src": "img/founders/family-empowerment-media--kenneth-scheffler-ded23a99e2.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/kenneth-scheffler-86172110/"
         }
       ]
     },
@@ -946,7 +988,8 @@
             "src": "img/founders/farmkind--aidan-alexander-be0ec371bf.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/aidan-alexander/"
         },
         {
           "name": "Thom Norman",
@@ -955,7 +998,8 @@
             "src": "img/founders/farmkind--thom-norman-f73fd41dd5.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/tdnorman/"
         }
       ]
     },
@@ -986,7 +1030,8 @@
             "src": "img/founders/first-embrace--wesley-quadros-fad2f226ef.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/dr-wesley-quadros-80bab9346/"
         },
         {
           "name": "Ikra Gulzar",
@@ -995,7 +1040,8 @@
             "src": "img/founders/first-embrace--ikra-gulzar-27cab29a50.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/ikragulzar964/"
         }
       ]
     },
@@ -1028,7 +1074,8 @@
             "src": "img/founders/fish-welfare-initiative--haven-king-nobles-086d294742.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/haven-kn/"
         },
         {
           "name": "Thomas Billington",
@@ -1037,7 +1084,8 @@
             "src": "img/founders/fish-welfare-initiative--thomas-billington-4c83fd3c90.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/thomas-billington-637458131/"
         }
       ]
     },
@@ -1068,7 +1116,8 @@
             "src": "img/founders/fortify-health--nikita-patel-a70ec0ee2b.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/nikitapatel14/"
         },
         {
           "name": "Brendan Eappen",
@@ -1077,7 +1126,8 @@
             "src": "img/founders/fortify-health--brendan-eappen-c32cf0b844.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/brendaneappen/"
         }
       ]
     },
@@ -1108,7 +1158,8 @@
             "src": "img/founders/foundations-first--emelie-furst-95872a8c86.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/emeliefuerst/"
         },
         {
           "name": "Jamila Abass",
@@ -1117,7 +1168,8 @@
             "src": "img/founders/foundations-first--jamila-abass-732d2c774f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jamilaabass/"
         }
       ]
     },
@@ -1149,7 +1201,8 @@
             "src": "img/founders/giving-green--dan-stein-f0ed094270.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/dan-stein-8210a639/"
         },
         {
           "name": "Nicholas Parker",
@@ -1158,7 +1211,8 @@
             "src": "img/founders/giving-green--nicholas-parker-6e441a51ff.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/nicholaswolfparker/"
         }
       ]
     },
@@ -1190,7 +1244,8 @@
             "src": "img/founders/good-policies--caleb-parikh-57244ce0c4.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/caleb-parikh/"
         }
       ]
     },
@@ -1222,7 +1277,8 @@
             "src": "img/founders/happier-lives-institute--michael-plant-d23da5fb96.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/michael-plant-8445116a/"
         }
       ]
     },
@@ -1253,7 +1309,8 @@
             "src": "img/founders/healthier-hens--lukas-jasiunas-5bba3ae34a.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/lukasjasiunas/"
         },
         {
           "name": "Kikiope Oluwarore",
@@ -1262,7 +1319,8 @@
             "src": "img/founders/healthier-hens--kikiope-oluwarore-3de3c6b686.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/kikiope-oluwarore/"
         },
         {
           "name": "Isaac Esparza",
@@ -1271,7 +1329,8 @@
             "src": "img/founders/healthier-hens--isaac-esparza-7a0b1cfd7f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/espaza-isaac/"
         }
       ]
     },
@@ -1304,7 +1363,8 @@
             "src": "img/founders/healthlearn--marshall-thomas-d35bc441c1.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/mthomas47/"
         },
         {
           "name": "Karl Keefer",
@@ -1313,7 +1373,8 @@
             "src": "img/founders/healthlearn--karl-keefer-fda4b96876.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/karlkeefer/"
         }
       ]
     },
@@ -1345,7 +1406,8 @@
             "src": "img/founders/healthy-futures-global--keyur-doolabh-4fe5717381.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/keyur-doolabh/"
         },
         {
           "name": "Nils Voelker",
@@ -1354,7 +1416,8 @@
             "src": "img/founders/healthy-futures-global--nils-voelker-b0b62d59d7.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/nils-voelker/"
         }
       ]
     },
@@ -1386,7 +1449,8 @@
             "src": "img/founders/high-impact-professionals--devon-fritz-374089153f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/devonfritz/"
         },
         {
           "name": "Federico Speziali",
@@ -1395,7 +1459,8 @@
             "src": "img/founders/high-impact-professionals--federico-speziali-daed867de7.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/federicospeziali/"
         }
       ]
     },
@@ -1426,7 +1491,8 @@
             "src": "img/founders/impactful-giving--chetan-kharbanda-98277c39a0.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/chetan-kharbanda-7044b1105/"
         },
         {
           "name": "Krishna Veni",
@@ -1435,7 +1501,8 @@
             "src": "img/founders/impactful-giving--krishna-veni-bac665cb1c.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/krishnaveni25/"
         },
         {
           "name": "Jesse Pagliuca",
@@ -1444,7 +1511,8 @@
             "src": "img/founders/impactful-giving--jesse-pagliuca-4d936c8826.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jesse-pagliuca-76936858/"
         }
       ]
     },
@@ -1476,7 +1544,8 @@
             "src": "img/founders/institute-for-development-innovation--haindavi-kandarpa-dbbcde8f1e.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/haindavi-kandarpa-3790431b6/"
         },
         {
           "name": "Uttej Sai",
@@ -1485,7 +1554,8 @@
             "src": "img/founders/institute-for-development-innovation--uttej-sai-6168089539.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/uttej-k/"
         }
       ]
     },
@@ -1516,7 +1586,8 @@
             "src": "img/founders/kaya-guides--rachel-abbott-e96dc110d6.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/rachel-abbott-851092108/"
         },
         {
           "name": "Shen Javier",
@@ -1525,7 +1596,8 @@
             "src": "img/founders/kaya-guides--shen-javier-1d0bba02fc.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/reynaly-shen-javier/"
         }
       ]
     },
@@ -1556,7 +1628,8 @@
             "src": "img/founders/lafiya-nigeria--klau-chmielowska-35e65327a6.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/klaupakos/"
         },
         {
           "name": "Céline Kamsteeg",
@@ -1565,7 +1638,8 @@
             "src": "img/founders/lafiya-nigeria--celine-kamsteeg-f8eab8d566.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/cdkamsteeg/"
         }
       ]
     },
@@ -1597,7 +1671,8 @@
             "src": "img/founders/lead-acid-battery-recycling-initiative-labri--tom-daniels-850e5b7459.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/tom-daniels-417a47a2/"
         },
         {
           "name": "Micaella Rogers",
@@ -1606,7 +1681,8 @@
             "src": "img/founders/lead-acid-battery-recycling-initiative-labri--micaella-rogers-7ec559c284.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/micaella-rogers-666504150/"
         }
       ]
     },
@@ -1650,7 +1726,8 @@
             "src": "img/founders/lead-exposure-elimination-project-leep--lucia-coulter-cc148bcd3f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/lucia-coulter-657877162/"
         },
         {
           "name": "Jack Rafferty",
@@ -1659,12 +1736,14 @@
             "src": "img/founders/lead-exposure-elimination-project-leep--jack-rafferty-efc11a1ffb.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jackrafferty1/"
         },
         {
           "name": "Clare Donaldson",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/clare-donaldson/"
         }
       ]
     },
@@ -1697,7 +1776,8 @@
             "src": "img/founders/lead-research-for-action-lera--isabel-arjmand-74625b9d5c.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/isabelarjmand/"
         },
         {
           "name": "Tammy Tan",
@@ -1706,7 +1786,8 @@
             "src": "img/founders/lead-research-for-action-lera--tammy-tan-0c0ddc7fcc.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/tammy-tan/"
         }
       ]
     },
@@ -1737,7 +1818,8 @@
             "src": "img/founders/learning-alliance--sofia-martinez-galvez-761747abff.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/smartinezgalvez/"
         },
         {
           "name": "Ilana Kessler",
@@ -1746,7 +1828,8 @@
             "src": "img/founders/learning-alliance--ilana-kessler-0dc9a55ceb.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/ilanakessler/"
         }
       ]
     },
@@ -1778,7 +1861,8 @@
             "src": "img/founders/maternal-health-initiative--sarah-eustis-guthrie-5d3300dc09.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/saraheustisguthrie/"
         },
         {
           "name": "Ben Williamson",
@@ -1787,7 +1871,8 @@
             "src": "img/founders/maternal-health-initiative--ben-williamson-20178c0d0d.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/bcswilliamson/"
         }
       ]
     },
@@ -1819,7 +1904,8 @@
             "src": "img/founders/mieux-donner--jennifer-stretton-e5bf1a807d.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jennifer-stretton-7002bb41/"
         },
         {
           "name": "Romain Barbe",
@@ -1828,7 +1914,8 @@
             "src": "img/founders/mieux-donner--romain-barbe-ae426ae661.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/romain-barbe-71436115a/"
         }
       ]
     },
@@ -1857,7 +1944,8 @@
             "src": "img/founders/neev--kate-sutcliffe-04069b441f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/kathryn-sutcliffe/"
         },
         {
           "name": "Alisha Pathak",
@@ -1866,7 +1954,8 @@
             "src": "img/founders/neev--alisha-pathak-c6e111a0ab.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/alisha-pathak-153726245/"
         }
       ]
     },
@@ -1897,7 +1986,8 @@
             "src": "img/founders/notify-health--samuel-harvey-996abd570d.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/dr-samuel-harvey-12900a23b/"
         },
         {
           "name": "Daniel Handschuh",
@@ -1906,7 +1996,8 @@
             "src": "img/founders/notify-health--daniel-handschuh-8266d84e8c.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/danielhandschuh/"
         }
       ]
     },
@@ -1937,7 +2028,8 @@
             "src": "img/founders/novah--ivy-van-regteren-2ec67fbff1.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/ivyvanregterenaltena/"
         },
         {
           "name": "Alexis Atlani",
@@ -1946,7 +2038,8 @@
             "src": "img/founders/novah--alexis-atlani-d787ec5dcc.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/alexisatlani/"
         }
       ]
     },
@@ -1978,7 +2071,8 @@
             "src": "img/founders/opal-health--matt-beer-a132cf7861.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/matthew-beer-6b339084/"
         },
         {
           "name": "Melissa Kaminker",
@@ -1987,7 +2081,8 @@
             "src": "img/founders/opal-health--melissa-kaminker-c2ae15c657.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/melissa-kaye-kaminker-01/"
         }
       ]
     },
@@ -2018,7 +2113,8 @@
             "src": "img/founders/oxygen-access-project--leonie-falk-e5e1dfdf48.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/leonie-falk/"
         }
       ]
     },
@@ -2051,7 +2147,8 @@
             "src": "img/founders/policy-entrepreneurship-network--michal-trzesimiech-70384793e8.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/trzesimiech/"
         },
         {
           "name": "Joel Burke",
@@ -2060,7 +2157,8 @@
             "src": "img/founders/policy-entrepreneurship-network--joel-burke-ae145a60f2.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/joelburke1/"
         }
       ]
     },
@@ -2092,7 +2190,8 @@
             "src": "img/founders/radius-institute-for-road-safety--larissa-vaughan-rowe-41686ad761.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/larissa-vaughan-rowe/"
         }
       ]
     },
@@ -2123,7 +2222,8 @@
             "src": "img/founders/respira-health--oli-munns-c9b5eb3fd3.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/olivermunns/"
         },
         {
           "name": "Rowan Lund",
@@ -2132,7 +2232,8 @@
             "src": "img/founders/respira-health--rowan-lund-939a90b161.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/rowanlund/"
         }
       ]
     },
@@ -2163,7 +2264,8 @@
             "src": "img/founders/safestart--grant-edmond-7ef8ed5d29.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/grantedmond/"
         },
         {
           "name": "Elisa Maffioli",
@@ -2172,7 +2274,8 @@
             "src": "img/founders/safestart--elisa-maffioli-d9ed52d0cb.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/elisa-m-maffioli-6289b6b5/"
         }
       ]
     },
@@ -2204,7 +2307,8 @@
             "src": "img/founders/scale-welfare--ameer-virani-2e7bf0ead2.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/ameer-virani/"
         },
         {
           "name": "Koen van Pelt",
@@ -2213,7 +2317,8 @@
             "src": "img/founders/scale-welfare--koen-van-pelt-2161b5312b.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/koenvanpelt/"
         }
       ]
     },
@@ -2245,7 +2350,8 @@
             "src": "img/founders/setuwelt--anam-vadgama-dad1fe4d98.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/anam-vadgama-80a302186/"
         }
       ]
     },
@@ -2282,7 +2388,8 @@
             "src": "img/founders/shrimp-welfare-project--andres-jimenez-zorrilla-e95c4ee86d.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/andres-jimenez-zorrilla/"
         },
         {
           "name": "Aaron Boddy",
@@ -2291,7 +2398,8 @@
             "src": "img/founders/shrimp-welfare-project--aaron-boddy-52e1dcd04c.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/aaron-boddy/"
         }
       ]
     },
@@ -2322,7 +2430,8 @@
             "src": "img/founders/spiro--habiba-banu-b54f96d830.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/habiba-banu/"
         },
         {
           "name": "Roxanne Heston",
@@ -2331,7 +2440,8 @@
             "src": "img/founders/spiro--roxanne-heston-7cd9d3cc29.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/roxanne-heston/"
         }
       ]
     },
@@ -2354,12 +2464,14 @@
         {
           "name": "Paul Yates",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/pmyates/"
         },
         {
           "name": "Jacco Rubens",
           "role": "Co-founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/jaccorubens/"
         }
       ]
     },
@@ -2390,7 +2502,8 @@
             "src": "img/founders/suvita--varsha-venugopal-8af5466b7f.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/varsha-venugopal/"
         },
         {
           "name": "Fiona Conlon",
@@ -2399,7 +2512,8 @@
             "src": "img/founders/suvita--fiona-conlon-9f824401c8.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/fiona-conlon/"
         }
       ]
     },
@@ -2430,7 +2544,8 @@
             "src": "img/founders/taimaka--abubakar-umar-6898e53624.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/abubakar-umar-a95699166/"
         },
         {
           "name": "Justin Graham",
@@ -2439,7 +2554,8 @@
             "src": "img/founders/taimaka--justin-graham-b7bc01ab58.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/justin-g-b8a0ab261/"
         }
       ]
     },
@@ -2463,7 +2579,8 @@
         {
           "name": "Nicoll Peracha",
           "role": "Founder",
-          "photo": null
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/nicoll-peracha/"
         }
       ]
     },
@@ -2494,7 +2611,8 @@
             "src": "img/founders/training-for-good--cillian-crosson-8e808b08d5.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/cillian-crosson/"
         },
         {
           "name": "Steve Thompson",
@@ -2503,7 +2621,8 @@
             "src": "img/founders/training-for-good--steve-thompson-e91d91e8b1.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/steve-thompson-84768414/"
         },
         {
           "name": "Jan-Willem van Putten",
@@ -2512,7 +2631,8 @@
             "src": "img/founders/training-for-good--jan-willem-van-putten-cee6b6c566.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/jan-willemvanputten/"
         }
       ]
     },
@@ -2543,7 +2663,8 @@
             "src": "img/founders/vida-plena--joy-bittner-ed51a71581.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/joy-bittner-socialimpactleader/"
         },
         {
           "name": "Anita Kaslin",
@@ -2552,7 +2673,8 @@
             "src": "img/founders/vida-plena--anita-kaslin-be6e6a8044.webp",
             "width": 512,
             "height": 512
-          }
+          },
+          "linkedin": "https://www.linkedin.com/in/ana-gabriela-kaslin-ulloa-460aa7100/"
         }
       ]
     }

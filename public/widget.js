@@ -79,9 +79,17 @@
     if (words.length === 1) return words[0].length <= 10 ? words[0] : words[0].slice(0, 1);
     return words.slice(0, 3).map(function (w) { return w.charAt(0).toUpperCase(); }).join('');
   }
-  function joinNames(names) {
-    if (names.length <= 1) return names.join('');
-    return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
+  /** "A, B & C" where each item is a text node or a LinkedIn link. */
+  function founderNodes(founders) {
+    var nodes = [];
+    founders.forEach(function (f, i) {
+      if (i > 0) nodes.push(i === founders.length - 1 ? ' & ' : ', ');
+      nodes.push(f.linkedin
+        ? el('a', { href: f.linkedin, target: '_blank', rel: 'noopener', text: f.name },
+            el('span', { class: 'aim-dir__sr', text: ' (LinkedIn, opens in a new tab)' }))
+        : f.name);
+    });
+    return nodes;
   }
   function cohortCompare(a, b) {
     var ya = parseInt(a, 10) || 0, yb = parseInt(b, 10) || 0;
@@ -110,7 +118,10 @@
           cohort: c.cohort ? String(c.cohort) : null,
           status: c.status ? String(c.status) : null,
           logo: c.logo && c.logo.src ? c.logo : null,
-          founders: (Array.isArray(c.founders) ? c.founders : []).filter(function (f) { return f && f.name; })
+          founders: (Array.isArray(c.founders) ? c.founders : []).filter(function (f) { return f && f.name; }).map(function (f) {
+            return { name: String(f.name), role: f.role ? String(f.role) : null, photo: f.photo && f.photo.src ? f.photo : null,
+              linkedin: /^https:\/\/([a-z0-9-]+\.)?linkedin\.com\//i.test(f.linkedin || '') ? f.linkedin : null };
+          })
         };
       })
     };
@@ -296,7 +307,7 @@
       if (c.founders.length) {
         append(body, el('p', { class: 'aim-dir__founders' },
           el('strong', { text: (c.founders.length > 1 ? 'Co-founders:' : 'Founder:') + ' ' }),
-          joinNames(c.founders.map(function (f) { return f.name; }))));
+          founderNodes(c.founders)));
       }
       if (c.blurb) append(body, el('p', { class: 'aim-dir__blurb', text: c.blurb }));
       var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries' });
