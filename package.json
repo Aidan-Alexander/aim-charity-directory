@@ -4,12 +4,18 @@
   "private": true,
   "description": "Airtable -> static JSON + images -> embeddable 'our charities' widget for the AIM Squarespace site",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:offline": "node scripts/build.mjs --from-raw raw",
     "verify": "node scripts/verify-allowlist.mjs",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "snippet": "node scripts/make-snippet.mjs --demo public/demo.html"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
 }

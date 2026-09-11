@@ -28,7 +28,8 @@ then fetches the live JSON and re-renders only if it changed
 | `scripts/make-snippet.mjs` | Builds `public/snippet.html` (the Squarespace code block: widget + inline data snapshot + live URL) and `public/demo.html` (self-contained preview) |
 | `public/widget.css`, `public/widget.js` | The widget itself: dependency-free, every style scoped under `.aim-dir` |
 | `public/index.html` | Preview page that fetches `charities.json` (add `?bleed=1` for the theme-bleed stress test) |
-| `public/` | Everything that gets deployed to GitHub Pages |
+| `public/` | Everything that gets deployed to GitHub Pages (`charities.json` tracked; images, snippet and demo are build outputs) |
+| `.github/workflows/build.yml` | Nightly / manual / on-push build and Pages deployment |
 | `design/` | Figma exports (desktop + mobile) |
 
 ## Running the build locally
@@ -79,4 +80,19 @@ Fix anything the report flags in `config/image-import-overrides.json`, then re-r
 
 A charity is published only when **Website ready?** is ticked, **Undercover?** and **Exclude from website** are unticked, and **Status** is Active, Shutdown or Merged. The build applies these in the Airtable filter formula *and* re-checks them in code. Only the fields listed in `config/publish.json → allowlist` are ever read from the API or written to the output. Founders are published only for published charities; their **LinkedIn** field (a URL on Website Founders) turns the founder's name into a link, and anything that isn't a linkedin.com URL is dropped with a warning.
 
-_Full update workflow, snippet re-paste, token rotation and repo transfer notes are added in the wrap-up phase._
+## Deployment
+
+`.github/workflows/build.yml` runs every night at 03:17 UTC, on every push to `main`, and on demand (Actions tab → *Build and deploy directory* → *Run workflow*). It pulls Airtable with the repository secret **`AIRTABLE_TOKEN2`**, builds `public/`, runs the allowlist check, generates the snippet, commits a changed `public/charities.json` back to `main`, and deploys `public/` to GitHub Pages:
+
+| URL | What |
+| --- | --- |
+| https://aidan-alexander.github.io/aim-charity-directory/ | Preview page with the live data |
+| https://aidan-alexander.github.io/aim-charity-directory/charities.json | The JSON the widget refreshes from |
+| https://aidan-alexander.github.io/aim-charity-directory/snippet.html | The Squarespace code-block content, regenerated every build |
+| https://aidan-alexander.github.io/aim-charity-directory/demo.html | Self-contained demo of exactly what the code block renders |
+
+`public/img/`, `public/snippet.html` and `public/demo.html` are build outputs and are not tracked in git; `public/charities.json` is tracked so the widget can be developed locally without an Airtable token. The Pages base URL lives in `config/publish.json → pagesBaseUrl`; if the repo is ever transferred or renamed, change it there and re-paste the snippet.
+
+Images are re-encoded at build time (`config/publish.json → images`): logos have uniform borders trimmed and are fitted inside 480×240, founder photos become 160×160 squares, everything except SVG becomes WebP.
+
+_Token rotation and repo transfer notes are completed in the wrap-up phase._
