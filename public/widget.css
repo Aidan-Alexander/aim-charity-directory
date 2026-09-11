@@ -151,6 +151,8 @@
 .aim-dir .aim-dir__name a:hover, .aim-dir .aim-dir__name a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 .aim-dir .aim-dir__founders { font-size: 15px; color: var(--aim-text); }
 .aim-dir .aim-dir__founders strong { color: var(--aim-ink); font-weight: 700; }
+.aim-dir .aim-dir__founders a { color: inherit; text-decoration: underline; text-decoration-style: solid; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.aim-dir .aim-dir__founders a:hover, .aim-dir .aim-dir__founders a:focus-visible { color: var(--aim-burgundy); }
 .aim-dir .aim-dir__blurb { font-size: 15px; line-height: 1.55; color: var(--aim-text); }
 .aim-dir .aim-dir__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
 .aim-dir .aim-dir__tag {

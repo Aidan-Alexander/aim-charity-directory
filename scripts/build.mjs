@@ -110,7 +110,7 @@ async function main() {
   log(`  charities fetched: ${stats.fetched}, published: ${stats.published}, skipped by publish rules: ${stats.skipped}`);
   const logos = data.charities.filter((c) => c.logo).length;
   const photos = data.charities.reduce((n, c) => n + c.founders.filter((f) => f.photo).length, 0);
-  log(`  founders published: ${stats.founders}; with logo: ${logos}/${stats.published}; founder photos: ${photos}/${stats.founders}; image files written: ${images.count}`);
+  log(`  founders published: ${stats.founders}; with logo: ${logos}/${stats.published}; founder photos: ${photos}/${stats.founders}; image files written: ${images.count}; founders with LinkedIn: ${stats.withLinkedIn}/${stats.founders}`);
   for (const c of data.charities) if (!c.logo) warnings.push(`No logo for ${c.name} (add assets/logos/${c.id}.webp or an Airtable attachment)`);
   for (const c of data.charities) for (const f of c.founders) if (!f.photo) warnings.push(`No photo for ${f.name} (${c.name})`);
   if (warnings.length) {
