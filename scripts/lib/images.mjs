@@ -11,6 +11,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 import { slugify } from './transform.mjs';
 
 const EXT_BY_TYPE = {
@@ -67,6 +68,44 @@ async function listDir(dir) {
   }
 }
 
+const DEFAULT_SIZES = { logo: { maxWidth: 480, maxHeight: 240, trim: true }, photo: { size: 160 }, quality: 85 };
+
+/**
+ * Re-encode an image for the card. Logos: trim uniform borders (transparent or the corner colour),
+ * fit inside the logo box, never enlarge. Photos: square cover crop. Output is WebP; SVG/GIF pass through.
+ * Returns { buf, ext, width, height, note }.
+ */
+export async function processImage(buf, kind, ext, sizes = DEFAULT_SIZES) {
+  if (ext === 'svg' || ext === 'gif') {
+    const size = imageSize(buf);
+    return { buf, ext, width: size ? size.width : null, height: size ? size.height : null, note: 'kept as-is' };
+  }
+  try {
+    let img = sharp(buf, { animated: false }).rotate();
+    if (kind === 'logos') {
+      const cfg = sizes.logo || DEFAULT_SIZES.logo;
+      if (cfg.trim !== false) {
+        try {
+          const trimmed = await img.trim({ threshold: 12 }).toBuffer();
+          img = sharp(trimmed);
+        } catch {
+          img = sharp(buf).rotate(); // entirely one colour, or trim unsupported: keep untrimmed
+        }
+      }
+      img = img.resize({ width: cfg.maxWidth, height: cfg.maxHeight, fit: 'inside', withoutEnlargement: true });
+    } else {
+      const cfg = sizes.photo || DEFAULT_SIZES.photo;
+      img = img.resize(cfg.size, cfg.size, { fit: 'cover', position: 'centre' });
+    }
+    const out = await img.webp({ quality: sizes.quality || 85, alphaQuality: 90, effort: 5 }).toBuffer();
+    const meta = await sharp(out).metadata();
+    return { buf: out, ext: 'webp', width: meta.width || null, height: meta.height || null, note: `${(buf.length / 1024).toFixed(0)} kB -> ${(out.length / 1024).toFixed(0)} kB` };
+  } catch (err) {
+    const size = imageSize(buf);
+    return { buf, ext, width: size ? size.width : null, height: size ? size.height : null, note: `not processed (${err.message})` };
+  }
+}
+
 /** Find assets/<...>/<base>.<ext> for any allowed extension. Returns { file, ext } or null. */
 async function findAsset(dir, base) {
   const entries = await listDir(dir);
@@ -83,7 +122,7 @@ async function findAsset(dir, base) {
  * - Repo assets are always used when no attachment is available.
  * Returns { count, warnings, used } where `used` lists the asset files that were consumed.
  */
-export async function rehostImages(data, { outDir, assetsDir = null, skip = false, fetchImpl = fetch, log = () => {} }) {
+export async function rehostImages(data, { outDir, assetsDir = null, skip = false, sizes = DEFAULT_SIZES, fetchImpl = fetch, log = () => {} }) {
   const dirs = { logos: path.join(outDir, 'img', 'logos'), founders: path.join(outDir, 'img', 'founders') };
   const warnings = [];
   const used = new Set();
@@ -96,14 +135,14 @@ export async function rehostImages(data, { outDir, assetsDir = null, skip = fals
     await mkdir(dir, { recursive: true });
   }
 
-  async function write(kind, baseName, buf, ext, meta) {
-    const hash = createHash('sha256').update(buf).digest('hex').slice(0, 10);
-    const file = `${baseName}-${hash}.${ext}`;
-    await writeFile(path.join(dirs[kind], file), buf);
+  async function write(kind, baseName, rawBuf, rawExt, meta) {
+    const processed = await processImage(rawBuf, kind, rawExt, sizes);
+    const hash = createHash('sha256').update(processed.buf).digest('hex').slice(0, 10);
+    const file = `${baseName}-${hash}.${processed.ext}`;
+    await writeFile(path.join(dirs[kind], file), processed.buf);
     count += 1;
-    log(`  ${kind}/${file} (${(buf.length / 1024).toFixed(0)} kB, ${meta})`);
-    const size = imageSize(buf);
-    return { src: `img/${kind}/${file}`, width: size ? size.width : null, height: size ? size.height : null };
+    log(`  ${kind}/${file} (${meta}; ${processed.note})`);
+    return { src: `img/${kind}/${file}`, width: processed.width, height: processed.height };
   }
 
   async function fromAttachment(att, kind, baseName) {
@@ -113,10 +152,7 @@ export async function rehostImages(data, { outDir, assetsDir = null, skip = fals
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const buf = Buffer.from(await res.arrayBuffer());
       fromAirtable += 1;
-      const out = await write(kind, baseName, buf, extensionFor(att), 'Airtable');
-      out.width = out.width || att.width;
-      out.height = out.height || att.height;
-      return out;
+      return write(kind, baseName, buf, extensionFor(att), 'Airtable');
     } catch (err) {
       warnings.push(`Could not download ${kind} image for ${baseName}: ${err.message}`);
       return null;

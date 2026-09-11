@@ -98,7 +98,7 @@ async function main() {
   data.generatedAt = new Date().toISOString();
 
   await mkdir(outDir, { recursive: true });
-  const images = await rehostImages(data, { outDir, assetsDir: path.join(ROOT, 'assets'), skip: args.skipImages, log });
+  const images = await rehostImages(data, { outDir, assetsDir: path.join(ROOT, 'assets'), skip: args.skipImages, sizes: config.images, log });
   warnings.push(...images.warnings);
 
   assertAllowlisted(data);

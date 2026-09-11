@@ -1,0 +1,70 @@
+name: Build and deploy directory
+
+on:
+  schedule:
+    - cron: "17 3 * * *"        # nightly, 03:17 UTC
+  workflow_dispatch:            # "Run workflow" button in the Actions tab
+  push:
+    branches: [main]
+
+permissions:
+  contents: write               # commit the refreshed charities.json back to main
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Pull Airtable and build public/
+        run: npm run build
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN2 }}
+
+      - name: Check the output against the allowlist
+        run: npm run verify
+
+      - name: Generate the Squarespace snippet and demo page
+        run: npm run snippet
+
+      - name: Commit refreshed data back to main (only when it changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/charities.json
+          if git diff --cached --quiet; then
+            echo "charities.json unchanged"
+          else
+            git commit -m "Data refresh from Airtable [skip ci]"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

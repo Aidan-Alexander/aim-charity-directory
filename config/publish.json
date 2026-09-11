@@ -71,5 +71,18 @@
     "Effective giving",
     "Research",
     "Talent and capacity building"
-  ]
+  ],
+  "pagesBaseUrl": "https://aidan-alexander.github.io/aim-charity-directory/",
+  "images": {
+    "$comment": "Logos: uniform borders trimmed, then fitted inside maxWidth x maxHeight (never enlarged). Photos: square crop. Everything except SVG is re-encoded as WebP.",
+    "logo": {
+      "maxWidth": 480,
+      "maxHeight": 240,
+      "trim": true
+    },
+    "photo": {
+      "size": 160
+    },
+    "quality": 85
+  }
 }

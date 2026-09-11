@@ -21,6 +21,10 @@ for (let i = 2; i < process.argv.length; i += 1) {
   else if (a === '--data') args.data = process.argv[++i];
   else throw new Error(`Unknown argument: ${a}`);
 }
+if (!args.base) {
+  const config = JSON.parse(await readFile(path.join(ROOT, 'config', 'publish.json'), 'utf8'));
+  args.base = config.pagesBaseUrl || '';
+}
 if (args.base && !args.base.endsWith('/')) args.base += '/';
 
 const css = (await readFile(path.join(ROOT, 'public', 'widget.css'), 'utf8')).trim();
