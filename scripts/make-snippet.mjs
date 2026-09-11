@@ -55,6 +55,8 @@ ${js}
 </script>
 `;
 await writeFile(path.resolve(ROOT, args.out), snippet);
+// Same content with a .txt extension so it can be copied straight from the browser (an .html URL renders instead).
+await writeFile(path.resolve(ROOT, args.out).replace(/\.html$/, '.txt'), snippet);
 console.log(`Wrote ${args.out} (${(Buffer.byteLength(snippet) / 1024).toFixed(0)} kB, ${data.charities.length} charities inline${args.base ? `, live: ${args.base}charities.json` : ', no live URL'})`);
 
 if (args.demo) {

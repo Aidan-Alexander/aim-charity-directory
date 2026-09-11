@@ -88,7 +88,7 @@ A charity is published only when **Website ready?** is ticked, **Undercover?** a
 | --- | --- |
 | https://aidan-alexander.github.io/aim-charity-directory/ | Preview page with the live data |
 | https://aidan-alexander.github.io/aim-charity-directory/charities.json | The JSON the widget refreshes from |
-| https://aidan-alexander.github.io/aim-charity-directory/snippet.html | The Squarespace code-block content, regenerated every build |
+| https://aidan-alexander.github.io/aim-charity-directory/snippet.txt | The Squarespace code-block content as plain text, regenerated every build: open, select all, copy, paste into the code block |
 | https://aidan-alexander.github.io/aim-charity-directory/demo.html | Self-contained demo of exactly what the code block renders |
 
 `public/img/`, `public/snippet.html` and `public/demo.html` are build outputs and are not tracked in git; `public/charities.json` is tracked so the widget can be developed locally without an Airtable token. The Pages base URL lives in `config/publish.json → pagesBaseUrl`; if the repo is ever transferred or renamed, change it there and re-paste the snippet.
