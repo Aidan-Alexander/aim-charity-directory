@@ -131,7 +131,7 @@
   height: 172px; padding: 22px 22px 30px;
   background: var(--aim-white);
 }
-.aim-dir .aim-dir__logo img { max-width: 62%; max-height: 92px; width: auto; height: auto; object-fit: contain; }
+.aim-dir .aim-dir__logo > img { max-width: 62%; max-height: 92px; width: auto; height: auto; object-fit: contain; }
 .aim-dir .aim-dir__monogram {
   font-family: var(--aim-font-heading); font-size: 40px; line-height: 1;
   color: var(--aim-burgundy); opacity: 0.6; letter-spacing: 0.02em;
@@ -145,7 +145,7 @@
   color: var(--aim-burgundy); font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
   overflow: hidden;
 }
-.aim-dir .aim-dir__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.aim-dir .aim-dir__avatar img { width: 100%; height: 100%; max-width: none; max-height: none; flex: none; object-fit: cover; }
 .aim-dir .aim-dir__body { display: flex; flex: 1 1 auto; flex-direction: column; gap: 12px; padding: 30px 22px 28px; }
 .aim-dir .aim-dir__name { font-family: var(--aim-font-heading); font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--aim-burgundy); }
 .aim-dir .aim-dir__name a:hover, .aim-dir .aim-dir__name a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
@@ -231,7 +231,7 @@
   list-style: none; padding: 0; margin: 0;
 }
 .aim-dir .aim-dir__tags { margin-top: 2px; }
-.aim-dir .aim-dir__logo img, .aim-dir .aim-dir__avatar img { border: 0; border-radius: 0; box-shadow: none; }
+.aim-dir .aim-dir__logo > img, .aim-dir .aim-dir__avatar img { border: 0; border-radius: 0; box-shadow: none; }
 .aim-dir .aim-dir__avatar img { border-radius: 50%; }
 .aim-dir .aim-dir__name a, .aim-dir .aim-dir__site { text-decoration-style: solid; }
 .aim-dir .aim-dir__name a { text-decoration: none; }
