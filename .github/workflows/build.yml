@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
@@ -46,8 +46,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/charities.json
-          if git diff --cached --quiet; then
-            echo "charities.json unchanged"
+          # ignore the generatedAt timestamp line so a run with no real change commits nothing
+          if git diff --cached --quiet -I '"generatedAt":'; then
+            echo "charities.json unchanged (apart from generatedAt)"
           else
             git commit -m "Data refresh from Airtable [skip ci]"
             git push
