@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T12:16:37.926Z",
+  "generatedAt": "2026-09-11T14:00:01.678Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -1774,7 +1774,11 @@
         {
           "name": "Sarah Eustis-Guthrie",
           "role": "Co-founder",
-          "photo": null
+          "photo": {
+            "src": "img/founders/maternal-health-initiative--sarah-eustis-guthrie-5d3300dc09.webp",
+            "width": 512,
+            "height": 512
+          }
         },
         {
           "name": "Ben Williamson",

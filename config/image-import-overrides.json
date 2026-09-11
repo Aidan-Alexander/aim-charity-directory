@@ -2,7 +2,7 @@
   "_notes": {
     "2025/Institute for Development Innovation/Uttej K.webp": "Airtable has the founder as Uttej Sai (also matched automatically by first name).",
     "2026/CALF": "Not a published charity in the Website table (undercover or renamed); ignored.",
-    "2022/Maternal Health Initiative/Sarah Hough.webp": "Skipped until Aidan confirms this is Sarah Eustis-Guthrie."
+    "2022/Maternal Health Initiative/Sarah Hough.webp": "Confirmed by Aidan 2026-09-11: this is Sarah Eustis-Guthrie."
   },
   "2025/Institute for Development Innovation/Uttej K.webp": {
     "charity": "institute-for-development-innovation",
@@ -12,6 +12,7 @@
     "skip": true
   },
   "2022/Maternal Health Initiative/Sarah Hough.webp": {
-    "skip": true
+    "charity": "maternal-health-initiative",
+    "founder": "Sarah Eustis-Guthrie"
   }
 }
