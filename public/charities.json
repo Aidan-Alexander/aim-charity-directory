@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T15:36:26.719Z",
+  "generatedAt": "2026-09-12T07:57:20.273Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -201,36 +201,6 @@
             "height": 160
           },
           "linkedin": "https://www.linkedin.com/in/sofya-lebedeva-129859145/"
-        }
-      ]
-    },
-    {
-      "id": "altera-food-initiative",
-      "name": "Altera Food Initiative",
-      "blurb": null,
-      "url": null,
-      "causes": [
-        "Animal welfare"
-      ],
-      "countries": [
-        "France"
-      ],
-      "cohort": "2026 H1",
-      "status": "Active",
-      "sortOrder": null,
-      "logo": null,
-      "founders": [
-        {
-          "name": "Dexter Oelrichs",
-          "role": "Co-founder",
-          "photo": null,
-          "linkedin": "https://www.linkedin.com/in/dexter-oelrichs/"
-        },
-        {
-          "name": "Romain Balès",
-          "role": "Co-founder",
-          "photo": null,
-          "linkedin": "https://www.linkedin.com/in/romainbales/"
         }
       ]
     },
@@ -685,37 +655,6 @@
             "height": 160
           },
           "linkedin": null
-        }
-      ]
-    },
-    {
-      "id": "centre-for-aquaculture-progress",
-      "name": "Centre for Aquaculture Progress",
-      "blurb": "An independent research think tank that accelerates the adoption of science-based, practical fish welfare improvements in European aquaculture.",
-      "url": "https://centreforaquacultureprogress.org/",
-      "causes": [
-        "Animal welfare",
-        "Research"
-      ],
-      "countries": [
-        "Europe"
-      ],
-      "cohort": "2024 H1",
-      "status": "Active",
-      "sortOrder": null,
-      "logo": null,
-      "founders": [
-        {
-          "name": "Martin Wicke",
-          "role": "Co-founder",
-          "photo": null,
-          "linkedin": "https://www.linkedin.com/in/mwicke/"
-        },
-        {
-          "name": "Naomi Murn",
-          "role": "Co-founder",
-          "photo": null,
-          "linkedin": "https://www.linkedin.com/in/naomimurn/"
         }
       ]
     },
