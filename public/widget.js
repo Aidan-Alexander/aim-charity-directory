@@ -303,6 +303,16 @@
       });
       cohortSelect.value = mode() === 'cohort' ? state.cohort : '';
     }
+    /** A tag that applies a filter when clicked (cause, cohort, or a country's continent). */
+    function filterTag(opts) {
+      return el('li', null, el('button', {
+        type: 'button', class: 'aim-dir__tag aim-dir__tag--filter ' + opts.className, style: opts.style || null,
+        title: opts.title || null, 'aria-label': opts.ariaLabel, text: opts.label, onclick: opts.onClick
+      }));
+    }
+    function applyCause(cause) { clearSearch(); state.cohort = null; state.cause = cause; state.shown = pageSize; render({ focus: rootId + '-cause-' + idPart(cause) }); }
+    function applyRegion(region) { clearSearch(); state.cohort = null; state.region = region; state.shown = pageSize; render({ focus: rootId + '-region-' + idPart(region) }); }
+    function applyCohort(cohort) { clearSearch(); state.cohort = cohort; state.cause = null; state.region = null; state.shown = pageSize; render({ focus: cohortSelect.id }); }
     function countryTags(c) {
       var region = mode() === 'facets' ? state.region : null;
       var inRegion = function (k) { return !region || (region === GLOBAL ? k === GLOBAL : data.countryContinent[k] === region); };
@@ -311,11 +321,11 @@
       var expanded = !!state.expanded[c.id];
       var shown = expanded ? list : list.slice(0, MAX_COUNTRIES);
       var items = shown.map(function (k) {
-        var continent = data.countryContinent[k];
-        return el('li', {
-          class: 'aim-dir__tag aim-dir__tag--country' + (region && !inRegion(k) ? ' aim-dir__tag--dim' : ''),
-          title: continent && continent !== k ? continent : null, text: k
-        });
+        var continent = k === GLOBAL ? GLOBAL : data.countryContinent[k];
+        var cls = 'aim-dir__tag--country' + (region && !inRegion(k) ? ' aim-dir__tag--dim' : '');
+        if (!continent) return el('li', { class: 'aim-dir__tag ' + cls, text: k });
+        return filterTag({ className: cls, label: k, title: continent !== k ? continent : null,
+          ariaLabel: 'Show charities in ' + continent, onClick: function () { applyRegion(continent); } });
       });
       var hidden = list.length - shown.length;
       if (hidden > 0 || (expanded && list.length > MAX_COUNTRIES)) {
@@ -362,12 +372,14 @@
           founderNodes(c.founders)));
       }
       if (c.blurb) append(body, el('p', { class: 'aim-dir__blurb', text: c.blurb }));
-      var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries' });
+      var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries (click to filter)' });
       c.causes.forEach(function (cause) {
         var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-        append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, text: CAUSE_TAG_LABELS[cause] || cause }));
+        append(tags, filterTag({ className: 'aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, label: CAUSE_TAG_LABELS[cause] || cause,
+          ariaLabel: 'Show ' + cause + ' charities', onClick: function () { applyCause(cause); } }));
       });
-      if (c.cohort) append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--cohort', title: 'Cohort', text: c.cohort }));
+      if (c.cohort) append(tags, filterTag({ className: 'aim-dir__tag--cohort', label: c.cohort, title: 'Cohort',
+        ariaLabel: 'Show the ' + c.cohort + ' cohort', onClick: function () { applyCohort(c.cohort); } }));
       append(tags, countryTags(c));
       if (STATUS_LABELS[c.status]) append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--status', text: STATUS_LABELS[c.status] }));
       if (tags.childNodes.length) append(body, tags);
@@ -375,7 +387,17 @@
         append(body, el('a', { class: 'aim-dir__site', href: c.url, target: '_blank', rel: 'noopener' },
           hostOf(c.url), el('span', { class: 'aim-dir__sr', text: ' (opens in a new tab)' })));
       }
-      return el('li', { class: 'aim-dir__card', id: cardId, tabindex: '-1', 'aria-labelledby': cardId + '-name' }, logo, body);
+      var li = el('li', { class: 'aim-dir__card' + (c.url ? ' aim-dir__card--link' : ''), id: cardId, tabindex: '-1', 'aria-labelledby': cardId + '-name' }, logo, body);
+      if (c.url) {
+        // Convenience only: the name and website links remain the accessible way in. Links/buttons inside keep their own behaviour.
+        li.addEventListener('click', function (e) {
+          if (e.defaultPrevented || e.button !== 0) return;
+          if (e.target.closest && e.target.closest('a, button, select, input')) return;
+          if (global.getSelection && String(global.getSelection()).length) return;
+          global.open(c.url, '_blank', 'noopener');
+        });
+      }
+      return li;
     }
     function renderResults(opts) {
       var list = filtered();
@@ -471,5 +493,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.3.0' };
+  global.AimDirectory = { mount: mount, version: '0.4.0' };
 })(window);

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T07:57:20.273Z",
+  "generatedAt": "2026-09-14T12:09:17.570Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -16,7 +16,7 @@
     "Africa",
     "Asia",
     "Europe",
-    "Latin America & Caribbean",
+    "Latin America",
     "North America",
     "Oceania"
   ],
@@ -24,17 +24,17 @@
     "Armenia": "Asia",
     "Botswana": "Africa",
     "China": "Asia",
-    "Colombia": "Latin America & Caribbean",
+    "Colombia": "Latin America",
     "Democratic Republic of the Congo": "Africa",
     "Denmark": "Europe",
-    "Ecuador": "Latin America & Caribbean",
+    "Ecuador": "Latin America",
     "Europe": "Europe",
     "France": "Europe",
     "Germany": "Europe",
     "Ghana": "Africa",
     "Global": "Global",
     "Guinea-Bissau": "Africa",
-    "Honduras": "Latin America & Caribbean",
+    "Honduras": "Latin America",
     "India": "Asia",
     "Indonesia": "Asia",
     "Italy": "Europe",
@@ -61,7 +61,7 @@
     "Ukraine": "Europe",
     "United Kingdom": "Europe",
     "United States": "North America",
-    "Venezuela": "Latin America & Caribbean",
+    "Venezuela": "Latin America",
     "Vietnam": "Asia",
     "Zimbabwe": "Africa"
   },
@@ -205,6 +205,36 @@
       ]
     },
     {
+      "id": "altera-food-initiative",
+      "name": "Altera Food Initiative",
+      "blurb": null,
+      "url": null,
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "France"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Dexter Oelrichs",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/dexter-oelrichs/"
+        },
+        {
+          "name": "Romain Balès",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/romainbales/"
+        }
+      ]
+    },
+    {
       "id": "animal-advocacy-careers",
       "name": "Animal Advocacy Careers",
       "blurb": "Speeds up the end of unnecessary animal suffering by matching people to the roles that help animals most, through courses, a job board, career advising and recruitment support.",
@@ -308,7 +338,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/animal-policy-international-14354c50b5.webp",
+        "src": "img/logos/animal-policy-international-58708b3b90.webp",
         "width": 480,
         "height": 107
       },
@@ -596,7 +626,7 @@
       "status": "Merged",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/center-for-alcohol-policy-solutions-b44bcd805f.webp",
+        "src": "img/logos/center-for-alcohol-policy-solutions-bbe12c7ccf.webp",
         "width": 480,
         "height": 187
       },
@@ -655,6 +685,37 @@
             "height": 160
           },
           "linkedin": null
+        }
+      ]
+    },
+    {
+      "id": "centre-for-aquaculture-progress",
+      "name": "Centre for Aquaculture Progress",
+      "blurb": "An independent research think tank that accelerates the adoption of science-based, practical fish welfare improvements in European aquaculture.",
+      "url": "https://centreforaquacultureprogress.org/",
+      "causes": [
+        "Animal welfare",
+        "Research"
+      ],
+      "countries": [
+        "Europe"
+      ],
+      "cohort": "2024 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": null,
+      "founders": [
+        {
+          "name": "Martin Wicke",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/mwicke/"
+        },
+        {
+          "name": "Naomi Murn",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/naomimurn/"
         }
       ]
     },
@@ -1418,7 +1479,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/impactful-giving-18264b54e2.webp",
+        "src": "img/logos/impactful-giving-48056054ff.webp",
         "width": 214,
         "height": 240
       },
@@ -1513,7 +1574,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/kaya-guides-3ce493943b.webp",
+        "src": "img/logos/kaya-guides-8ffdc37f58.webp",
         "width": 480,
         "height": 239
       },
@@ -1955,7 +2016,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/novah-2ca8b81e70.webp",
+        "src": "img/logos/novah-ed23381c1f.webp",
         "width": 239,
         "height": 240
       },
