@@ -22,6 +22,7 @@ Thumbs.db
 # public/charities.json stays tracked (the Action commits refreshes back) so the widget can be
 # developed locally without an Airtable token.
 public/img/
+public/source/
 public/snippet.html
 public/snippet.txt
 public/demo.html
