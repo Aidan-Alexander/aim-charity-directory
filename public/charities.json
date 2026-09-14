@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T12:54:36.561Z",
+  "generatedAt": "2026-09-14T12:57:35.737Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -355,9 +355,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/ansh-5c48783f60.webp",
-        "width": 241,
-        "height": 240
+        "src": "img/logos/ansh-19413adba4.webp",
+        "width": 164,
+        "height": 63
       },
       "founders": [
         {
@@ -397,8 +397,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/ark-philanthropy-d4421da3c7.webp",
-        "width": 240,
+        "src": "img/logos/ark-philanthropy-526a6e15cb.webp",
+        "width": 426,
         "height": 240
       },
       "founders": [
@@ -1082,7 +1082,7 @@
     {
       "id": "foundations-first",
       "name": "Foundations First",
-      "blurb": "Foundations First works with teachers and Ministries of Education to end learning\npoverty in Sub-Saharan Africa. It takes Differentiated Learning, - teaching children\nat their actual level rather than their age - one of the most cost-effective education\ninterventions ever studied, and makes it simple and cheap enough for governments\nto own and run at scale. Foundations First is piloting in Kenya, with the goal of\nreaching every child who needs it across the region.",
+      "blurb": "Foundations First works with teachers and Ministries of Education to end learning poverty in Sub-Saharan Africa. It makes Differentiated Learning, teaching children at their actual level rather than their age, cheap and simple enough for governments to run at scale.",
       "url": null,
       "causes": [
         "Livelihoods and growth"
@@ -1342,9 +1342,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/healthy-futures-global-53c220875d.webp",
-        "width": 240,
-        "height": 240
+        "src": "img/logos/healthy-futures-global-fe41757a28.webp",
+        "width": 254,
+        "height": 46
       },
       "founders": [
         {
@@ -1607,9 +1607,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/lead-acid-battery-recycling-initiative-labri-709abc78b9.webp",
-        "width": 150,
-        "height": 240
+        "src": "img/logos/lead-acid-battery-recycling-initiative-labri-64ec81650c.webp",
+        "width": 216,
+        "height": 69
       },
       "founders": [
         {
@@ -1966,9 +1966,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/novah-958dfd1b1f.webp",
-        "width": 239,
-        "height": 240
+        "src": "img/logos/novah-19c8718839.webp",
+        "width": 480,
+        "height": 120
       },
       "founders": [
         {
@@ -2369,9 +2369,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/spiro-5636474397.webp",
-        "width": 192,
-        "height": 240
+        "src": "img/logos/spiro-8200262016.webp",
+        "width": 217,
+        "height": 70
       },
       "founders": [
         {
