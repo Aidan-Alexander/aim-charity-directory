@@ -26,6 +26,9 @@
   var CAUSE_TAG_LABELS = {}; // shorter display names for tags, keyed by the Airtable option name
   /** Display name for a cause: explicit override, else the Airtable name with " and " shown as " & ". */
   function causeLabel(cause) { return CAUSE_TAG_LABELS[cause] || cause.replace(/ and /g, ' & '); }
+  var NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  function numberWord(n) { return NUMBER_WORDS[n] || String(n); }
+  function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
   var GLOBAL = 'Global';
   var MAX_COUNTRIES = 3;
   var MAX_AVATARS = 3;
@@ -129,6 +132,18 @@
     var t;
     return function () { var args = arguments; clearTimeout(t); t = setTimeout(function () { fn.apply(null, args); }, ms); };
   }
+  /** Stealth-mode counts: whole numbers only, anything else is dropped. */
+  function normaliseStealth(s) {
+    var out = { total: 0, byCause: {} };
+    if (!s || typeof s !== 'object') return out;
+    var n = parseInt(s.total, 10);
+    out.total = n > 0 ? n : 0;
+    Object.keys(s.byCause && typeof s.byCause === 'object' ? s.byCause : {}).forEach(function (k) {
+      var v = parseInt(s.byCause[k], 10);
+      if (v > 0) out.byCause[k] = v;
+    });
+    return out;
+  }
   function normaliseData(raw) {
     var d = raw && typeof raw === 'object' ? raw : {};
     var charities = Array.isArray(d.charities) ? d.charities : [];
@@ -136,6 +151,7 @@
       causes: Array.isArray(d.causes) ? d.causes : Object.keys(CAUSE_STYLES),
       continents: Array.isArray(d.continents) ? d.continents : [],
       countryContinent: d.countryContinent && typeof d.countryContinent === 'object' ? d.countryContinent : {},
+      stealth: normaliseStealth(d.stealth),
       charities: charities.map(function (c) {
         return {
           id: String(c.id || idPart(c.name || 'charity')),
@@ -156,7 +172,7 @@
     };
   }
   function comparable(d) {
-    return JSON.stringify({ c: d.charities, cc: d.countryContinent, co: d.continents, ca: d.causes });
+    return JSON.stringify({ c: d.charities, cc: d.countryContinent, co: d.continents, ca: d.causes, s: d.stealth });
   }
 
   /* ---------- the widget ---------- */
@@ -215,6 +231,13 @@
 
     /* filtering. Precedence: a search ignores every filter; a chosen cohort is shown whole; otherwise cause + region. */
     function mode() { return fold(state.query).trim() ? 'search' : (state.cohort ? 'cohort' : 'facets'); }
+    /** Aggregate counts of charities in stealth mode (numbers only; the data never names them). */
+    function stealth() { return data.stealth || { total: 0, byCause: {} }; }
+    function stealthFor(cause) { return stealth().byCause[cause] || 0; }
+    /** Stealth counts join the cause counts only when no region narrows them: an aggregate per cause is fine, per cohort or region is not. */
+    function stealthCounted() { return !state.region; }
+    /** The stealth card shows only in the plain cause view, never combined with cohort, region or search. */
+    function stealthCardCause() { return mode() === 'facets' && state.cause && !state.region && stealthFor(state.cause) > 0 ? state.cause : null; }
     function matchesRegion(c, region) {
       if (!region) return true;
       if (region === GLOBAL) return c.countries.indexOf(GLOBAL) !== -1;
@@ -293,12 +316,13 @@
 
       var causeBase = countBy(all, function (c) { return c.causes; });
       var causeCounts = countBy(facetBase('cause'), function (c) { return c.causes; });
-      var causeItems = [optionItem({ id: rootId + '-cause-all', label: 'All cause areas', count: facetBase('cause').length, pressed: !(facets && state.cause), onClick: pick('cause', null) })];
+      var extra = stealthCounted() ? stealth().total : 0;
+      var causeItems = [optionItem({ id: rootId + '-cause-all', label: 'All cause areas', count: facetBase('cause').length + extra, pressed: !(facets && state.cause), onClick: pick('cause', null) })];
       data.causes.filter(function (cause) { return causeBase[cause]; })
         .sort(function (a, b) { return causeBase[b] - causeBase[a] || data.causes.indexOf(a) - data.causes.indexOf(b); })
         .forEach(function (cause) {
           var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-          causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: causeLabel(cause), count: causeCounts[cause] || 0, pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
+          causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: causeLabel(cause), count: (causeCounts[cause] || 0) + (stealthCounted() ? stealthFor(cause) : 0), pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
         });
       var causeScroll = causeList.scrollLeft;
       clear(causeList); append(causeList, causeItems);
@@ -428,27 +452,49 @@
       }
       return li;
     }
+    /** A placeholder card standing in for charities that exist but aren't public yet. Counts only; no names. */
+    function stealthCard(cause, n) {
+      var cardId = rootId + '-card-stealth';
+      var ghosts = el('span', { class: 'aim-dir__ghosts', 'aria-hidden': 'true' }, el('i'), el('i'), el('i'));
+      var logo = el('div', { class: 'aim-dir__logo aim-dir__logo--stealth' }, ghosts);
+      var label = causeLabel(cause).toLowerCase();
+      var title = n === 1 ? '1 charity in stealth mode' : n + ' charities in stealth mode';
+      var text = n === 1
+        ? 'Not every charity we incubate is ready to be public. One of our ' + label + ' charities is still working quietly; we\u2019ll list it here when it\u2019s ready.'
+        : 'Not every charity we incubate is ready to be public. ' + capitalise(numberWord(n)) + ' of our ' + label + ' charities are still working quietly; we\u2019ll list them here when they\u2019re ready.';
+      var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
+      var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause' },
+        el('li', { class: 'aim-dir__tag aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, text: causeLabel(cause) }));
+      var body = el('div', { class: 'aim-dir__body' },
+        el('h3', { class: 'aim-dir__name', id: cardId + '-name', text: title }),
+        el('p', { class: 'aim-dir__blurb', text: text }),
+        tags);
+      return el('li', { class: 'aim-dir__card aim-dir__card--stealth', id: cardId, tabindex: '-1', 'aria-labelledby': cardId + '-name' }, logo, body);
+    }
     function renderResults(opts) {
       var list = filtered();
-      var visible = list.slice(0, state.shown);
+      var stealthCause = stealthCardCause();
+      var items = stealthCause ? list.concat([{ stealthCause: stealthCause, id: 'stealth' }]) : list;
+      var visible = items.slice(0, state.shown);
       clear(gridEl); clear(footerEl);
-      append(gridEl, visible.map(card));
+      append(gridEl, visible.map(function (item) { return item.stealthCause ? stealthCard(item.stealthCause, stealthFor(item.stealthCause)) : card(item); }));
       if (!list.length) {
         append(footerEl, el('div', { class: 'aim-dir__empty' },
           el('p', { text: mode() === 'search' ? 'No charities match "' + state.query.trim() + '".' : 'No charities match these filters.' }),
           el('button', { type: 'button', class: 'aim-dir__clear', text: mode() === 'search' ? 'Clear search' : 'Clear filters', onclick: function () {
             state.cause = state.region = state.cohort = null; clearSearch(); state.shown = pageSize; render({ focus: rootId + '-search' });
           } })));
-      } else if (list.length > visible.length) {
-        var nextId = rootId + '-card-' + list[visible.length].id;
+      } else if (items.length > visible.length) {
+        var nextId = rootId + '-card-' + items[visible.length].id;
         append(footerEl, el('button', { type: 'button', id: rootId + '-more', class: 'aim-dir__more', onclick: function () {
           state.shown += pageSize; render({ focus: nextId });
-        } }, 'Show more', el('span', { class: 'aim-dir__sr', text: ' (' + (list.length - visible.length) + ' more)' })));
+        } }, 'Show more', el('span', { class: 'aim-dir__sr', text: ' (' + (items.length - visible.length) + ' more)' })));
       }
+      var shownReal = Math.min(visible.length, list.length);
       statusEl.textContent = list.length
-        ? 'Showing ' + visible.length + ' of ' + list.length + (list.length === 1 ? ' charity' : ' charities')
+        ? 'Showing ' + shownReal + ' of ' + list.length + (list.length === 1 ? ' charity' : ' charities') + (stealthCause ? ', plus ' + stealthFor(stealthCause) + ' in stealth mode' : '')
         : 'No charities match';
-      var n = data.charities.length;
+      var n = data.charities.length + stealth().total;
       var tpl = options.title || (n >= 10 ? 'Meet all {n} charities' : 'Meet our charities');
       titleEl.textContent = tpl.replace('{n}', String(n));
     }
@@ -522,5 +568,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.7.1' };
+  global.AimDirectory = { mount: mount, version: '0.8.0' };
 })(window);

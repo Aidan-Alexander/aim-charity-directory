@@ -129,6 +129,14 @@
 @media (hover: hover) and (pointer: fine) {
   .aim-dir .aim-dir__card--link:hover { transform: translateY(-3px) scale(1.012); box-shadow: 0 10px 28px rgba(36, 26, 27, 0.14); }
 }
+/* Stealth-mode placeholder: same frame, dashed border, three faint avatar rings instead of a logo. */
+.aim-dir .aim-dir__card--stealth { border-style: dashed; }
+.aim-dir .aim-dir__logo--stealth { background: var(--aim-white); }
+.aim-dir .aim-dir__ghosts { display: flex; gap: 10px; }
+.aim-dir .aim-dir__ghosts i { display: block; width: 52px; height: 52px; border-radius: 50%; border: 2px dashed var(--aim-gold); background: var(--aim-cream); }
+.aim-dir .aim-dir__ghosts i:nth-child(2) { border-color: var(--aim-burgundy-soft); }
+.aim-dir .aim-dir__card--stealth .aim-dir__name { font-size: 24px; }
+.aim-dir .aim-dir__card--stealth .aim-dir__tags li.aim-dir__tag--cause { background: var(--chip-bg); color: var(--chip-text); }
 .aim-dir .aim-dir__card--skeleton { min-height: 460px; border-color: #E4D3C6; background: linear-gradient(180deg, var(--aim-white) 0 172px, var(--aim-cream) 172px); }
 .aim-dir.is-loading .aim-dir__title { min-height: 1.1em; }
 .aim-dir.is-loading .aim-dir__title::before { content: ""; display: inline-block; width: 14em; max-width: 80%; height: 0.75em; border-radius: 4px; background: #EFE3DA; vertical-align: middle; }

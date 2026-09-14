@@ -209,6 +209,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     continents: continents.continents.slice(),
     countryContinent: sortKeys(countryContinent),
     charities,
+    stealth: { total: 0, byCause: {} }, // filled in by the build from countStealth()
   };
 
   const stats = {
@@ -225,7 +226,8 @@ export function transform({ website, founders }, { config, continents, ignoreRea
 
 /** The complete set of keys that may appear in charities.json. Anything else fails the build. */
 export const OUTPUT_KEYS = {
-  root: ['schemaVersion', 'generatedAt', 'causes', 'continents', 'countryContinent', 'charities'],
+  root: ['schemaVersion', 'generatedAt', 'causes', 'continents', 'countryContinent', 'charities', 'stealth'],
+  stealth: ['total', 'byCause'],
   charity: ['id', 'name', 'blurb', 'url', 'causes', 'countries', 'cohort', 'status', 'sortOrder', 'logo', 'founders'],
   founder: ['name', 'role', 'photo', 'linkedin'],
   image: ['src', 'width', 'height'],
@@ -238,6 +240,14 @@ export function assertAllowlisted(data) {
     for (const k of Object.keys(obj)) if (!allowed.includes(k)) problems.push(`unexpected key "${k}" in ${where}`);
   };
   checkKeys(data, OUTPUT_KEYS.root, 'root');
+  if (data.stealth) {
+    checkKeys(data.stealth, OUTPUT_KEYS.stealth, 'stealth');
+    if (!Number.isInteger(data.stealth.total)) problems.push('stealth.total is not an integer');
+    for (const [k, v] of Object.entries(data.stealth.byCause || {})) {
+      if (!Number.isInteger(v)) problems.push(`stealth.byCause["${k}"] is not an integer`);
+      if (!(data.causes || []).includes(k)) problems.push(`stealth.byCause has a key outside the agreed cause tags: "${k}"`);
+    }
+  }
   for (const c of data.charities || []) {
     checkKeys(c, OUTPUT_KEYS.charity, `charity ${c.id}`);
     if (c.logo) checkKeys(c.logo, OUTPUT_KEYS.image, `logo of ${c.id}`);
@@ -255,4 +265,25 @@ export function assertAllowlisted(data) {
     problems.push('output contains what looks like an Airtable id');
   }
   if (problems.length) throw new Error(`Allowlist check failed:\n - ${problems.join('\n - ')}`);
+}
+
+/**
+ * Aggregate count of charities in stealth mode, per agreed cause tag. Re-checks the conditions in code
+ * (status, checked/unchecked flags) so a wrong Airtable filter can't leak a count it shouldn't.
+ * Returns numbers only; nothing about an individual record is retained.
+ */
+export function countStealth(records, { conditions, causeTags }) {
+  const byCause = {};
+  let total = 0;
+  for (const r of records) {
+    const f = r.fields || {};
+    const statusField = conditions.statusField || 'Status';
+    if (conditions.statusIn?.length && !conditions.statusIn.includes(f[statusField])) continue;
+    if ((conditions.requireChecked || []).some((k) => f[k] !== true)) continue;
+    if ((conditions.requireUnchecked || []).some((k) => f[k] === true)) continue;
+    total += 1;
+    const tags = Array.isArray(f[conditions.countField]) ? f[conditions.countField] : [];
+    for (const t of causeTags) if (tags.includes(t)) byCause[t] = (byCause[t] || 0) + 1;
+  }
+  return { total, byCause: sortKeys(byCause) };
 }
