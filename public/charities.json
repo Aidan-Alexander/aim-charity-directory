@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T17:43:19.675Z",
+  "generatedAt": "2026-09-14T18:06:27.481Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -246,7 +246,7 @@
     {
       "id": "stronger-flocks",
       "name": "Stronger Flocks",
-      "blurb": "Works with egg certification schemes to add an outcome-based limit on keel bone fractures, one of the most widespread welfare problems facing laying hens, so that higher-welfare labels reliably mean healthier, happier hens.",
+      "blurb": "Works with egg certification schemes to add an outcome-based limit on keel bone fractures (one of the most widespread welfare problems facing laying hens) so that higher-welfare labels reliably mean healthier, happier hens.",
       "url": "https://strongerflocks.com/",
       "causes": [
         "Animal welfare"
