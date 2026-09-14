@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T16:10:13.791Z",
+  "generatedAt": "2026-09-14T16:11:25.383Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -660,9 +660,9 @@
       "status": "Active",
       "sortOrder": 14,
       "logo": {
-        "src": "img/logos/shrimp-welfare-project-02a1a83fa8.webp",
-        "width": 272,
-        "height": 240
+        "src": "img/logos/shrimp-welfare-project-0cd7544dd7.webp",
+        "width": 480,
+        "height": 100
       },
       "founders": [
         {
@@ -1484,9 +1484,9 @@
       "status": "Active",
       "sortOrder": 34,
       "logo": {
-        "src": "img/logos/healthy-futures-global-fe41757a28.webp",
-        "width": 254,
-        "height": 46
+        "src": "img/logos/healthy-futures-global-d4b0e340a9.webp",
+        "width": 480,
+        "height": 145
       },
       "founders": [
         {
@@ -1655,9 +1655,9 @@
       "status": "Active",
       "sortOrder": 38,
       "logo": {
-        "src": "img/logos/scale-welfare-9b61499609.webp",
-        "width": 176,
-        "height": 240
+        "src": "img/logos/scale-welfare-b2060d725c.webp",
+        "width": 396,
+        "height": 125
       },
       "founders": [
         {
