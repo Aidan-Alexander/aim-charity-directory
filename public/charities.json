@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:41:27.595Z",
+  "generatedAt": "2026-09-14T15:48:59.477Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -10,7 +10,8 @@
     "Global health",
     "Effective giving",
     "Research",
-    "Talent and capacity building"
+    "Talent and capacity building",
+    "Climate and environment"
   ],
   "continents": [
     "Africa",
@@ -591,12 +592,6 @@
             "height": 160
           },
           "linkedin": "https://www.linkedin.com/in/jackrafferty1/"
-        },
-        {
-          "name": "Clare Donaldson",
-          "role": "Co-founder",
-          "photo": null,
-          "linkedin": "https://www.linkedin.com/in/clare-donaldson/"
         }
       ]
     },
@@ -902,7 +897,8 @@
       "url": "https://www.givinggreen.earth/",
       "causes": [
         "Effective giving",
-        "Research"
+        "Research",
+        "Climate and environment"
       ],
       "countries": [
         "Global"
@@ -1908,7 +1904,8 @@
       "url": "https://www.labrecyclinginitiative.com/",
       "causes": [
         "Policy",
-        "Global health"
+        "Global health",
+        "Climate and environment"
       ],
       "countries": [
         "Philippines"
@@ -1950,7 +1947,8 @@
       "blurb": "Works with brick kilns across South Asia to transition to cleaner technologies to reduce carbon emissions and toxic air pollution.",
       "url": "https://neev.earth/",
       "causes": [
-        "Global health"
+        "Global health",
+        "Climate and environment"
       ],
       "countries": [
         "India"
