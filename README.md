@@ -58,6 +58,8 @@ Logos and founder photos live in Airtable: the `Logo` attachment on the Website 
 
 Guidance for good results: logos as PNG, SVG or WebP with a transparent or white background, at least 500 px wide; founder photos square, at least 400 px, face centred. The build trims uniform borders and fits logos inside 480×240, and crops photos to 160×160 squares.
 
+To load files into Airtable without dragging them in by hand (for example a batch processed with the circle-crop tooling), drop them into `uploads/`, push, and import each one by its `https://raw.githubusercontent.com/<owner>/<repo>/main/uploads/<file>` URL; Airtable copies the file, after which `uploads/` can be emptied. Airtable skips a URL it has imported before, so append `?v=<date>` when replacing an image.
+
 If a row has no attachment, the build falls back to a local, untracked `assets/logos/<charity id>.webp` or `assets/founders/<charity id>/<founder slug>.webp`; this exists only for one-off bulk loads and is not part of the normal workflow. The build lists every published charity without a logo and every founder without a photo.
 
 ## Publishing rules

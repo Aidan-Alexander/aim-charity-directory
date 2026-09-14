@@ -19,7 +19,8 @@
     'Mental health':                      { dot: '#16786E', bg: '#DFEEEC', text: '#125C54' },
     'Effective giving':                   { dot: '#B7643C', bg: '#F6E6DD', text: '#874426' },
     'Research':                           { dot: '#5D6C8C', bg: '#E5E9F0', text: '#3E4B66' },
-    'Talent and capacity building':       { dot: '#4C5C68', bg: '#E4E8EB', text: '#37454F' }
+    'Talent and capacity building':       { dot: '#4C5C68', bg: '#E4E8EB', text: '#37454F' },
+    'Climate and environment':            { dot: '#1F6F43', bg: '#DFEDE4', text: '#17503A' }
   };
   var FALLBACK_STYLE = { dot: '#8A7674', bg: '#EEE8E3', text: '#5F524F' };
   var CAUSE_TAG_LABELS = {}; // shorter display names for tags, keyed by the Airtable option name
@@ -507,5 +508,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.5.2' };
+  global.AimDirectory = { mount: mount, version: '0.6.0' };
 })(window);
