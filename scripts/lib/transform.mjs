@@ -88,6 +88,14 @@ function bySortThenName(a, b) {
   return byName(a, b);
 }
 
+/** Charities: active ones first, then Sort order, then name. Shutdown/Merged always come last. */
+function byStatusSortThenName(a, b) {
+  const aa = a.status === 'Active' ? 0 : 1;
+  const ba = b.status === 'Active' ? 0 : 1;
+  if (aa !== ba) return aa - ba;
+  return bySortThenName(a, b);
+}
+
 function sortKeys(obj) {
   return Object.fromEntries(Object.keys(obj).sort((a, b) => a.localeCompare(b, 'en')).map((k) => [k, obj[k]]));
 }
@@ -187,7 +195,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     });
   }
 
-  charities.sort(bySortThenName);
+  charities.sort(byStatusSortThenName);
   for (const t of unknownTags) warn(`Ignored cause tag not in the agreed list: ${t}`);
   for (const c of unmapped) warn(`Country "${c}" has no continent in data/continents.json (will only show under All)`);
 
