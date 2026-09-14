@@ -24,6 +24,8 @@ for (const c of data.charities) {
 
 console.log(`OK: ${path.relative(ROOT, file)}`);
 console.log(`  ${data.charities.length} charities, ${data.charities.reduce((n, c) => n + c.founders.length, 0)} founders`);
+const stealth = data.stealth || { total: 0, byCause: {} };
+console.log(`  stealth counts (numbers only): total ${stealth.total}; ${Object.entries(stealth.byCause).map(([k, v]) => `${k} ${v}`).join(', ') || 'none'}`);
 console.log(`  charity keys: ${OUTPUT_KEYS.charity.join(', ')}`);
 console.log(`  founder keys: ${OUTPUT_KEYS.founder.join(', ')}`);
 console.log('  no Airtable URLs, no Airtable ids, statuses and cause tags within the agreed sets');

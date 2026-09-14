@@ -13,7 +13,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildPublishFormula, getToken, listAllRecords } from './lib/airtable.mjs';
-import { assertAllowlisted, transform } from './lib/transform.mjs';
+import { assertAllowlisted, countStealth, transform } from './lib/transform.mjs';
 import { rehostImages } from './lib/images.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -59,11 +59,14 @@ async function main() {
 
   let website;
   let founders;
+  let stealthRecords = [];
+  const stealthConditions = config.stealthConditions;
   if (args.fromRaw) {
     const dir = path.resolve(ROOT, args.fromRaw);
     log(`Reading raw records from ${dir}`);
     website = await readJson(path.join(dir, 'website.json'));
     founders = await readJson(path.join(dir, 'founders.json'));
+    stealthRecords = await readJson(path.join(dir, 'stealth.json')).catch(() => []);
   } else {
     const token = getToken();
     const { baseId, tables } = config.airtable;
@@ -85,17 +88,32 @@ async function main() {
       fields: [...config.allowlist.founders, ...config.controlFields.founders],
       log,
     });
+    if (stealthConditions) {
+      // Stealth-mode charities: fetch ONLY the control fields and the cause tag, and only to count them.
+      const stealthFormula = buildPublishFormula(stealthConditions);
+      log(`  stealth count filter: ${stealthFormula}`);
+      stealthRecords = await listAllRecords({
+        token,
+        baseId,
+        tableId: tables.website.id,
+        fields: [stealthConditions.countField, stealthConditions.statusField || 'Status', ...(stealthConditions.requireChecked || []), ...(stealthConditions.requireUnchecked || [])],
+        filterByFormula: stealthFormula,
+        log,
+      });
+    }
     if (args.dumpRaw) {
       const dir = path.resolve(ROOT, args.dumpRaw);
       await mkdir(dir, { recursive: true });
       await writeFile(path.join(dir, 'website.json'), JSON.stringify(website, null, 2));
       await writeFile(path.join(dir, 'founders.json'), JSON.stringify(founders, null, 2));
+      await writeFile(path.join(dir, 'stealth.json'), JSON.stringify(stealthRecords, null, 2));
       log(`Raw records written to ${dir} (gitignored; contains only the requested fields)`);
     }
   }
 
   const { data, warnings, stats } = transform({ website, founders }, { config, continents, ignoreReady: args.ignoreReady });
   data.generatedAt = new Date().toISOString();
+  if (stealthConditions) data.stealth = countStealth(stealthRecords, { conditions: stealthConditions, causeTags: config.causeTags });
 
   await mkdir(outDir, { recursive: true });
   const images = await rehostImages(data, { outDir, assetsDir: path.join(ROOT, 'assets'), skip: args.skipImages, sizes: config.images, log });
@@ -108,6 +126,7 @@ async function main() {
   log('');
   log(`Wrote ${path.relative(ROOT, outFile)}`);
   log(`  charities fetched: ${stats.fetched}, published: ${stats.published}, skipped by publish rules: ${stats.skipped}`);
+  log(`  stealth mode (counted only): ${data.stealth.total} total; ${Object.entries(data.stealth.byCause).map(([k, v]) => `${k}: ${v}`).join(', ') || 'none'}`);
   const logos = data.charities.filter((c) => c.logo).length;
   const photos = data.charities.reduce((n, c) => n + c.founders.filter((f) => f.photo).length, 0);
   log(`  founders published: ${stats.founders}; with logo: ${logos}/${stats.published}; founder photos: ${photos}/${stats.founders}; image files written: ${images.count}; founders with LinkedIn: ${stats.withLinkedIn}/${stats.founders}`);
