@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T12:39:52.725Z",
+  "generatedAt": "2026-09-14T12:54:36.561Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -1082,7 +1082,7 @@
     {
       "id": "foundations-first",
       "name": "Foundations First",
-      "blurb": null,
+      "blurb": "Foundations First works with teachers and Ministries of Education to end learning\npoverty in Sub-Saharan Africa. It takes Differentiated Learning, - teaching children\nat their actual level rather than their age - one of the most cost-effective education\ninterventions ever studied, and makes it simple and cheap enough for governments\nto own and run at scale. Foundations First is piloting in Kenya, with the goal of\nreaching every child who needs it across the region.",
       "url": null,
       "causes": [
         "Livelihoods and growth"
@@ -2410,7 +2410,11 @@
       "cohort": "2026 H1",
       "status": "Active",
       "sortOrder": null,
-      "logo": null,
+      "logo": {
+        "src": "img/logos/stronger-flocks-92d6d08e01.webp",
+        "width": 480,
+        "height": 140
+      },
       "founders": [
         {
           "name": "Paul Yates",
@@ -2533,7 +2537,11 @@
       "cohort": "2023 H1",
       "status": "Active",
       "sortOrder": null,
-      "logo": null,
+      "logo": {
+        "src": "img/logos/the-mission-motor-6ab96bb112.webp",
+        "width": 480,
+        "height": 195
+      },
       "founders": [
         {
           "name": "Nicoll Peracha",
