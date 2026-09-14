@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:29:28.883Z",
+  "generatedAt": "2026-09-14T15:31:24.092Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -290,7 +290,8 @@
       "blurb": "Reduces maternal mortality in rural northern Nigeria by equipping local nurses and midwives to provide safe family planning options, including self-injectable contraceptives.",
       "url": "https://lafiyanigeria.org/",
       "causes": [
-        "Family planning and women's health"
+        "Family planning and women's health",
+        "Global health"
       ],
       "countries": [
         "Nigeria"
@@ -1958,9 +1959,9 @@
       "status": "Active",
       "sortOrder": 45,
       "logo": {
-        "src": "img/logos/neev-7c23b68986.webp",
+        "src": "img/logos/neev-0e3741d570.webp",
         "width": 480,
-        "height": 194
+        "height": 201
       },
       "founders": [
         {
@@ -2521,7 +2522,8 @@
       "blurb": "Worked to improve women's health, agency and income by raising the quality of contraceptive counselling and integrating family planning into postpartum care in Ghana and Sierra Leone.",
       "url": "https://www.maternalhealthinitiative.org/",
       "causes": [
-        "Family planning and women's health"
+        "Family planning and women's health",
+        "Global health"
       ],
       "countries": [
         "Ghana",
