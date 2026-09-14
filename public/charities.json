@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T17:09:52.562Z",
+  "generatedAt": "2026-09-14T17:16:45.019Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -2323,7 +2323,7 @@
       ],
       "cohort": "2026 H1",
       "status": "Active",
-      "sortOrder": null,
+      "sortOrder": 120,
       "logo": {
         "src": "img/logos/the-centre-for-animal-life-and-farming-calf-b344ebc68c.webp",
         "width": 480,
@@ -2339,7 +2339,11 @@
         {
           "name": "Karthik Pulugurtha",
           "role": "Co-founder",
-          "photo": null,
+          "photo": {
+            "src": "img/founders/the-centre-for-animal-life-and-farming-calf--karthik-pulugurtha-de5453ad18.webp",
+            "width": 160,
+            "height": 160
+          },
           "linkedin": "https://www.linkedin.com/in/karthik-pulugurtha-b8902923/"
         }
       ]
