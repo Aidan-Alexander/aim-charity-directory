@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T16:11:25.383Z",
+  "generatedAt": "2026-09-14T16:47:16.924Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -246,7 +246,7 @@
     {
       "id": "stronger-flocks",
       "name": "Stronger Flocks",
-      "blurb": "Works to update egg certification standards so they include an outcome-based limit on keel bone fractures, one of the most widespread welfare problems affecting laying hens.",
+      "blurb": "Works with egg certification schemes to add an outcome-based limit on keel bone fractures, one of the most widespread welfare problems facing laying hens, so that higher-welfare labels reliably mean healthier, happier hens.",
       "url": "https://strongerflocks.com/",
       "causes": [
         "Animal welfare"
@@ -641,7 +641,7 @@
     {
       "id": "shrimp-welfare-project",
       "name": "Shrimp Welfare Project",
-      "blurb": "Aims to improve the lives of billions of farmed shrimps by partnering with producers to reduce stocking densities, end eyestalk ablation and adopt electrical stunning at slaughter.",
+      "blurb": "Aims to improve the lives of billions of farmed shrimps by partnering with producers on practical changes such as lower stocking densities and electrical stunning at slaughter.",
       "url": "https://www.shrimpwelfareproject.org/",
       "causes": [
         "Animal welfare"
@@ -774,7 +774,7 @@
     {
       "id": "animal-policy-international",
       "name": "Animal Policy International",
-      "blurb": "Ensures animal welfare standards are upheld in international trade policy, so that imports meet the same standards as domestic production.",
+      "blurb": "Ensures animal welfare standards are upheld in international trade policy, so that imports meet the same standards as domestic production, a win for animals, consumers and local farmers alike.",
       "url": "https://www.animalpolicyinternational.org/",
       "causes": [
         "Animal welfare",
@@ -1642,7 +1642,7 @@
     {
       "id": "scale-welfare",
       "name": "Scale Welfare",
-      "blurb": "Improves the welfare of farmed fish in Asia, working with milkfish farmers in the Philippines and pangasius exporters in Vietnam.",
+      "blurb": "Works with milkfish farmers in the Philippines and pangasius exporters in Vietnam to improve the welfare of farmed fish, bringing better practices to aquaculture across Asia.",
       "url": "https://www.scalewelfare.org/",
       "causes": [
         "Animal welfare"
@@ -2030,7 +2030,7 @@
     {
       "id": "animal-ask",
       "name": "Animal Ask",
-      "blurb": "Conducts in-depth research to help animal charities, donors and policymakers choose and prioritise the farmed animal welfare asks that will do the most good.",
+      "blurb": "Conducts in-depth research so that animal charities, donors and policymakers can focus on the practical welfare improvements that will do the most good for the most farmed animals.",
       "url": "https://www.animalask.org/",
       "causes": [
         "Animal welfare",
@@ -2106,7 +2106,7 @@
     {
       "id": "fish-welfare-initiative",
       "name": "Fish Welfare Initiative",
-      "blurb": "Works with farmers, corporations and governments to improve the welfare of farmed fish as much as possible, with a focus on Asia.",
+      "blurb": "As aquaculture grows, fish welfare must grow, too. Works alongside farmers, companies and governments in Asia to raise the standard of care for farmed fish.",
       "url": "https://www.fishwelfareinitiative.org/",
       "causes": [
         "Animal welfare"
@@ -2409,7 +2409,7 @@
     {
       "id": "healthier-hens",
       "name": "Healthier Hens",
-      "blurb": "Worked to improve the welfare of egg-laying hens through cost-effective dietary interventions, piloting feed fortification in Kenya.",
+      "blurb": "Worked with egg farmers in Kenya to improve the health and welfare of laying hens through affordable feed fortification.",
       "url": "https://www.healthierhens.com/",
       "causes": [
         "Animal welfare"
