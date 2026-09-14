@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:48:59.477Z",
+  "generatedAt": "2026-09-14T15:52:57.828Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -471,9 +471,9 @@
       "status": "Active",
       "sortOrder": 10,
       "logo": {
-        "src": "img/logos/ansh-19413adba4.webp",
-        "width": 164,
-        "height": 63
+        "src": "img/logos/ansh-b546dc2e26.webp",
+        "width": 480,
+        "height": 184
       },
       "founders": [
         {
@@ -532,7 +532,7 @@
           "name": "Elisa Maffioli",
           "role": "Co-founder",
           "photo": {
-            "src": "img/founders/safestart--elisa-maffioli-62f909d647.webp",
+            "src": "img/founders/safestart--elisa-maffioli-c4906fc5e8.webp",
             "width": 160,
             "height": 160
           },
@@ -1203,7 +1203,7 @@
           "name": "Emelie Fürst",
           "role": "Co-founder",
           "photo": {
-            "src": "img/founders/foundations-first--emelie-furst-0422d45a59.webp",
+            "src": "img/founders/foundations-first--emelie-furst-2c956ab588.webp",
             "width": 160,
             "height": 160
           },
@@ -1213,7 +1213,7 @@
           "name": "Jamila Abass",
           "role": "Co-founder",
           "photo": {
-            "src": "img/founders/foundations-first--jamila-abass-3d712890b5.webp",
+            "src": "img/founders/foundations-first--jamila-abass-a8c0b55268.webp",
             "width": 160,
             "height": 160
           },
@@ -1366,9 +1366,9 @@
       "status": "Active",
       "sortOrder": 31,
       "logo": {
-        "src": "img/logos/spiro-8200262016.webp",
-        "width": 217,
-        "height": 70
+        "src": "img/logos/spiro-2f0325bbd1.webp",
+        "width": 480,
+        "height": 154
       },
       "founders": [
         {
@@ -1569,9 +1569,9 @@
       "status": "Active",
       "sortOrder": 36,
       "logo": {
-        "src": "img/logos/access-to-medicines-initiative-ami-a9076b46e4.webp",
-        "width": 186,
-        "height": 64
+        "src": "img/logos/access-to-medicines-initiative-ami-da1b117cbd.webp",
+        "width": 480,
+        "height": 162
       },
       "founders": [
         {
@@ -1966,7 +1966,7 @@
           "name": "Kate Sutcliffe",
           "role": "Co-founder",
           "photo": {
-            "src": "img/founders/neev--kate-sutcliffe-2eea1be242.webp",
+            "src": "img/founders/neev--kate-sutcliffe-a164291686.webp",
             "width": 160,
             "height": 160
           },
@@ -1976,7 +1976,7 @@
           "name": "Alisha Pathak",
           "role": "Co-founder",
           "photo": {
-            "src": "img/founders/neev--alisha-pathak-829a330cd7.webp",
+            "src": "img/founders/neev--alisha-pathak-0996f00aff.webp",
             "width": 160,
             "height": 160
           },
