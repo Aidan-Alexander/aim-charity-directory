@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:52:57.828Z",
+  "generatedAt": "2026-09-14T16:10:13.791Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -114,8 +114,8 @@
       ]
     },
     {
-      "id": "family-empowerment-media",
-      "name": "Family Empowerment Media",
+      "id": "family-empowerment-media-fem",
+      "name": "Family Empowerment Media (FEM)",
       "blurb": "Prevents maternal deaths from unintended pregnancies by producing radio ads and shows that improve knowledge, attitudes and behaviour around family planning in Nigeria.",
       "url": "https://www.familyempowermentmedia.org/",
       "causes": [
@@ -132,7 +132,7 @@
       "status": "Active",
       "sortOrder": 2,
       "logo": {
-        "src": "img/logos/family-empowerment-media-a8ed122ad7.webp",
+        "src": "img/logos/family-empowerment-media-fem-a8ed122ad7.webp",
         "width": 480,
         "height": 163
       },
@@ -141,7 +141,7 @@
           "name": "Anna Christina Thorsheim",
           "role": "Co-founder & Director",
           "photo": {
-            "src": "img/founders/family-empowerment-media--anna-christina-thorsheim-fc2bc9ad66.webp",
+            "src": "img/founders/family-empowerment-media-fem--anna-christina-thorsheim-fc2bc9ad66.webp",
             "width": 160,
             "height": 160
           },
@@ -151,7 +151,7 @@
           "name": "Kenneth Scheffler",
           "role": "Co-founder & Director",
           "photo": {
-            "src": "img/founders/family-empowerment-media--kenneth-scheffler-0a30c06a8e.webp",
+            "src": "img/founders/family-empowerment-media-fem--kenneth-scheffler-0a30c06a8e.webp",
             "width": 160,
             "height": 160
           },
@@ -286,8 +286,8 @@
       ]
     },
     {
-      "id": "lafiya-nigeria",
-      "name": "Lafiya Nigeria",
+      "id": "lafiya",
+      "name": "Lafiya",
       "blurb": "Reduces maternal mortality in rural northern Nigeria by equipping local nurses and midwives to provide safe family planning options, including self-injectable contraceptives.",
       "url": "https://lafiyanigeria.org/",
       "causes": [
@@ -301,7 +301,7 @@
       "status": "Active",
       "sortOrder": 6,
       "logo": {
-        "src": "img/logos/lafiya-nigeria-522a444f23.webp",
+        "src": "img/logos/lafiya-522a444f23.webp",
         "width": 480,
         "height": 125
       },
@@ -310,7 +310,7 @@
           "name": "Klau Chmielowska",
           "role": "Co-founder & Co-Executive Director",
           "photo": {
-            "src": "img/founders/lafiya-nigeria--klau-chmielowska-b998ac81e3.webp",
+            "src": "img/founders/lafiya--klau-chmielowska-b998ac81e3.webp",
             "width": 160,
             "height": 160
           },
@@ -320,7 +320,7 @@
           "name": "Céline Kamsteeg",
           "role": "Co-founder & Co-Executive Director",
           "photo": {
-            "src": "img/founders/lafiya-nigeria--celine-kamsteeg-12d4a98b5a.webp",
+            "src": "img/founders/lafiya--celine-kamsteeg-12d4a98b5a.webp",
             "width": 160,
             "height": 160
           },
@@ -2310,6 +2310,274 @@
       ]
     },
     {
+      "id": "maternal-health-initiative",
+      "name": "Maternal Health Initiative",
+      "blurb": "Worked to improve women's health, agency and income by raising the quality of contraceptive counselling and integrating family planning into postpartum care in Ghana and Sierra Leone.",
+      "url": "https://www.maternalhealthinitiative.org/",
+      "causes": [
+        "Women's health and safety",
+        "Global health"
+      ],
+      "countries": [
+        "Ghana",
+        "Sierra Leone"
+      ],
+      "cohort": "2022",
+      "status": "Shutdown",
+      "sortOrder": 200,
+      "logo": {
+        "src": "img/logos/maternal-health-initiative-71c6853aad.webp",
+        "width": 480,
+        "height": 231
+      },
+      "founders": [
+        {
+          "name": "Sarah Eustis-Guthrie",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/maternal-health-initiative--sarah-eustis-guthrie-bf5fbcdadc.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/saraheustisguthrie/"
+        },
+        {
+          "name": "Ben Williamson",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/maternal-health-initiative--ben-williamson-4697159b2d.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/bcswilliamson/"
+        }
+      ]
+    },
+    {
+      "id": "training-for-good",
+      "name": "Training for Good",
+      "blurb": "An impact-focused training organisation which became two projects: [The Tarbell Center for AI Journalism](https://www.tarbellcenter.org/fellowship) and [Talos Network](https://www.talosnetwork.org/) focused on European AI Policy.",
+      "url": null,
+      "causes": [
+        "Policy",
+        "Talent and capacity building"
+      ],
+      "countries": [
+        "Global"
+      ],
+      "cohort": "2021",
+      "status": "Merged",
+      "sortOrder": 201,
+      "logo": {
+        "src": "img/logos/training-for-good-0a42b369a5.webp",
+        "width": 480,
+        "height": 122
+      },
+      "founders": [
+        {
+          "name": "Cillian Crosson",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/training-for-good--cillian-crosson-37412e416a.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/cillian-crosson/"
+        },
+        {
+          "name": "Steve Thompson",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/training-for-good--steve-thompson-4014cf1249.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/steve-thompson-84768414/"
+        },
+        {
+          "name": "Jan-Willem van Putten",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/training-for-good--jan-willem-van-putten-396c06929b.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/jan-willemvanputten/"
+        }
+      ]
+    },
+    {
+      "id": "healthier-hens",
+      "name": "Healthier Hens",
+      "blurb": "Worked to improve the welfare of egg-laying hens through cost-effective dietary interventions, piloting feed fortification in Kenya.",
+      "url": "https://www.healthierhens.com/",
+      "causes": [
+        "Animal welfare"
+      ],
+      "countries": [
+        "Kenya"
+      ],
+      "cohort": "2021",
+      "status": "Shutdown",
+      "sortOrder": 202,
+      "logo": {
+        "src": "img/logos/healthier-hens-69ae43fb34.webp",
+        "width": 374,
+        "height": 240
+      },
+      "founders": [
+        {
+          "name": "Lukas Jasiunas",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/healthier-hens--lukas-jasiunas-206da70156.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/lukasjasiunas/"
+        },
+        {
+          "name": "Kikiope Oluwarore",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/healthier-hens--kikiope-oluwarore-8fdfd066ed.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/kikiope-oluwarore/"
+        },
+        {
+          "name": "Isaac Esparza",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/healthier-hens--isaac-esparza-4009dff224.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/espaza-isaac/"
+        }
+      ]
+    },
+    {
+      "id": "charity-science-health",
+      "name": "Charity Science Health",
+      "blurb": "Sent SMS reminders for routine childhood immunisations in India; merged into Suvita in 2020.",
+      "url": null,
+      "causes": [
+        "Global health"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2016",
+      "status": "Merged",
+      "sortOrder": 203,
+      "logo": {
+        "src": "img/logos/charity-science-health-666a5988ec.webp",
+        "width": 420,
+        "height": 240
+      },
+      "founders": [
+        {
+          "name": "Joey Savoie",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/charity-science-health--joey-savoie-9cc1104d3b.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": null
+        },
+        {
+          "name": "Kat Spartz",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/charity-science-health--kat-spartz-51144278f1.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/kat-woods-katherine-savoie-55911946/"
+        }
+      ]
+    },
+    {
+      "id": "good-policies",
+      "name": "Good Policies",
+      "blurb": "Worked on tobacco taxation policy in Mongolia to reduce smoking-related deaths.",
+      "url": null,
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Mongolia"
+      ],
+      "cohort": "2019",
+      "status": "Shutdown",
+      "sortOrder": 204,
+      "logo": {
+        "src": "img/logos/good-policies-2c195a98cb.webp",
+        "width": 480,
+        "height": 57
+      },
+      "founders": [
+        {
+          "name": "Caleb Parikh",
+          "role": "Founder",
+          "photo": {
+            "src": "img/founders/good-policies--caleb-parikh-943c601f46.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/caleb-parikh/"
+        }
+      ]
+    },
+    {
+      "id": "policy-entrepreneurship-network",
+      "name": "Policy Entrepreneurship Network",
+      "blurb": "Worked to accelerate innovation in neglected areas of public health policy, such as tobacco and alcohol taxation, in the EU's eastern neighbourhood.",
+      "url": null,
+      "causes": [
+        "Policy",
+        "Global health"
+      ],
+      "countries": [
+        "Ukraine",
+        "Armenia"
+      ],
+      "cohort": "2019",
+      "status": "Shutdown",
+      "sortOrder": 205,
+      "logo": {
+        "src": "img/logos/policy-entrepreneurship-network-f97bdffdae.webp",
+        "width": 395,
+        "height": 90
+      },
+      "founders": [
+        {
+          "name": "Michał Trzęsimiech",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/policy-entrepreneurship-network--michal-trzesimiech-3bb183e29d.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/trzesimiech/"
+        },
+        {
+          "name": "Joel Burke",
+          "role": "Co-founder",
+          "photo": {
+            "src": "img/founders/policy-entrepreneurship-network--joel-burke-a0bb5287a6.webp",
+            "width": 160,
+            "height": 160
+          },
+          "linkedin": "https://www.linkedin.com/in/joelburke1/"
+        }
+      ]
+    },
+    {
       "id": "center-for-alcohol-policy-solutions",
       "name": "Center for Alcohol Policy Solutions",
       "blurb": "An evidence-based non-profit that worked to save lives and promote wellbeing through alcohol taxation, the single most effective policy for reducing alcohol-related harm.",
@@ -2384,274 +2652,6 @@
             "height": 160
           },
           "linkedin": null
-        }
-      ]
-    },
-    {
-      "id": "charity-science-health",
-      "name": "Charity Science Health",
-      "blurb": "Sent SMS reminders for routine childhood immunisations in India; merged into Suvita in 2020.",
-      "url": null,
-      "causes": [
-        "Global health"
-      ],
-      "countries": [
-        "India"
-      ],
-      "cohort": "2016",
-      "status": "Merged",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/charity-science-health-666a5988ec.webp",
-        "width": 420,
-        "height": 240
-      },
-      "founders": [
-        {
-          "name": "Joey Savoie",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/charity-science-health--joey-savoie-9cc1104d3b.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": null
-        },
-        {
-          "name": "Kat Spartz",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/charity-science-health--kat-spartz-51144278f1.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/kat-woods-katherine-savoie-55911946/"
-        }
-      ]
-    },
-    {
-      "id": "good-policies",
-      "name": "Good Policies",
-      "blurb": "Worked on tobacco taxation policy in Mongolia to reduce smoking-related deaths.",
-      "url": null,
-      "causes": [
-        "Policy",
-        "Global health"
-      ],
-      "countries": [
-        "Mongolia"
-      ],
-      "cohort": "2019",
-      "status": "Shutdown",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/good-policies-2c195a98cb.webp",
-        "width": 480,
-        "height": 57
-      },
-      "founders": [
-        {
-          "name": "Caleb Parikh",
-          "role": "Founder",
-          "photo": {
-            "src": "img/founders/good-policies--caleb-parikh-943c601f46.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/caleb-parikh/"
-        }
-      ]
-    },
-    {
-      "id": "healthier-hens",
-      "name": "Healthier Hens",
-      "blurb": "Worked to improve the welfare of egg-laying hens through cost-effective dietary interventions, piloting feed fortification in Kenya.",
-      "url": "https://www.healthierhens.com/",
-      "causes": [
-        "Animal welfare"
-      ],
-      "countries": [
-        "Kenya"
-      ],
-      "cohort": "2021",
-      "status": "Shutdown",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/healthier-hens-69ae43fb34.webp",
-        "width": 374,
-        "height": 240
-      },
-      "founders": [
-        {
-          "name": "Lukas Jasiunas",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/healthier-hens--lukas-jasiunas-206da70156.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/lukasjasiunas/"
-        },
-        {
-          "name": "Kikiope Oluwarore",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/healthier-hens--kikiope-oluwarore-8fdfd066ed.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/kikiope-oluwarore/"
-        },
-        {
-          "name": "Isaac Esparza",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/healthier-hens--isaac-esparza-4009dff224.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/espaza-isaac/"
-        }
-      ]
-    },
-    {
-      "id": "maternal-health-initiative",
-      "name": "Maternal Health Initiative",
-      "blurb": "Worked to improve women's health, agency and income by raising the quality of contraceptive counselling and integrating family planning into postpartum care in Ghana and Sierra Leone.",
-      "url": "https://www.maternalhealthinitiative.org/",
-      "causes": [
-        "Women's health and safety",
-        "Global health"
-      ],
-      "countries": [
-        "Ghana",
-        "Sierra Leone"
-      ],
-      "cohort": "2022",
-      "status": "Shutdown",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/maternal-health-initiative-71c6853aad.webp",
-        "width": 480,
-        "height": 231
-      },
-      "founders": [
-        {
-          "name": "Sarah Eustis-Guthrie",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/maternal-health-initiative--sarah-eustis-guthrie-bf5fbcdadc.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/saraheustisguthrie/"
-        },
-        {
-          "name": "Ben Williamson",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/maternal-health-initiative--ben-williamson-4697159b2d.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/bcswilliamson/"
-        }
-      ]
-    },
-    {
-      "id": "policy-entrepreneurship-network",
-      "name": "Policy Entrepreneurship Network",
-      "blurb": "Worked to accelerate innovation in neglected areas of public health policy, such as tobacco and alcohol taxation, in the EU's eastern neighbourhood.",
-      "url": null,
-      "causes": [
-        "Policy",
-        "Global health"
-      ],
-      "countries": [
-        "Ukraine",
-        "Armenia"
-      ],
-      "cohort": "2019",
-      "status": "Shutdown",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/policy-entrepreneurship-network-f97bdffdae.webp",
-        "width": 395,
-        "height": 90
-      },
-      "founders": [
-        {
-          "name": "Michał Trzęsimiech",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/policy-entrepreneurship-network--michal-trzesimiech-3bb183e29d.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/trzesimiech/"
-        },
-        {
-          "name": "Joel Burke",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/policy-entrepreneurship-network--joel-burke-a0bb5287a6.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/joelburke1/"
-        }
-      ]
-    },
-    {
-      "id": "training-for-good",
-      "name": "Training for Good",
-      "blurb": "An impact-focused training organisation which became two projects: [The Tarbell Center for AI Journalism](https://www.tarbellcenter.org/fellowship) and [Talos Network](https://www.talosnetwork.org/) focused on European AI Policy.",
-      "url": null,
-      "causes": [
-        "Policy",
-        "Talent and capacity building"
-      ],
-      "countries": [
-        "Global"
-      ],
-      "cohort": "2021",
-      "status": "Merged",
-      "sortOrder": null,
-      "logo": {
-        "src": "img/logos/training-for-good-0a42b369a5.webp",
-        "width": 480,
-        "height": 122
-      },
-      "founders": [
-        {
-          "name": "Cillian Crosson",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/training-for-good--cillian-crosson-37412e416a.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/cillian-crosson/"
-        },
-        {
-          "name": "Steve Thompson",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/training-for-good--steve-thompson-4014cf1249.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/steve-thompson-84768414/"
-        },
-        {
-          "name": "Jan-Willem van Putten",
-          "role": "Co-founder",
-          "photo": {
-            "src": "img/founders/training-for-good--jan-willem-van-putten-396c06929b.webp",
-            "width": 160,
-            "height": 160
-          },
-          "linkedin": "https://www.linkedin.com/in/jan-willemvanputten/"
         }
       ]
     }
