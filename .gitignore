@@ -22,8 +22,11 @@ Thumbs.db
 # public/charities.json stays tracked (the Action commits refreshes back) so the widget can be
 # developed locally without an Airtable token.
 public/img/
-public/source/
 public/snippet.html
 public/snippet.txt
 public/demo.html
 design/preview-data/
+
+# Images live in Airtable (Logo / Photo attachments). A local assets/ folder is only a fallback for rows
+# without an attachment and is not tracked.
+assets/

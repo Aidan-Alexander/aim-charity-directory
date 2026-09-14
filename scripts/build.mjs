@@ -9,7 +9,7 @@
 //   node scripts/build.mjs --ignore-ready       DESIGN PREVIEW ONLY: don't require "Website ready?" (Undercover/Exclude/Status
 //                                               still apply); writes to design/preview-data instead of public
 
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildPublishFormula, getToken, listAllRecords } from './lib/airtable.mjs';
@@ -100,11 +100,6 @@ async function main() {
   await mkdir(outDir, { recursive: true });
   const images = await rehostImages(data, { outDir, assetsDir: path.join(ROOT, 'assets'), skip: args.skipImages, sizes: config.images, log });
   warnings.push(...images.warnings);
-
-  // Publish the original assets as well (public/source/...): stable public URLs that Airtable can import
-  // attachments from, and the highest-quality copy of each logo/photo.
-  await rm(path.join(outDir, 'source'), { recursive: true, force: true });
-  await cp(path.join(ROOT, 'assets'), path.join(outDir, 'source'), { recursive: true });
 
   assertAllowlisted(data);
   const outFile = path.join(outDir, 'charities.json');
