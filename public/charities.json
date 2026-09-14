@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T12:10:46.352Z",
+  "generatedAt": "2026-09-14T12:32:34.796Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -22,7 +22,9 @@
   ],
   "countryContinent": {
     "Armenia": "Asia",
+    "Benin": "Africa",
     "Botswana": "Africa",
+    "Chad": "Africa",
     "China": "Asia",
     "Colombia": "Latin America",
     "Democratic Republic of the Congo": "Africa",
@@ -47,6 +49,7 @@
     "Morocco": "Africa",
     "Netherlands": "Europe",
     "New Zealand": "Oceania",
+    "Niger": "Africa",
     "Nigeria": "Africa",
     "Pakistan": "Asia",
     "Philippines": "Asia",
@@ -57,6 +60,7 @@
     "Switzerland": "Europe",
     "Tanzania": "Africa",
     "Thailand": "Asia",
+    "Togo": "Africa",
     "Uganda": "Africa",
     "Ukraine": "Europe",
     "United Kingdom": "Europe",
@@ -82,9 +86,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/access-to-medicines-initiative-ami-d3e3dc9138.webp",
-        "width": 259,
-        "height": 240
+        "src": "img/logos/access-to-medicines-initiative-ami-a9076b46e4.webp",
+        "width": 186,
+        "height": 64
       },
       "founders": [
         {
@@ -124,8 +128,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/accion-transformadora-actra-3bd91b227a.webp",
-        "width": 282,
+        "src": "img/logos/accion-transformadora-actra-2e7d3d33fb.webp",
+        "width": 283,
         "height": 240
       },
       "founders": [
@@ -161,15 +165,16 @@
         "Global health"
       ],
       "countries": [
-        "Global"
+        "Global",
+        "Europe"
       ],
       "cohort": "2023 H2",
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/alliance-for-reducing-microbial-resistance-0c1f9f4205.webp",
-        "width": 240,
-        "height": 240
+        "src": "img/logos/alliance-for-reducing-microbial-resistance-67243e68c4.webp",
+        "width": 272,
+        "height": 78
       },
       "founders": [
         {
@@ -220,7 +225,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/animal-advocacy-careers-29fe1dc497.webp",
+        "src": "img/logos/animal-advocacy-careers-a72f8b0658.webp",
         "width": 480,
         "height": 232
       },
@@ -263,7 +268,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/animal-ask-7244e4de6a.webp",
+        "src": "img/logos/animal-ask-31868f408d.webp",
         "width": 240,
         "height": 240
       },
@@ -308,7 +313,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/animal-policy-international-14354c50b5.webp",
+        "src": "img/logos/animal-policy-international-c973c551cd.webp",
         "width": 480,
         "height": 107
       },
@@ -350,7 +355,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/ansh-424396bf8e.webp",
+        "src": "img/logos/ansh-5c48783f60.webp",
         "width": 241,
         "height": 240
       },
@@ -392,7 +397,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/ark-philanthropy-63f2d0afdc.webp",
+        "src": "img/logos/ark-philanthropy-d4421da3c7.webp",
         "width": 240,
         "height": 240
       },
@@ -424,7 +429,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/benefficienza-297307d490.webp",
+        "src": "img/logos/benefficienza-c8e92961f2.webp",
         "width": 363,
         "height": 240
       },
@@ -468,7 +473,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/better-futures-guide-461af291b8.webp",
+        "src": "img/logos/better-futures-guide-b8db5ba9a9.webp",
         "width": 480,
         "height": 236
       },
@@ -510,7 +515,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/better-season-project-fcbe1b3781.webp",
+        "src": "img/logos/better-season-project-d8d65fcca4.webp",
         "width": 480,
         "height": 206
       },
@@ -553,7 +558,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/canopie-9100f732f0.webp",
+        "src": "img/logos/canopie-c65927be31.webp",
         "width": 217,
         "height": 240
       },
@@ -596,9 +601,9 @@
       "status": "Merged",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/center-for-alcohol-policy-solutions-b44bcd805f.webp",
+        "src": "img/logos/center-for-alcohol-policy-solutions-e4ecbf7953.webp",
         "width": 480,
-        "height": 187
+        "height": 188
       },
       "founders": [
         {
@@ -631,7 +636,7 @@
       "status": "Shutdown",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/center-for-effective-aid-policy-89c9d3c3b4.webp",
+        "src": "img/logos/center-for-effective-aid-policy-627cb7b09c.webp",
         "width": 480,
         "height": 124
       },
@@ -674,7 +679,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/centre-for-exploratory-altruism-research-cearch-a35268a75b.webp",
+        "src": "img/logos/centre-for-exploratory-altruism-research-cearch-9185f6d5af.webp",
         "width": 240,
         "height": 240
       },
@@ -706,7 +711,7 @@
       "status": "Merged",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/charity-science-health-cc35c4ea18.webp",
+        "src": "img/logos/charity-science-health-666a5988ec.webp",
         "width": 420,
         "height": 240
       },
@@ -738,13 +743,14 @@
         "Global health"
       ],
       "countries": [
-        "Nigeria"
+        "Nigeria",
+        "Chad"
       ],
       "cohort": "2023 H2",
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/clear-solutions-571383e464.webp",
+        "src": "img/logos/clear-solutions-fe82b4f33d.webp",
         "width": 480,
         "height": 209
       },
@@ -788,8 +794,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/concentric-policies-0cb07d268c.webp",
-        "width": 333,
+        "src": "img/logos/concentric-policies-aa8b11878d.webp",
+        "width": 334,
         "height": 240
       },
       "founders": [
@@ -830,7 +836,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/ellis-impact-19caabaaff.webp",
+        "src": "img/logos/ellis-impact-838005a7ac.webp",
         "width": 480,
         "height": 76
       },
@@ -866,13 +872,16 @@
         "Family planning and women's health"
       ],
       "countries": [
-        "Nigeria"
+        "Nigeria",
+        "Niger",
+        "Togo",
+        "Benin"
       ],
       "cohort": "2020",
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/family-empowerment-media-db4ea928fe.webp",
+        "src": "img/logos/family-empowerment-media-174617cbb6.webp",
         "width": 269,
         "height": 240
       },
@@ -915,9 +924,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/farmkind-258dbf25f6.webp",
-        "width": 219,
-        "height": 240
+        "src": "img/logos/farmkind-798ff57a2c.webp",
+        "width": 480,
+        "height": 96
       },
       "founders": [
         {
@@ -957,7 +966,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/first-embrace-895079d7ea.webp",
+        "src": "img/logos/first-embrace-4859707a5a.webp",
         "width": 480,
         "height": 185
       },
@@ -1001,9 +1010,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/fish-welfare-initiative-c745eb8c6d.webp",
-        "width": 421,
-        "height": 235
+        "src": "img/logos/fish-welfare-initiative-daeef0e74b.webp",
+        "width": 399,
+        "height": 140
       },
       "founders": [
         {
@@ -1043,8 +1052,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/fortify-health-249bdae96f.webp",
-        "width": 254,
+        "src": "img/logos/fortify-health-cf508c1975.webp",
+        "width": 255,
         "height": 240
       },
       "founders": [
@@ -1085,7 +1094,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/foundations-first-a3867fc495.webp",
+        "src": "img/logos/foundations-first-386a2eeb0e.webp",
         "width": 480,
         "height": 147
       },
@@ -1128,7 +1137,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/giving-green-54b8dd07fa.webp",
+        "src": "img/logos/giving-green-994ea04ba5.webp",
         "width": 480,
         "height": 100
       },
@@ -1171,7 +1180,7 @@
       "status": "Shutdown",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/good-policies-638b6c12b3.webp",
+        "src": "img/logos/good-policies-2c195a98cb.webp",
         "width": 480,
         "height": 57
       },
@@ -1204,7 +1213,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/happier-lives-institute-567f6c2023.webp",
+        "src": "img/logos/happier-lives-institute-0abeb83a26.webp",
         "width": 480,
         "height": 201
       },
@@ -1236,7 +1245,7 @@
       "status": "Shutdown",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/healthier-hens-72dfd64223.webp",
+        "src": "img/logos/healthier-hens-69ae43fb34.webp",
         "width": 374,
         "height": 240
       },
@@ -1290,9 +1299,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/healthlearn-129e50e368.webp",
-        "width": 241,
-        "height": 240
+        "src": "img/logos/healthlearn-adb9e4896d.webp",
+        "width": 379,
+        "height": 65
       },
       "founders": [
         {
@@ -1333,7 +1342,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/healthy-futures-global-e0a302abd8.webp",
+        "src": "img/logos/healthy-futures-global-53c220875d.webp",
         "width": 240,
         "height": 240
       },
@@ -1376,7 +1385,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/high-impact-professionals-00aadd8288.webp",
+        "src": "img/logos/high-impact-professionals-6db6cf9d0c.webp",
         "width": 480,
         "height": 95
       },
@@ -1418,7 +1427,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/impactful-giving-18264b54e2.webp",
+        "src": "img/logos/impactful-giving-730b01de0f.webp",
         "width": 214,
         "height": 240
       },
@@ -1471,9 +1480,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/institute-for-development-innovation-1a8bdd3572.webp",
+        "src": "img/logos/institute-for-development-innovation-5bad425f73.webp",
         "width": 480,
-        "height": 105
+        "height": 104
       },
       "founders": [
         {
@@ -1513,7 +1522,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/kaya-guides-3ce493943b.webp",
+        "src": "img/logos/kaya-guides-0b837c9185.webp",
         "width": 480,
         "height": 239
       },
@@ -1555,7 +1564,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/lafiya-nigeria-0044f793c9.webp",
+        "src": "img/logos/lafiya-nigeria-522a444f23.webp",
         "width": 480,
         "height": 125
       },
@@ -1598,7 +1607,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/lead-acid-battery-recycling-initiative-labri-707970d325.webp",
+        "src": "img/logos/lead-acid-battery-recycling-initiative-labri-709abc78b9.webp",
         "width": 150,
         "height": 240
       },
@@ -1653,9 +1662,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/lead-exposure-elimination-project-leep-0a6ae46daf.webp",
-        "width": 238,
-        "height": 240
+        "src": "img/logos/lead-exposure-elimination-project-leep-fa64ae8930.webp",
+        "width": 473,
+        "height": 163
       },
       "founders": [
         {
@@ -1703,8 +1712,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/lead-research-for-action-lera-14043d9ebb.webp",
-        "width": 349,
+        "src": "img/logos/lead-research-for-action-lera-13bc000415.webp",
+        "width": 350,
         "height": 240
       },
       "founders": [
@@ -1745,7 +1754,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/learning-alliance-8ad4302676.webp",
+        "src": "img/logos/learning-alliance-1ca123bafd.webp",
         "width": 480,
         "height": 171
       },
@@ -1788,7 +1797,7 @@
       "status": "Shutdown",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/maternal-health-initiative-efb742159a.webp",
+        "src": "img/logos/maternal-health-initiative-71c6853aad.webp",
         "width": 480,
         "height": 231
       },
@@ -1831,7 +1840,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/mieux-donner-f55d092db7.webp",
+        "src": "img/logos/mieux-donner-a432cc4193.webp",
         "width": 451,
         "height": 240
       },
@@ -1871,9 +1880,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/neev-ddc422424b.webp",
+        "src": "img/logos/neev-7c23b68986.webp",
         "width": 480,
-        "height": 210
+        "height": 194
       },
       "founders": [
         {
@@ -1913,9 +1922,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/notify-health-2097ac2766.webp",
+        "src": "img/logos/notify-health-c072dfba09.webp",
         "width": 480,
-        "height": 184
+        "height": 183
       },
       "founders": [
         {
@@ -1955,7 +1964,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/novah-2ca8b81e70.webp",
+        "src": "img/logos/novah-958dfd1b1f.webp",
         "width": 239,
         "height": 240
       },
@@ -1998,7 +2007,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/opal-health-00da03ad05.webp",
+        "src": "img/logos/opal-health-7b149be292.webp",
         "width": 480,
         "height": 189
       },
@@ -2040,7 +2049,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/oxygen-access-project-85ab36c86c.webp",
+        "src": "img/logos/oxygen-access-project-b9dda1f393.webp",
         "width": 275,
         "height": 61
       },
@@ -2074,9 +2083,9 @@
       "status": "Shutdown",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/policy-entrepreneurship-network-9285a0b2b7.webp",
-        "width": 419,
-        "height": 240
+        "src": "img/logos/policy-entrepreneurship-network-f97bdffdae.webp",
+        "width": 395,
+        "height": 90
       },
       "founders": [
         {
@@ -2117,8 +2126,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/radius-institute-for-road-safety-b3e0ebbbe3.webp",
-        "width": 283,
+        "src": "img/logos/radius-institute-for-road-safety-fe5eae4809.webp",
+        "width": 282,
         "height": 240
       },
       "founders": [
@@ -2149,7 +2158,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/respira-health-75be417801.webp",
+        "src": "img/logos/respira-health-0f5092f040.webp",
         "width": 280,
         "height": 240
       },
@@ -2191,7 +2200,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/safestart-0afade8631.webp",
+        "src": "img/logos/safestart-bb028842c2.webp",
         "width": 205,
         "height": 240
       },
@@ -2234,7 +2243,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/scale-welfare-7d7efa0b4d.webp",
+        "src": "img/logos/scale-welfare-9b61499609.webp",
         "width": 176,
         "height": 240
       },
@@ -2277,7 +2286,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/setuwelt-a47a441ef3.webp",
+        "src": "img/logos/setuwelt-8c93785640.webp",
         "width": 212,
         "height": 240
       },
@@ -2309,14 +2318,15 @@
         "Ecuador",
         "Thailand",
         "Sri Lanka",
-        "Venezuela"
+        "Venezuela",
+        "Nigeria"
       ],
       "cohort": "2021",
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/shrimp-welfare-project-91e1c922e1.webp",
-        "width": 271,
+        "src": "img/logos/shrimp-welfare-project-02a1a83fa8.webp",
+        "width": 272,
         "height": 240
       },
       "founders": [
@@ -2357,8 +2367,8 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/spiro-be180f61d3.webp",
-        "width": 193,
+        "src": "img/logos/spiro-5636474397.webp",
+        "width": 192,
         "height": 240
       },
       "founders": [
@@ -2403,13 +2413,21 @@
         {
           "name": "Paul Yates",
           "role": "Co-founder",
-          "photo": null,
+          "photo": {
+            "src": "img/founders/stronger-flocks--paul-yates-c819c7fc2a.webp",
+            "width": 160,
+            "height": 160
+          },
           "linkedin": "https://www.linkedin.com/in/pmyates/"
         },
         {
           "name": "Jacco Rubens",
           "role": "Co-founder",
-          "photo": null,
+          "photo": {
+            "src": "img/founders/stronger-flocks--jacco-rubens-b9edd9c15d.webp",
+            "width": 160,
+            "height": 160
+          },
           "linkedin": "https://www.linkedin.com/in/jaccorubens/"
         }
       ]
@@ -2429,7 +2447,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/suvita-3cd4fb1aa8.webp",
+        "src": "img/logos/suvita-62bbf698b8.webp",
         "width": 240,
         "height": 240
       },
@@ -2471,7 +2489,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/taimaka-cb19129332.webp",
+        "src": "img/logos/taimaka-8f85634e28.webp",
         "width": 240,
         "height": 240
       },
@@ -2518,7 +2536,11 @@
         {
           "name": "Nicoll Peracha",
           "role": "Founder",
-          "photo": null,
+          "photo": {
+            "src": "img/founders/the-mission-motor--nicoll-peracha-4a58fec103.webp",
+            "width": 160,
+            "height": 160
+          },
           "linkedin": "https://www.linkedin.com/in/nicoll-peracha/"
         }
       ]
@@ -2527,7 +2549,7 @@
       "id": "training-for-good",
       "name": "Training for Good",
       "blurb": "An impact-focused training organisation that ran fellowships placing talented professionals into impactful careers in European policy and AI governance.",
-      "url": "https://www.trainingforgood.com/",
+      "url": null,
       "causes": [
         "Talent and capacity building"
       ],
@@ -2535,12 +2557,12 @@
         "Global"
       ],
       "cohort": "2021",
-      "status": "Shutdown",
+      "status": "Merged",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/training-for-good-befe2eeb08.webp",
-        "width": 350,
-        "height": 240
+        "src": "img/logos/training-for-good-0a42b369a5.webp",
+        "width": 480,
+        "height": 122
       },
       "founders": [
         {
@@ -2590,7 +2612,7 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/vida-plena-7dccf80fe1.webp",
+        "src": "img/logos/vida-plena-aaf9b2c657.webp",
         "width": 284,
         "height": 240
       },
