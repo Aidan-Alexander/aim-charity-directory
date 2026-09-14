@@ -298,7 +298,9 @@
           var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
           causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: cause, count: causeCounts[cause] || 0, pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
         });
+      var causeScroll = causeList.scrollLeft;
       clear(causeList); append(causeList, causeItems);
+      causeList.scrollLeft = causeScroll; syncScrollHints(causeList);
 
       var regionBase = countBy(all, regionsOf);
       var regionCounts = countBy(facetBase('region'), regionsOf);
@@ -307,7 +309,9 @@
       regionOrder.forEach(function (region) {
         regionItems.push(optionItem({ id: rootId + '-region-' + idPart(region), label: region, count: regionCounts[region] || 0, pressed: facets && state.region === region, onClick: pick('region', region) }));
       });
+      var regionScroll = regionList.scrollLeft;
       clear(regionList); append(regionList, regionItems);
+      regionList.scrollLeft = regionScroll; syncScrollHints(regionList);
 
       var cohorts = Object.keys(countBy(all, function (c) { return c.cohort ? [c.cohort] : []; })).sort(cohortCompare);
       if (state.cohort && cohorts.indexOf(state.cohort) === -1) state.cohort = null;
@@ -318,6 +322,14 @@
       });
       cohortSelect.value = mode() === 'cohort' ? state.cohort : '';
     }
+    /** On narrow layouts the option lists scroll sideways; flag which edges have more content so CSS can fade them. */
+    function syncScrollHints(list) {
+      var max = list.scrollWidth - list.clientWidth;
+      list.classList.toggle('can-scroll-left', max > 4 && list.scrollLeft > 4);
+      list.classList.toggle('can-scroll-right', max > 4 && max - list.scrollLeft > 4);
+    }
+    [causeList, regionList].forEach(function (list) { list.addEventListener('scroll', function () { syncScrollHints(list); }, { passive: true }); });
+    global.addEventListener('resize', function () { syncScrollHints(causeList); syncScrollHints(regionList); });
     /** A tag that applies a filter when clicked (cause, cohort, or a country's continent). */
     function filterTag(opts) {
       return el('li', null, el('button', {
@@ -508,5 +520,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.6.0' };
+  global.AimDirectory = { mount: mount, version: '0.7.0' };
 })(window);
