@@ -30,7 +30,7 @@
     "publishFormulaField": null
   },
   "stealthConditions": {
-    "$comment": "Charities counted (never named) as 'in stealth mode'. Only the aggregate count per cause tag is published; no other field of these records is fetched or written.",
+    "$comment": "Charities counted (never named) as 'in stealth mode'. Only the aggregate count is published: a total, plus a per-cause count for the causes in publishCauses. No other field of these records is fetched or written.",
     "requireChecked": [
       "Undercover?"
     ],
@@ -41,7 +41,10 @@
     "statusIn": [
       "Active"
     ],
-    "countField": "Cause tags"
+    "countField": "Cause tags",
+    "publishCauses": [
+      "Animal welfare"
+    ]
   },
   "allowlist": {
     "website": [
