@@ -85,9 +85,14 @@ export async function processImage(buf, kind, ext, sizes = DEFAULT_SIZES) {
     if (kind === 'logos') {
       const cfg = sizes.logo || DEFAULT_SIZES.logo;
       if (cfg.trim !== false) {
+        // The logo panel is white, so flattening onto white is invisible and lets one pass trim both
+        // transparent margins and white padding (padded boxes, white discs). A second pass catches a
+        // thin border line left by the first.
         try {
-          const trimmed = await img.trim({ threshold: 12 }).toBuffer();
-          img = sharp(trimmed);
+          let trimmed = await img.flatten({ background: '#ffffff' }).trim({ background: '#ffffff', threshold: cfg.trimThreshold || 24 }).toBuffer();
+          try { trimmed = await sharp(trimmed).trim({ background: '#ffffff', threshold: cfg.trimThreshold || 24 }).toBuffer(); } catch { /* nothing more to trim */ }
+          const tm = await sharp(trimmed).metadata();
+          if (tm.width >= 24 && tm.height >= 24) img = sharp(trimmed);
         } catch {
           img = sharp(buf).rotate(); // entirely one colour, or trim unsupported: keep untrimmed
         }

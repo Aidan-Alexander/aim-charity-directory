@@ -137,10 +137,10 @@
 .aim-dir .aim-dir__logo {
   position: relative;
   display: flex; align-items: center; justify-content: center;
-  height: 172px; padding: 22px 22px 30px;
+  height: 172px; padding: 18px 22px 28px;
   background: var(--aim-white);
 }
-.aim-dir .aim-dir__logo > img { max-width: 62%; max-height: 92px; width: auto; height: auto; object-fit: contain; }
+.aim-dir .aim-dir__logo > img { max-width: 84%; max-height: 104px; width: auto; height: auto; object-fit: contain; }
 .aim-dir .aim-dir__monogram {
   font-family: var(--aim-font-heading); font-size: 40px; line-height: 1;
   color: var(--aim-burgundy); opacity: 0.6; letter-spacing: 0.02em;
@@ -180,7 +180,7 @@
 .aim-dir .aim-dir__tag--filter { cursor: pointer; }
 .aim-dir .aim-dir__tag--filter:hover { filter: brightness(0.94); }
 .aim-dir .aim-dir__tag--dim { opacity: 0.45; }
-.aim-dir .aim-dir__tag--status { background: #ECE4DC; color: #6A5B56; font-style: italic; }
+.aim-dir .aim-dir__tag--status { background: #5E4F4B; color: var(--aim-white); font-style: normal; }
 .aim-dir .aim-dir__tag--more {
   background: transparent; border: 1px dashed #C9B7A8; color: var(--aim-muted); cursor: pointer;
 }
