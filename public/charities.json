@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T12:57:35.737Z",
+  "generatedAt": "2026-09-14T13:04:14.577Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -881,9 +881,9 @@
       "status": "Active",
       "sortOrder": null,
       "logo": {
-        "src": "img/logos/family-empowerment-media-174617cbb6.webp",
-        "width": 269,
-        "height": 240
+        "src": "img/logos/family-empowerment-media-a8ed122ad7.webp",
+        "width": 480,
+        "height": 163
       },
       "founders": [
         {
