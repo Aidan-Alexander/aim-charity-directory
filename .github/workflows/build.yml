@@ -51,6 +51,8 @@ jobs:
             echo "charities.json unchanged (apart from generatedAt)"
           else
             git commit -m "Data refresh from Airtable [skip ci]"
+            # Another run or a person may have pushed meanwhile: rebase first, keeping this run's data on conflict.
+            git pull --rebase -X theirs origin main || { git rebase --abort; echo "rebase failed, skipping data commit"; exit 0; }
             git push
           fi
 
