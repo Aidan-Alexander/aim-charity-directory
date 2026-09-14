@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T16:47:16.924Z",
+  "generatedAt": "2026-09-14T17:09:52.562Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -2306,6 +2306,41 @@
             "height": 160
           },
           "linkedin": "https://www.linkedin.com/in/joel-tan-1677368a/"
+        }
+      ]
+    },
+    {
+      "id": "the-centre-for-animal-life-and-farming-calf",
+      "name": "The Centre for Animal Life and Farming (CALF)",
+      "blurb": "A think-and-do tank building evidence-based animal welfare programs for low- and middle-income countries, starting in India. Takes a One Health approach, treating animal, human and environmental health as interdependent.",
+      "url": "https://www.calfresearch.org/",
+      "causes": [
+        "Animal welfare",
+        "Research"
+      ],
+      "countries": [
+        "India"
+      ],
+      "cohort": "2026 H1",
+      "status": "Active",
+      "sortOrder": null,
+      "logo": {
+        "src": "img/logos/the-centre-for-animal-life-and-farming-calf-b344ebc68c.webp",
+        "width": 480,
+        "height": 200
+      },
+      "founders": [
+        {
+          "name": "Tom Billington",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/thomas-billington-637458131/"
+        },
+        {
+          "name": "Karthik Pulugurtha",
+          "role": "Co-founder",
+          "photo": null,
+          "linkedin": "https://www.linkedin.com/in/karthik-pulugurtha-b8902923/"
         }
       ]
     },
