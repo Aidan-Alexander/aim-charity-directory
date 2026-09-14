@@ -22,6 +22,7 @@
     'Talent and capacity building':       { dot: '#4C5C68', bg: '#E4E8EB', text: '#37454F' }
   };
   var FALLBACK_STYLE = { dot: '#8A7674', bg: '#EEE8E3', text: '#5F524F' };
+  var CAUSE_TAG_LABELS = { "Family planning and women's health": "Family planning & women's health" };
   var GLOBAL = 'Global';
   var MAX_COUNTRIES = 3;
   var MAX_AVATARS = 3;
@@ -91,6 +92,17 @@
     });
     return nodes;
   }
+  /** Squarespace themes often set the body font on <p> rather than <body>; read it from a probe paragraph. */
+  function adoptHostFont(root) {
+    try {
+      var probe = el('p', { class: 'aim-dir__probe', 'aria-hidden': 'true', text: 'x' });
+      root.appendChild(probe);
+      var pFont = getComputedStyle(probe).fontFamily;
+      var rootFont = getComputedStyle(root).fontFamily;
+      root.removeChild(probe);
+      if (pFont && pFont !== rootFont) root.style.setProperty('--aim-font-body', pFont);
+    } catch (e) { /* leave fonts as they are */ }
+  }
   function cohortCompare(a, b) {
     var ya = parseInt(a, 10) || 0, yb = parseInt(b, 10) || 0;
     if (ya !== yb) return yb - ya; // newest first
@@ -138,17 +150,23 @@
     if (!root.id) root.id = 'aim-dir-' + Math.random().toString(36).slice(2, 8);
     var rootId = root.id;
     var imageBase = options.imageBase || '';
-    var isNarrow = global.matchMedia && global.matchMedia('(max-width: 899px)').matches;
-    var pageSize = options.pageSize || (isNarrow ? 6 : 12);
+    var pageSize = options.pageSize || 6;
+    var snapshotDelay = typeof options.snapshotDelay === 'number' ? options.snapshotDelay : 1500;
     var state = { cause: null, region: null, cohort: null, query: '', shown: pageSize, expanded: {} };
-    var data = normaliseData(options.data);
+    var snapshot = options.data ? normaliseData(options.data) : null;
+    var data = null;
 
-    function resolve(src) { return /^(https?:)?\/\//i.test(src) || src.charAt(0) === '/' && !imageBase ? src : imageBase + src; }
+    if (options.fontBody) root.style.setProperty('--aim-font-body', options.fontBody);
+    else adoptHostFont(root);
+    if (options.fontHeading) root.style.setProperty('--aim-font-heading', options.fontHeading);
+
+    function resolve(src) { return /^(https?:)?\/\//i.test(src) || (src.charAt(0) === '/' && !imageBase) ? src : imageBase + src; }
+    function clearSearch() { state.query = ''; searchInput.value = ''; }
 
     /* shell: title, search, filters, results (CSS grid places them) */
     var titleEl = el('h2', { class: 'aim-dir__title', id: rootId + '-title' });
     var searchInput = el('input', {
-      type: 'search', id: rootId + '-search', class: 'aim-dir__reset',
+      type: 'search', id: rootId + '-search',
       placeholder: 'Search by charity, founder, type of work...', autocomplete: 'off', spellcheck: 'false',
       'aria-describedby': rootId + '-status',
       oninput: debounce(function (e) { state.query = e.target.value; state.shown = pageSize; render(); }, 120)
@@ -161,7 +179,11 @@
     var regionList = el('ul', { class: 'aim-dir__options', 'aria-labelledby': rootId + '-region-label' });
     var cohortSelect = el('select', {
       class: 'aim-dir__select', id: rootId + '-cohort',
-      onchange: function (e) { state.cohort = e.target.value || null; state.shown = pageSize; render(); }
+      onchange: function (e) {
+        // A cohort is shown in its entirety: it replaces any cause/region selection and any search.
+        state.cohort = e.target.value || null; state.cause = null; state.region = null; clearSearch();
+        state.shown = pageSize; render({ focus: cohortSelect.id });
+      }
     });
     var filtersEl = el('div', { class: 'aim-dir__filters' },
       el('div', { class: 'aim-dir__group' }, el('p', { class: 'aim-dir__label', id: rootId + '-cause-label', text: 'Cause area' }), causeList),
@@ -174,7 +196,8 @@
     clear(root);
     append(root, [titleEl, searchEl, filtersEl, resultsEl]);
 
-    /* filtering */
+    /* filtering. Precedence: a search ignores every filter; a chosen cohort is shown whole; otherwise cause + region. */
+    function mode() { return fold(state.query).trim() ? 'search' : (state.cohort ? 'cohort' : 'facets'); }
     function matchesRegion(c, region) {
       if (!region) return true;
       if (region === GLOBAL) return c.countries.indexOf(GLOBAL) !== -1;
@@ -187,13 +210,29 @@
       }
       return c._hay;
     }
-    function filtered(skip) {
+    function searchResults() {
       var terms = fold(state.query).split(/\s+/).filter(Boolean);
+      return data.charities.filter(function (c) {
+        var hay = haystack(c);
+        for (var i = 0; i < terms.length; i++) if (hay.indexOf(terms[i]) === -1) return false;
+        return true;
+      });
+    }
+    function filtered(skip) {
+      var m = mode();
+      if (m === 'search') return searchResults();
+      if (m === 'cohort') return data.charities.filter(function (c) { return c.cohort === state.cohort; });
       return data.charities.filter(function (c) {
         if (skip !== 'cause' && state.cause && c.causes.indexOf(state.cause) === -1) return false;
         if (skip !== 'region' && !matchesRegion(c, state.region)) return false;
-        if (skip !== 'cohort' && state.cohort && c.cohort !== state.cohort) return false;
-        if (terms.length) { var hay = haystack(c); for (var i = 0; i < terms.length; i++) if (hay.indexOf(terms[i]) === -1) return false; }
+        return true;
+      });
+    }
+    /** The list a facet's counts are computed over: the other facet applied, cohort and search ignored. */
+    function facetBase(skip) {
+      return data.charities.filter(function (c) {
+        if (skip !== 'cause' && state.cause && c.causes.indexOf(state.cause) === -1) return false;
+        if (skip !== 'region' && !matchesRegion(c, state.region)) return false;
         return true;
       });
     }
@@ -223,42 +262,49 @@
       el('span', { class: 'aim-dir__count', 'aria-hidden': 'true', text: String(opts.count) })));
     }
     function pick(facet, value) {
-      return function () { state[facet] = state[facet] === value ? null : value; state.shown = pageSize; render({ focus: this.id }); };
+      return function () {
+        // Choosing a cause or region leaves any cohort or search behind.
+        clearSearch(); state.cohort = null;
+        state[facet] = state[facet] === value ? null : value;
+        state.shown = pageSize; render({ focus: this.id });
+      };
     }
     function renderFilters() {
       var all = data.charities;
+      var facets = mode() === 'facets';
+      filtersEl.classList.toggle('is-muted', mode() === 'search');
+
       var causeBase = countBy(all, function (c) { return c.causes; });
-      var causeCounts = countBy(filtered('cause'), function (c) { return c.causes; });
-      var causeItems = [optionItem({ id: rootId + '-cause-all', label: 'All cause areas', count: filtered('cause').length, pressed: !state.cause, onClick: pick('cause', null) })];
+      var causeCounts = countBy(facetBase('cause'), function (c) { return c.causes; });
+      var causeItems = [optionItem({ id: rootId + '-cause-all', label: 'All cause areas', count: facetBase('cause').length, pressed: !(facets && state.cause), onClick: pick('cause', null) })];
       data.causes.filter(function (cause) { return causeBase[cause]; })
         .sort(function (a, b) { return causeBase[b] - causeBase[a] || data.causes.indexOf(a) - data.causes.indexOf(b); })
         .forEach(function (cause) {
-        var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-        causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: cause, count: causeCounts[cause] || 0, pressed: state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
-      });
+          var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
+          causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: cause, count: causeCounts[cause] || 0, pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
+        });
       clear(causeList); append(causeList, causeItems);
 
       var regionBase = countBy(all, regionsOf);
-      var regionCounts = countBy(filtered('region'), regionsOf);
-      var regionItems = [optionItem({ id: rootId + '-region-all', label: 'All', count: filtered('region').length, pressed: !state.region, onClick: pick('region', null) })];
+      var regionCounts = countBy(facetBase('region'), regionsOf);
+      var regionItems = [optionItem({ id: rootId + '-region-all', label: 'All', count: facetBase('region').length, pressed: !(facets && state.region), onClick: pick('region', null) })];
       var regionOrder = (regionBase[GLOBAL] ? [GLOBAL] : []).concat(data.continents.filter(function (r) { return regionBase[r]; }));
       regionOrder.forEach(function (region) {
-        regionItems.push(optionItem({ id: rootId + '-region-' + idPart(region), label: region, count: regionCounts[region] || 0, pressed: state.region === region, onClick: pick('region', region) }));
+        regionItems.push(optionItem({ id: rootId + '-region-' + idPart(region), label: region, count: regionCounts[region] || 0, pressed: facets && state.region === region, onClick: pick('region', region) }));
       });
       clear(regionList); append(regionList, regionItems);
 
-      var cohortCounts = countBy(filtered('cohort'), function (c) { return c.cohort ? [c.cohort] : []; });
       var cohorts = Object.keys(countBy(all, function (c) { return c.cohort ? [c.cohort] : []; })).sort(cohortCompare);
       if (state.cohort && cohorts.indexOf(state.cohort) === -1) state.cohort = null;
       clear(cohortSelect);
       append(cohortSelect, el('option', { value: '', text: 'All cohorts' }));
       cohorts.forEach(function (label) {
-        append(cohortSelect, el('option', { value: label, text: label + ' (' + (cohortCounts[label] || 0) + ')', selected: state.cohort === label }));
+        append(cohortSelect, el('option', { value: label, text: label, selected: mode() === 'cohort' && state.cohort === label }));
       });
-      cohortSelect.value = state.cohort || '';
+      cohortSelect.value = mode() === 'cohort' ? state.cohort : '';
     }
     function countryTags(c) {
-      var region = state.region;
+      var region = mode() === 'facets' ? state.region : null;
       var inRegion = function (k) { return !region || (region === GLOBAL ? k === GLOBAL : data.countryContinent[k] === region); };
       var list = c.countries.slice();
       if (region) list = list.filter(inRegion).concat(list.filter(function (k) { return !inRegion(k); }));
@@ -284,6 +330,15 @@
       }
       return items;
     }
+    function avatar(f) {
+      var face = f.photo && f.photo.src
+        ? el('img', { src: resolve(f.photo.src), alt: '', loading: 'lazy', decoding: 'async' })
+        : el('span', { class: 'aim-dir__initials', text: initials(f.name) });
+      var label = f.role ? f.name + ', ' + f.role : f.name;
+      // Redundant with the name links below, so hidden from assistive tech (tabindex -1, aria-hidden on the list).
+      return el('li', { class: 'aim-dir__avatar' + (f.linkedin ? ' aim-dir__avatar--link' : ''), title: label },
+        f.linkedin ? el('a', { href: f.linkedin, target: '_blank', rel: 'noopener', tabindex: '-1' }, face) : face);
+    }
     function card(c) {
       var cardId = rootId + '-card-' + c.id;
       var logo = el('div', { class: 'aim-dir__logo' });
@@ -294,11 +349,8 @@
       }
       if (c.founders.length) {
         var avatars = el('ul', { class: 'aim-dir__avatars', 'aria-hidden': 'true' });
-        c.founders.slice(0, MAX_AVATARS).forEach(function (f) {
-          append(avatars, el('li', { class: 'aim-dir__avatar', title: f.role ? f.name + ', ' + f.role : f.name },
-            f.photo && f.photo.src ? el('img', { src: resolve(f.photo.src), alt: '', loading: 'lazy', decoding: 'async' }) : initials(f.name)));
-        });
-        if (c.founders.length > MAX_AVATARS) append(avatars, el('li', { class: 'aim-dir__avatar', text: '+' + (c.founders.length - MAX_AVATARS) }));
+        c.founders.slice(0, MAX_AVATARS).forEach(function (f) { append(avatars, avatar(f)); });
+        if (c.founders.length > MAX_AVATARS) append(avatars, el('li', { class: 'aim-dir__avatar' }, el('span', { class: 'aim-dir__initials', text: '+' + (c.founders.length - MAX_AVATARS) })));
         append(logo, avatars);
       }
       var body = el('div', { class: 'aim-dir__body' });
@@ -313,7 +365,7 @@
       var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries' });
       c.causes.forEach(function (cause) {
         var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-        append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, text: cause }));
+        append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, text: CAUSE_TAG_LABELS[cause] || cause }));
       });
       if (c.cohort) append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--cohort', title: 'Cohort', text: c.cohort }));
       append(tags, countryTags(c));
@@ -332,9 +384,9 @@
       append(gridEl, visible.map(card));
       if (!list.length) {
         append(footerEl, el('div', { class: 'aim-dir__empty' },
-          el('p', { text: state.query ? 'No charities match "' + state.query + '" with these filters.' : 'No charities match these filters.' }),
-          el('button', { type: 'button', class: 'aim-dir__clear', text: 'Clear filters', onclick: function () {
-            state.cause = state.region = state.cohort = null; state.query = ''; searchInput.value = ''; state.shown = pageSize; render({ focus: rootId + '-search' });
+          el('p', { text: mode() === 'search' ? 'No charities match "' + state.query.trim() + '".' : 'No charities match these filters.' }),
+          el('button', { type: 'button', class: 'aim-dir__clear', text: mode() === 'search' ? 'Clear search' : 'Clear filters', onclick: function () {
+            state.cause = state.region = state.cohort = null; clearSearch(); state.shown = pageSize; render({ focus: rootId + '-search' });
           } })));
       } else if (list.length > visible.length) {
         var nextId = rootId + '-card-' + list[visible.length].id;
@@ -351,27 +403,60 @@
     }
     function render(opts) {
       opts = opts || {};
+      root.classList.remove('is-loading');
       var active = document.activeElement && document.activeElement.id;
       renderFilters();
       renderResults(opts);
       var target = opts.focus ? document.getElementById(opts.focus) : (active ? document.getElementById(active) : null);
       if (target && target !== document.activeElement) target.focus({ preventScroll: !opts.focus });
     }
-    function refresh(url) {
-      if (!global.fetch) return Promise.resolve(false);
+    /** Placeholder shown while the live JSON loads: reserves the layout so nothing jumps. */
+    function renderSkeleton() {
+      root.classList.add('is-loading');
+      titleEl.textContent = '';
+      statusEl.textContent = 'Loading charities';
+      clear(gridEl); clear(footerEl);
+      for (var i = 0; i < pageSize; i += 1) gridEl.appendChild(el('li', { class: 'aim-dir__card aim-dir__card--skeleton', 'aria-hidden': 'true' }));
+    }
+    function showData(fresh) {
+      if (data && comparable(fresh) === comparable(data)) return false;
+      data = fresh; render(); return true;
+    }
+    function fetchLive(url) {
+      if (!global.fetch) return Promise.reject(new Error('no fetch'));
       return fetch(url, { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(function (fresh) {
-          fresh = normaliseData(fresh);
-          if (comparable(fresh) === comparable(data)) return false;
-          data = fresh; render(); return true;
-        })
-        .catch(function () { return false; });
+        .then(normaliseData);
     }
 
-    render();
-    if (options.dataUrl) refresh(options.dataUrl);
-    return { refresh: refresh, setData: function (d) { data = normaliseData(d); render(); }, getState: function () { return state; } };
+    /* Load order: live JSON first; the inline snapshot only if the network is slow (after snapshotDelay) or fails. */
+    if (options.dataUrl) {
+      renderSkeleton();
+      var fallbackTimer = snapshot ? setTimeout(function () { if (!data) showData(snapshot); }, snapshotDelay) : null;
+      fetchLive(options.dataUrl).then(function (fresh) {
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        showData(fresh);
+      }).catch(function () {
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        if (data) return;
+        if (snapshot) showData(snapshot);
+        else {
+          root.classList.remove('is-loading'); clear(gridEl);
+          titleEl.textContent = options.title ? options.title.replace('{n}', '') : 'Our charities';
+          append(footerEl, el('div', { class: 'aim-dir__empty' }, el('p', { text: 'The charity directory could not be loaded. Please try again later.' })));
+        }
+      });
+    } else if (snapshot) {
+      showData(snapshot);
+    } else {
+      throw new Error('AimDirectory.mount: provide data and/or dataUrl');
+    }
+
+    return {
+      refresh: function () { return options.dataUrl ? fetchLive(options.dataUrl).then(showData).catch(function () { return false; }) : Promise.resolve(false); },
+      setData: function (d) { showData(normaliseData(d)); },
+      getState: function () { return state; }
+    };
   }
 
   /* Auto-mount: <div data-aim-dir data-aim-src="charities.json" data-aim-image-base=""></div> */
@@ -381,14 +466,10 @@
       if (node.getAttribute('data-aim-mounted')) return;
       node.setAttribute('data-aim-mounted', '1');
       var src = node.getAttribute('data-aim-src');
-      fetch(src).then(function (r) { return r.json(); }).then(function (d) {
-        mount(node, { data: d, imageBase: node.getAttribute('data-aim-image-base') || src.replace(/[^/]*$/, ''), title: node.getAttribute('data-aim-title') || undefined });
-      }).catch(function () {
-        node.textContent = 'The charity directory could not be loaded.';
-      });
+      mount(node, { dataUrl: src, imageBase: node.getAttribute('data-aim-image-base') || src.replace(/[^/]*$/, ''), title: node.getAttribute('data-aim-title') || undefined });
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.2.0' };
+  global.AimDirectory = { mount: mount, version: '0.3.0' };
 })(window);

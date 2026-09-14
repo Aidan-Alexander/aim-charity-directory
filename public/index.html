@@ -37,7 +37,7 @@
     var s = document.createElement('style');
     s.textContent = [
       '.page h2, .page h3 { color: green; font-family: Impact, sans-serif; font-size: 60px; text-transform: uppercase; margin: 3em 0; letter-spacing: 0.3em; }',
-      '.page p { margin: 2em 0; line-height: 3; font-size: 22px; }',
+      '.page p { margin: 2em 0; line-height: 3; font-size: 22px; font-family: "Comic Sans MS", cursive; }',
       '.page a { color: blue; text-decoration: underline wavy; }',
       '.page ul { padding-left: 60px; list-style: disc; } .page li { margin: 1em 0; }',
       '.page button { background: black; color: white; border: 5px solid red; padding: 20px; font-size: 30px; border-radius: 0; text-transform: uppercase; }',
@@ -46,9 +46,8 @@
     ].join('\n');
     document.head.appendChild(s);
   }
-  fetch(src).then(function (r) { return r.json(); }).then(function (data) {
-    window.AimDirectory.mount(document.getElementById('aim-dir'), { data: data, imageBase: src.replace(/[^/]*$/, '') });
-  }).catch(function (err) { document.getElementById('aim-dir').textContent = 'Could not load ' + src + ': ' + err.message; });
+  // Fetch-first, like the Squarespace snippet (which additionally carries an inline snapshot as a fallback).
+  window.AimDirectory.mount(document.getElementById('aim-dir'), { dataUrl: src, imageBase: src.replace(/[^/]*$/, '') });
 })();
 </script>
 </body>
