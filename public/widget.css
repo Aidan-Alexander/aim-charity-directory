@@ -212,7 +212,7 @@
 }
 .aim-dir .aim-dir__clear:hover { background: var(--aim-burgundy); color: var(--aim-white); }
 
-/* ---- narrow layouts: stacked, filters become horizontal chip rows ---- */
+/* ---- narrow layouts: stacked, each facet becomes one horizontally scrollable chip row ---- */
 @media (max-width: 899px) {
   .aim-dir {
     grid-template-columns: minmax(0, 1fr);
@@ -221,7 +221,27 @@
   }
   .aim-dir .aim-dir__title { font-size: 32px; }
   .aim-dir .aim-dir__filters { gap: 18px; }
-  .aim-dir .aim-dir__options { flex-direction: row; flex-wrap: wrap; gap: 8px; padding: 2px 0; }
+  /* One scrollable row per facet: the last chip peeks past the edge and a fade marks the overflow. */
+  .aim-dir .aim-dir__options {
+    flex-direction: row; flex-wrap: nowrap; gap: 8px; padding: 2px 0;
+    overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity; scroll-padding: 0 12px;
+    scrollbar-width: none;
+  }
+  .aim-dir .aim-dir__options::-webkit-scrollbar { display: none; }
+  .aim-dir .aim-dir__options > li { scroll-snap-align: start; }
+  .aim-dir .aim-dir__options.can-scroll-right {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 56px), rgba(0,0,0,0));
+    mask-image: linear-gradient(to right, #000 calc(100% - 56px), rgba(0,0,0,0));
+  }
+  .aim-dir .aim-dir__options.can-scroll-left {
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40px);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40px);
+  }
+  .aim-dir .aim-dir__options.can-scroll-left.can-scroll-right {
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40px, #000 calc(100% - 56px), rgba(0,0,0,0));
+    mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40px, #000 calc(100% - 56px), rgba(0,0,0,0));
+  }
   .aim-dir .aim-dir__opt {
     flex: none; width: auto; min-height: 33px; padding: 0 14px;
     border: 1px solid var(--aim-burgundy-soft); border-radius: 17px;
