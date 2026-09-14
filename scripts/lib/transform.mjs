@@ -283,7 +283,8 @@ export function countStealth(records, { conditions, causeTags }) {
     if ((conditions.requireUnchecked || []).some((k) => f[k] === true)) continue;
     total += 1;
     const tags = Array.isArray(f[conditions.countField]) ? f[conditions.countField] : [];
-    for (const t of causeTags) if (tags.includes(t)) byCause[t] = (byCause[t] || 0) + 1;
+    const publishable = conditions.publishCauses || causeTags;
+    for (const t of causeTags) if (tags.includes(t) && publishable.includes(t)) byCause[t] = (byCause[t] || 0) + 1;
   }
   return { total, byCause: sortKeys(byCause) };
 }
