@@ -12,17 +12,17 @@
 
   var CAUSE_STYLES = {
     'Global health':                      { dot: '#20709F', bg: '#E1EBF3', text: '#1B5578' },
-    "Family planning and women's health": { dot: '#AF4080', bg: '#F5E3EC', text: '#7E2B5B' },
+    "Women's health and safety":          { dot: '#AF4080', bg: '#F5E3EC', text: '#7E2B5B' },
     'Animal welfare':                     { dot: '#507A30', bg: '#E6ECE2', text: '#3F6529' },
     'Policy':                             { dot: '#70509F', bg: '#EAE5F2', text: '#4F3876' },
-    'Livelihoods and growth':             { dot: '#8D6A12', bg: '#F2ECD9', text: '#6B5010' },
+    'Livelihoods and education':          { dot: '#8D6A12', bg: '#F2ECD9', text: '#6B5010' },
     'Mental health':                      { dot: '#16786E', bg: '#DFEEEC', text: '#125C54' },
     'Effective giving':                   { dot: '#B7643C', bg: '#F6E6DD', text: '#874426' },
     'Research':                           { dot: '#5D6C8C', bg: '#E5E9F0', text: '#3E4B66' },
     'Talent and capacity building':       { dot: '#4C5C68', bg: '#E4E8EB', text: '#37454F' }
   };
   var FALLBACK_STYLE = { dot: '#8A7674', bg: '#EEE8E3', text: '#5F524F' };
-  var CAUSE_TAG_LABELS = { "Family planning and women's health": "Family planning & women's health" };
+  var CAUSE_TAG_LABELS = {}; // shorter display names for tags, keyed by the Airtable option name
   var GLOBAL = 'Global';
   var MAX_COUNTRIES = 3;
   var MAX_AVATARS = 3;
@@ -507,5 +507,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.5.1' };
+  global.AimDirectory = { mount: mount, version: '0.5.2' };
 })(window);
