@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T15:31:24.092Z",
+  "generatedAt": "2026-09-14T15:41:27.595Z",
   "causes": [
-    "Family planning and women's health",
+    "Women's health and safety",
     "Animal welfare",
     "Policy",
-    "Livelihoods and growth",
+    "Livelihoods and education",
     "Mental health",
     "Global health",
     "Effective giving",
@@ -118,7 +118,7 @@
       "blurb": "Prevents maternal deaths from unintended pregnancies by producing radio ads and shows that improve knowledge, attitudes and behaviour around family planning in Nigeria.",
       "url": "https://www.familyempowermentmedia.org/",
       "causes": [
-        "Family planning and women's health",
+        "Women's health and safety",
         "Global health"
       ],
       "countries": [
@@ -290,7 +290,7 @@
       "blurb": "Reduces maternal mortality in rural northern Nigeria by equipping local nurses and midwives to provide safe family planning options, including self-injectable contraceptives.",
       "url": "https://lafiyanigeria.org/",
       "causes": [
-        "Family planning and women's health",
+        "Women's health and safety",
         "Global health"
       ],
       "countries": [
@@ -740,7 +740,7 @@
       "blurb": "Helps smallholder farmers in Kenya escape poverty by offering asset-collateralised loans for proven, income-raising tools such as water tanks and storage bags, in partnership with savings and credit cooperatives.",
       "url": "https://betterseasonproject.org/",
       "causes": [
-        "Livelihoods and growth"
+        "Livelihoods and education"
       ],
       "countries": [
         "Kenya"
@@ -944,7 +944,7 @@
       "blurb": "Tackles the foundational learning crisis in sub-Saharan Africa by bringing evidence-based teaching practices into classrooms and supporting teachers to give every child an excellent education.",
       "url": "https://www.learningalliance.net/",
       "causes": [
-        "Livelihoods and growth"
+        "Livelihoods and education"
       ],
       "countries": [
         "Uganda"
@@ -1104,7 +1104,7 @@
       "blurb": "Novah, short for No Violence at Home, works to prevent intimate partner violence against women through evidence-based mass media campaigns.",
       "url": "https://www.novah.ngo/",
       "causes": [
-        "Family planning and women's health"
+        "Women's health and safety"
       ],
       "countries": [
         "Rwanda"
@@ -1189,7 +1189,7 @@
       "blurb": "Foundations First works with teachers and Ministries of Education to end learning poverty in Sub-Saharan Africa. It makes Differentiated Learning, teaching children at their actual level rather than their age, cheap and simple enough for governments to run at scale.",
       "url": null,
       "causes": [
-        "Livelihoods and growth"
+        "Livelihoods and education"
       ],
       "countries": [
         "Kenya"
@@ -1231,7 +1231,7 @@
       "blurb": "Prevents maternal and newborn deaths in East Africa through Participatory Learning and Action groups, where women and families identify barriers to care and build community solutions alongside government health systems.",
       "url": "https://www.opalhealthafrica.org/",
       "causes": [
-        "Family planning and women's health",
+        "Women's health and safety",
         "Global health"
       ],
       "countries": [
@@ -1445,7 +1445,7 @@
       "blurb": "Connects underprivileged Indian youth to Germany's apprenticeship programme through language training, cultural integration and mentorship, opening a pathway to skilled long-term employment.",
       "url": "https://www.setuwelt.org/",
       "causes": [
-        "Livelihoods and growth"
+        "Livelihoods and education"
       ],
       "countries": [
         "India",
@@ -1563,7 +1563,7 @@
       "blurb": "Reduces maternal mortality and supports women's autonomy by tackling contraceptive stockouts and ensuring supply in public health facilities.",
       "url": "https://www.accessmedicines.org/",
       "causes": [
-        "Family planning and women's health",
+        "Women's health and safety",
         "Global health"
       ],
       "countries": [
@@ -1993,7 +1993,7 @@
       "url": "https://idiinstitute.org/",
       "causes": [
         "Policy",
-        "Livelihoods and growth"
+        "Livelihoods and education"
       ],
       "countries": [
         "India"
@@ -2155,7 +2155,7 @@
       "blurb": "A dedicated livelihoods evaluator that synthesises research to identify the highest-impact charities helping people increase their income, and publishes recommendations for donors.",
       "url": "https://www.betterfuturesguide.org/",
       "causes": [
-        "Livelihoods and growth",
+        "Livelihoods and education",
         "Effective giving",
         "Research"
       ],
@@ -2522,7 +2522,7 @@
       "blurb": "Worked to improve women's health, agency and income by raising the quality of contraceptive counselling and integrating family planning into postpartum care in Ghana and Sierra Leone.",
       "url": "https://www.maternalhealthinitiative.org/",
       "causes": [
-        "Family planning and women's health",
+        "Women's health and safety",
         "Global health"
       ],
       "countries": [
