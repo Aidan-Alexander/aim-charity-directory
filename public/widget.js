@@ -315,11 +315,13 @@
       filtersEl.classList.toggle('is-muted', mode() === 'search');
 
       var causeBase = countBy(all, function (c) { return c.causes; });
+      // Chips are ordered by size including stealth-mode charities, so the order matches the numbers shown.
+      var causeRank = function (cause) { return (causeBase[cause] || 0) + (stealthCounted() ? stealthFor(cause) : 0); };
       var causeCounts = countBy(facetBase('cause'), function (c) { return c.causes; });
       var extra = stealthCounted() ? stealth().total : 0;
       var causeItems = [optionItem({ id: rootId + '-cause-all', label: 'All cause areas', count: facetBase('cause').length + extra, pressed: !(facets && state.cause), onClick: pick('cause', null) })];
       data.causes.filter(function (cause) { return causeBase[cause]; })
-        .sort(function (a, b) { return causeBase[b] - causeBase[a] || data.causes.indexOf(a) - data.causes.indexOf(b); })
+        .sort(function (a, b) { return causeRank(b) - causeRank(a) || data.causes.indexOf(a) - data.causes.indexOf(b); })
         .forEach(function (cause) {
           var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
           causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: causeLabel(cause), count: (causeCounts[cause] || 0) + (stealthCounted() ? stealthFor(cause) : 0), pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
@@ -568,5 +570,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.8.0' };
+  global.AimDirectory = { mount: mount, version: '0.8.1' };
 })(window);
