@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T17:17:55.609Z",
+  "generatedAt": "2026-09-14T17:25:29.730Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -2333,7 +2333,11 @@
         {
           "name": "Tom Billington",
           "role": "Co-founder",
-          "photo": null,
+          "photo": {
+            "src": "img/founders/the-centre-for-animal-life-and-farming-calf--tom-billington-37c1b6826a.webp",
+            "width": 160,
+            "height": 160
+          },
           "linkedin": "https://www.linkedin.com/in/thomas-billington-637458131/"
         },
         {
