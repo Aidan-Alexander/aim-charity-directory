@@ -200,9 +200,9 @@
       }
     });
     var filtersEl = el('div', { class: 'aim-dir__filters' },
+      el('div', { class: 'aim-dir__group' }, el('label', { class: 'aim-dir__label', for: rootId + '-cohort', text: 'Cohort' }), cohortSelect),
       el('div', { class: 'aim-dir__group' }, el('p', { class: 'aim-dir__label', id: rootId + '-cause-label', text: 'Cause area' }), causeList),
-      el('div', { class: 'aim-dir__group' }, el('p', { class: 'aim-dir__label', id: rootId + '-region-label', text: 'Implementation region' }), regionList),
-      el('div', { class: 'aim-dir__group' }, el('label', { class: 'aim-dir__label', for: rootId + '-cohort', text: 'Cohort' }), cohortSelect));
+      el('div', { class: 'aim-dir__group' }, el('p', { class: 'aim-dir__label', id: rootId + '-region-label', text: 'Implementation region' }), regionList));
     var statusEl = el('p', { class: 'aim-dir__sr', id: rootId + '-status', role: 'status', 'aria-live': 'polite' });
     var gridEl = el('ul', { class: 'aim-dir__grid' });
     var footerEl = el('div', { class: 'aim-dir__footer' });
@@ -507,5 +507,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.5.0' };
+  global.AimDirectory = { mount: mount, version: '0.5.1' };
 })(window);
