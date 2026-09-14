@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T12:32:34.796Z",
+  "generatedAt": "2026-09-14T12:39:52.725Z",
   "causes": [
     "Family planning and women's health",
     "Animal welfare",
@@ -1870,9 +1870,11 @@
     {
       "id": "neev",
       "name": "Neev",
-      "blurb": null,
-      "url": null,
-      "causes": [],
+      "blurb": "Works with brick kilns across South Asia to transition to cleaner technologies to reduce carbon emissions and toxic air pollution.",
+      "url": "https://neev.earth/",
+      "causes": [
+        "Global health"
+      ],
       "countries": [
         "India"
       ],
@@ -2548,9 +2550,10 @@
     {
       "id": "training-for-good",
       "name": "Training for Good",
-      "blurb": "An impact-focused training organisation that ran fellowships placing talented professionals into impactful careers in European policy and AI governance.",
+      "blurb": "An impact-focused training organisation which became two projects: [The Tarbell Center for AI Journalism](https://www.tarbellcenter.org/fellowship) and [Talos Network](https://www.talosnetwork.org/) focused on European AI Policy.",
       "url": null,
       "causes": [
+        "Policy",
         "Talent and capacity building"
       ],
       "countries": [
