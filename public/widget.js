@@ -24,6 +24,8 @@
   };
   var FALLBACK_STYLE = { dot: '#8A7674', bg: '#EEE8E3', text: '#5F524F' };
   var CAUSE_TAG_LABELS = {}; // shorter display names for tags, keyed by the Airtable option name
+  /** Display name for a cause: explicit override, else the Airtable name with " and " shown as " & ". */
+  function causeLabel(cause) { return CAUSE_TAG_LABELS[cause] || cause.replace(/ and /g, ' & '); }
   var GLOBAL = 'Global';
   var MAX_COUNTRIES = 3;
   var MAX_AVATARS = 3;
@@ -296,7 +298,7 @@
         .sort(function (a, b) { return causeBase[b] - causeBase[a] || data.causes.indexOf(a) - data.causes.indexOf(b); })
         .forEach(function (cause) {
           var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-          causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: cause, count: causeCounts[cause] || 0, pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
+          causeItems.push(optionItem({ id: rootId + '-cause-' + idPart(cause), label: causeLabel(cause), count: causeCounts[cause] || 0, pressed: facets && state.cause === cause, dot: s.dot, onClick: pick('cause', cause) }));
         });
       var causeScroll = causeList.scrollLeft;
       clear(causeList); append(causeList, causeItems);
@@ -305,7 +307,7 @@
       var regionBase = countBy(all, regionsOf);
       var regionCounts = countBy(facetBase('region'), regionsOf);
       var regionItems = [optionItem({ id: rootId + '-region-all', label: 'All', count: facetBase('region').length, pressed: !(facets && state.region), onClick: pick('region', null) })];
-      var regionOrder = (regionBase[GLOBAL] ? [GLOBAL] : []).concat(data.continents.filter(function (r) { return regionBase[r]; }));
+      var regionOrder = data.continents.filter(function (r) { return regionBase[r]; }).concat(regionBase[GLOBAL] ? [GLOBAL] : []); // Global last
       regionOrder.forEach(function (region) {
         regionItems.push(optionItem({ id: rootId + '-region-' + idPart(region), label: region, count: regionCounts[region] || 0, pressed: facets && state.region === region, onClick: pick('region', region) }));
       });
@@ -402,7 +404,7 @@
       var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries (click to filter)' });
       c.causes.forEach(function (cause) {
         var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-        append(tags, filterTag({ className: 'aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, label: CAUSE_TAG_LABELS[cause] || cause,
+        append(tags, filterTag({ className: 'aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, label: causeLabel(cause),
           ariaLabel: 'Show ' + cause + ' charities', onClick: function () { applyCause(cause); } }));
       });
       if (c.cohort) append(tags, filterTag({ className: 'aim-dir__tag--cohort', label: c.cohort, title: 'Cohort',
@@ -520,5 +522,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.7.0' };
+  global.AimDirectory = { mount: mount, version: '0.7.1' };
 })(window);
