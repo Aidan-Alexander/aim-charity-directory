@@ -78,7 +78,7 @@ Fix anything the report flags in `config/image-import-overrides.json`, then re-r
 
 ## Publishing rules
 
-A charity is published only when **Website ready?** is ticked, **Undercover?** and **Exclude from website** are unticked, and **Status** is Active, Shutdown or Merged. The build applies these in the Airtable filter formula *and* re-checks them in code. Only the fields listed in `config/publish.json → allowlist` are ever read from the API or written to the output. Founders are published only for published charities; their **LinkedIn** field (a URL on Website Founders) turns the founder's name into a link, and anything that isn't a linkedin.com URL is dropped with a warning.
+A charity is published only when **Website ready?** is ticked, **Undercover?** and **Exclude from website** are unticked, and **Status** is Active, Shutdown or Merged. The build applies these in the Airtable filter formula *and* re-checks them in code. Only the fields listed in `config/publish.json → allowlist` are ever read from the API or written to the output. A blurb may contain links written as `[text](https://example.org)`; the widget renders them as links and shows everything else as plain text. Founders are published only for published charities; their **LinkedIn** field (a URL on Website Founders) turns the founder's name into a link, and anything that isn't a linkedin.com URL is dropped with a warning.
 
 ## Deployment
 

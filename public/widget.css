@@ -168,6 +168,8 @@
 .aim-dir .aim-dir__founders a { color: inherit; text-decoration: none; }
 .aim-dir .aim-dir__founders a:hover, .aim-dir .aim-dir__founders a:focus-visible { color: var(--aim-burgundy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .aim-dir .aim-dir__blurb { font-size: 15px; line-height: 1.55; color: var(--aim-text); }
+.aim-dir .aim-dir__blurb a { color: var(--aim-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.aim-dir .aim-dir__blurb a:hover, .aim-dir .aim-dir__blurb a:focus-visible { color: var(--aim-burgundy); }
 .aim-dir .aim-dir__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
 .aim-dir .aim-dir__tag {
   display: inline-flex; align-items: center;

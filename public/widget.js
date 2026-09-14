@@ -92,6 +92,20 @@
     });
     return nodes;
   }
+  /** Blurbs may contain [text](https://url) links; render them as anchors, everything else as text. */
+  var LINK_RE = /\[([^\]]{1,120})\]\((https?:\/\/[^\s)]{1,300})\)/g;
+  function blurbNodes(text) {
+    var nodes = [], last = 0, m;
+    LINK_RE.lastIndex = 0;
+    while ((m = LINK_RE.exec(text))) {
+      if (m.index > last) nodes.push(text.slice(last, m.index));
+      nodes.push(el('a', { href: m[2], target: '_blank', rel: 'noopener', text: m[1] }, el('span', { class: 'aim-dir__sr', text: ' (opens in a new tab)' })));
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) nodes.push(text.slice(last));
+    return nodes;
+  }
+  function plainText(text) { return String(text || '').replace(LINK_RE, '$1'); }
   /** Squarespace themes often set the body font on <p> rather than <body>; read it from a probe paragraph. */
   function adoptHostFont(root) {
     try {
@@ -205,7 +219,7 @@
     }
     function haystack(c) {
       if (!c._hay) {
-        c._hay = fold([c.name, c.blurb, c.cohort, c.url ? hostOf(c.url) : '', c.causes.join(' '), c.countries.join(' '),
+        c._hay = fold([c.name, plainText(c.blurb), c.cohort, c.url ? hostOf(c.url) : '', c.causes.join(' '), c.countries.join(' '),
           c.founders.map(function (f) { return f.name + ' ' + (f.role || ''); }).join(' ')].join(' '));
       }
       return c._hay;
@@ -371,7 +385,7 @@
           el('strong', { text: (c.founders.length > 1 ? 'Co-founders:' : 'Founder:') + ' ' }),
           founderNodes(c.founders)));
       }
-      if (c.blurb) append(body, el('p', { class: 'aim-dir__blurb', text: c.blurb }));
+      if (c.blurb) append(body, el('p', { class: 'aim-dir__blurb' }, blurbNodes(c.blurb)));
       var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause, cohort and countries (click to filter)' });
       c.causes.forEach(function (cause) {
         var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
@@ -493,5 +507,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.4.0' };
+  global.AimDirectory = { mount: mount, version: '0.5.0' };
 })(window);
