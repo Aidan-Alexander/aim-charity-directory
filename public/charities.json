@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T17:25:29.730Z",
+  "generatedAt": "2026-09-14T17:41:20.060Z",
   "causes": [
     "Women's health and safety",
     "Animal welfare",
@@ -2698,5 +2698,14 @@
         }
       ]
     }
-  ]
+  ],
+  "stealth": {
+    "total": 6,
+    "byCause": {
+      "Animal welfare": 6,
+      "Climate and environment": 1,
+      "Policy": 1,
+      "Research": 1
+    }
+  }
 }
