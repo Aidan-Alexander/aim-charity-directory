@@ -128,6 +128,8 @@
     if (ya !== yb) return yb - ya; // newest first
     return a.localeCompare(b);
   }
+  /** The cohort picker works by year; "2025 H2" belongs to the "2025" option, and the full label stays on the card. */
+  function cohortYear(label) { var y = parseInt(label, 10); return y ? String(y) : String(label || ''); }
   function debounce(fn, ms) {
     var t;
     return function () { var args = arguments; clearTimeout(t); t = setTimeout(function () { fn.apply(null, args); }, ms); };
@@ -261,7 +263,14 @@
     function filtered(skip) {
       var m = mode();
       if (m === 'search') return searchResults();
-      if (m === 'cohort') return data.charities.filter(function (c) { return c.cohort === state.cohort; });
+      if (m === 'cohort') {
+        // A year, shown whole: sub-cohorts in order (2025 H1 before 2025 H2), then the usual order within each.
+        return data.charities
+          .map(function (c, i) { return { c: c, i: i }; })
+          .filter(function (x) { return cohortYear(x.c.cohort) === state.cohort; })
+          .sort(function (a, b) { return String(a.c.cohort).localeCompare(String(b.c.cohort)) || a.i - b.i; })
+          .map(function (x) { return x.c; });
+      }
       return data.charities.filter(function (c) {
         if (skip !== 'cause' && state.cause && c.causes.indexOf(state.cause) === -1) return false;
         if (skip !== 'region' && !matchesRegion(c, state.region)) return false;
@@ -341,7 +350,7 @@
       clear(regionList); append(regionList, regionItems);
       regionList.scrollLeft = regionScroll; syncScrollHints(regionList);
 
-      var cohorts = Object.keys(countBy(all, function (c) { return c.cohort ? [c.cohort] : []; })).sort(cohortCompare);
+      var cohorts = Object.keys(countBy(all, function (c) { return c.cohort ? [cohortYear(c.cohort)] : []; })).sort(cohortCompare);
       if (state.cohort && cohorts.indexOf(state.cohort) === -1) state.cohort = null;
       clear(cohortSelect);
       append(cohortSelect, el('option', { value: '', text: 'All cohorts' }));
@@ -367,7 +376,7 @@
     }
     function applyCause(cause) { clearSearch(); state.cohort = null; state.cause = cause; state.shown = pageSize; render({ focus: rootId + '-cause-' + idPart(cause) }); }
     function applyRegion(region) { clearSearch(); state.cohort = null; state.region = region; state.shown = pageSize; render({ focus: rootId + '-region-' + idPart(region) }); }
-    function applyCohort(cohort) { clearSearch(); state.cohort = cohort; state.cause = null; state.region = null; state.shown = pageSize; render({ focus: cohortSelect.id }); }
+    function applyCohort(cohort) { clearSearch(); state.cohort = cohortYear(cohort); state.cause = null; state.region = null; state.shown = pageSize; render({ focus: cohortSelect.id }); }
     function countryTags(c) {
       var region = mode() === 'facets' ? state.region : null;
       var inRegion = function (k) { return !region || (region === GLOBAL ? k === GLOBAL : data.countryContinent[k] === region); };
@@ -434,7 +443,7 @@
           ariaLabel: 'Show ' + cause + ' charities', onClick: function () { applyCause(cause); } }));
       });
       if (c.cohort) append(tags, filterTag({ className: 'aim-dir__tag--cohort', label: c.cohort, title: 'Cohort',
-        ariaLabel: 'Show the ' + c.cohort + ' cohort', onClick: function () { applyCohort(c.cohort); } }));
+        ariaLabel: 'Show the ' + cohortYear(c.cohort) + ' cohorts', onClick: function () { applyCohort(c.cohort); } }));
       append(tags, countryTags(c));
       if (STATUS_LABELS[c.status]) append(tags, el('li', { class: 'aim-dir__tag aim-dir__tag--status', text: STATUS_LABELS[c.status] }));
       if (tags.childNodes.length) append(body, tags);
@@ -570,5 +579,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.8.1' };
+  global.AimDirectory = { mount: mount, version: '0.8.2' };
 })(window);
