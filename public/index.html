@@ -30,7 +30,10 @@
 <script>
 (function () {
   var params = new URLSearchParams(location.search);
-  var src = params.get('data') || 'charities.json';
+  // charities.json is a build output and is not in the repo, so a local preview reads the live published copy.
+  var LIVE = 'https://aidan-alexander.github.io/aim-charity-directory/charities.json';
+  var isLocal = /^(localhost|127\.|\[::1\]|$)/.test(location.hostname);
+  var src = params.get('data') || (isLocal ? LIVE : 'charities.json');
   document.getElementById('data-src').textContent = src;
   if (params.get('bleed') === '1') {
     // Hostile "theme" rules with the specificity Squarespace templates typically use.

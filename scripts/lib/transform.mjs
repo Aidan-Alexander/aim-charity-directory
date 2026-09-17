@@ -196,6 +196,9 @@ export function transform({ website, founders }, { config, continents, ignoreRea
   }
 
   charities.sort(byStatusSortThenName);
+  // "Sort order" is an internal curation ranking: it decides the array order above and is then dropped,
+  // so the published file never states AIM's own ranking of its charities as a number.
+  for (const c of charities) delete c.sortOrder;
   for (const t of unknownTags) warn(`Ignored cause tag not in the agreed list: ${t}`);
   for (const c of unmapped) warn(`Country "${c}" has no continent in data/continents.json (will only show under All)`);
 
@@ -228,7 +231,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
 export const OUTPUT_KEYS = {
   root: ['schemaVersion', 'generatedAt', 'causes', 'continents', 'countryContinent', 'charities', 'stealth'],
   stealth: ['total', 'byCause'],
-  charity: ['id', 'name', 'blurb', 'url', 'causes', 'countries', 'cohort', 'status', 'sortOrder', 'logo', 'founders'],
+  charity: ['id', 'name', 'blurb', 'url', 'causes', 'countries', 'cohort', 'status', 'logo', 'founders'],
   founder: ['name', 'role', 'photo', 'linkedin'],
   image: ['src', 'width', 'height'],
 };

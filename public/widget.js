@@ -26,6 +26,15 @@
   var CAUSE_TAG_LABELS = {}; // shorter display names for tags, keyed by the Airtable option name
   /** Display name for a cause: explicit override, else the Airtable name with " and " shown as " & ". */
   function causeLabel(cause) { return CAUSE_TAG_LABELS[cause] || cause.replace(/ and /g, ' & '); }
+  /* The inline snapshot is only a fallback for a slow or failed fetch. It is frozen at paste time, so after
+     this many days it is treated as unusable: a charity that has since been delisted or gone undercover must
+     not reappear from a stale copy. Re-paste the snippet to refresh it. */
+  var SNAPSHOT_MAX_AGE_DAYS = 45;
+  function snapshotUsable(s) {
+    if (!s) return false;
+    var t = Date.parse(s.generatedAt || '');
+    return !(t > 0) || (Date.now() - t) < SNAPSHOT_MAX_AGE_DAYS * 86400000;
+  }
   var NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   function numberWord(n) { return NUMBER_WORDS[n] || String(n); }
   function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -146,12 +155,24 @@
     });
     return out;
   }
+  /**
+   * Images may only be relative paths written by our own build. An absolute or protocol-relative src is
+   * dropped, so a tampered data file cannot point images at a third-party host and log every visitor.
+   */
+  function safeImage(img) {
+    if (!img || typeof img.src !== 'string') return null;
+    var src = img.src;
+    if (src.charAt(0) === '/' || src.indexOf(':') !== -1 || src.indexOf('..') !== -1) return null;
+    if (!/^[A-Za-z0-9._\-]+(\/[A-Za-z0-9._\-]+)*$/.test(src) || src.length > 300) return null;
+    return { src: src, width: img.width, height: img.height };
+  }
   function normaliseData(raw) {
     var d = raw && typeof raw === 'object' ? raw : {};
     var charities = Array.isArray(d.charities) ? d.charities : [];
     return {
       causes: Array.isArray(d.causes) ? d.causes : Object.keys(CAUSE_STYLES),
       continents: Array.isArray(d.continents) ? d.continents : [],
+      generatedAt: typeof d.generatedAt === 'string' ? d.generatedAt : null,
       countryContinent: d.countryContinent && typeof d.countryContinent === 'object' ? d.countryContinent : {},
       stealth: normaliseStealth(d.stealth),
       charities: charities.map(function (c) {
@@ -164,9 +185,9 @@
           countries: Array.isArray(c.countries) ? c.countries : [],
           cohort: c.cohort ? String(c.cohort) : null,
           status: c.status ? String(c.status) : null,
-          logo: c.logo && c.logo.src ? c.logo : null,
+          logo: safeImage(c.logo),
           founders: (Array.isArray(c.founders) ? c.founders : []).filter(function (f) { return f && f.name; }).map(function (f) {
-            return { name: String(f.name), role: f.role ? String(f.role) : null, photo: f.photo && f.photo.src ? f.photo : null,
+            return { name: String(f.name), role: f.role ? String(f.role) : null, photo: safeImage(f.photo),
               linkedin: /^https:\/\/([a-z0-9-]+\.)?linkedin\.com\//i.test(f.linkedin || '') ? f.linkedin : null };
           })
         };
@@ -541,14 +562,15 @@
     /* Load order: live JSON first; the inline snapshot only if the network is slow (after snapshotDelay) or fails. */
     if (options.dataUrl) {
       renderSkeleton();
-      var fallbackTimer = snapshot ? setTimeout(function () { if (!data) showData(snapshot); }, snapshotDelay) : null;
+      var usableSnapshot = snapshotUsable(snapshot) ? snapshot : null;
+      var fallbackTimer = usableSnapshot ? setTimeout(function () { if (!data) showData(usableSnapshot); }, snapshotDelay) : null;
       fetchLive(options.dataUrl).then(function (fresh) {
         if (fallbackTimer) clearTimeout(fallbackTimer);
         showData(fresh);
       }).catch(function () {
         if (fallbackTimer) clearTimeout(fallbackTimer);
         if (data) return;
-        if (snapshot) showData(snapshot);
+        if (usableSnapshot) showData(usableSnapshot);
         else {
           root.classList.remove('is-loading'); clear(gridEl);
           titleEl.textContent = options.title ? options.title.replace('{n}', '') : 'Our charities';
@@ -580,5 +602,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.8.3' };
+  global.AimDirectory = { mount: mount, version: '0.9.0' };
 })(window);
