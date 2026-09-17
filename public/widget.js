@@ -264,11 +264,12 @@
       var m = mode();
       if (m === 'search') return searchResults();
       if (m === 'cohort') {
-        // A year, shown whole: sub-cohorts in order (2025 H1 before 2025 H2), then the usual order within each.
+        // A year, shown whole: sub-cohorts in order (2024 H1, 2024 H2, then a bare "2024"), then the usual order within each.
+        var subKey = function (c) { var s = String(c.cohort || ''); return s === state.cohort ? '\uffff' : s; }; // bare year sorts last
         return data.charities
           .map(function (c, i) { return { c: c, i: i }; })
           .filter(function (x) { return cohortYear(x.c.cohort) === state.cohort; })
-          .sort(function (a, b) { return String(a.c.cohort).localeCompare(String(b.c.cohort)) || a.i - b.i; })
+          .sort(function (a, b) { return subKey(a.c).localeCompare(subKey(b.c)) || a.i - b.i; })
           .map(function (x) { return x.c; });
       }
       return data.charities.filter(function (c) {
@@ -579,5 +580,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.8.2' };
+  global.AimDirectory = { mount: mount, version: '0.8.3' };
 })(window);
