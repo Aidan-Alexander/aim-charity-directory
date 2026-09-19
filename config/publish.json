@@ -46,6 +46,12 @@
       "Animal welfare"
     ]
   },
+  "founderConditions": {
+    "$comment": "Applied to each row of the Website Founders table, in addition to its charity being publishable. An individual can be held back even when their charity is public.",
+    "requireUnchecked": [
+      "Undercover?"
+    ]
+  },
   "allowlist": {
     "website": [
       "Display name",
@@ -75,7 +81,8 @@
       "Status"
     ],
     "founders": [
-      "Website charity"
+      "Website charity",
+      "Undercover?"
     ]
   },
   "causeTags": [

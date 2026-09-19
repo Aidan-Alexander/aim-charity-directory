@@ -126,6 +126,7 @@ async function main() {
   log('');
   log(`Wrote ${path.relative(ROOT, outFile)}`);
   log(`  charities fetched: ${stats.fetched}, published: ${stats.published}, skipped by publish rules: ${stats.skipped}`);
+  log(`  founders held back as undercover individuals: ${stats.skippedFounders}`);
   log(`  stealth mode (counted only): ${data.stealth.total} total; ${Object.entries(data.stealth.byCause).map(([k, v]) => `${k}: ${v}`).join(', ') || 'none'}`);
   const logos = data.charities.filter((c) => c.logo).length;
   const photos = data.charities.reduce((n, c) => n + c.founders.filter((f) => f.photo).length, 0);

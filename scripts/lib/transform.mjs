@@ -109,12 +109,13 @@ function sortKeys(obj) {
 export function transform({ website, founders }, { config, continents, ignoreReady = false }) {
   const warnings = [];
   const warn = (m) => warnings.push(m);
-  const { allowlist, controlFields, causeTags } = config;
+  const { allowlist, controlFields, causeTags, founderConditions } = config;
   const cond = ignoreReady ? { ...config.publishConditions, requireChecked: [] } : config.publishConditions;
   const continentOf = continents.countries || {};
 
   // Founders grouped by the record id of the charity they link to.
   const foundersByCharity = new Map();
+  let skippedFounders = 0;
   for (const rec of founders) {
     const f = pick(rec.fields || {}, [...allowlist.founders, ...controlFields.founders]);
     const name = str(f.Name);
@@ -127,6 +128,11 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     }
     if (!links.length) {
       warn(`Founder "${name}" is not linked to a charity; skipped`);
+      continue;
+    }
+    // An individual may be undercover even when their charity is public: drop the row entirely.
+    if (founderConditions && (founderConditions.requireUnchecked || []).some((k) => f[k] === true)) {
+      skippedFounders += 1;
       continue;
     }
     const rawLinkedIn = str(f.LinkedIn);
@@ -223,6 +229,7 @@ export function transform({ website, founders }, { config, continents, ignoreRea
     withLogo: charities.filter((c) => c.logo).length,
     withPhoto: charities.reduce((n, c) => n + c.founders.filter((x) => x.photo).length, 0),
     withLinkedIn: charities.reduce((n, c) => n + c.founders.filter((x) => x.linkedin).length, 0),
+    skippedFounders,
   };
   return { data, warnings, stats };
 }

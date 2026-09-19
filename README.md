@@ -58,13 +58,25 @@ Logos and founder photos live in Airtable: the `Logo` attachment on the Website 
 
 Guidance for good results: logos as PNG, SVG or WebP with a transparent or white background, at least 500 px wide; founder photos square, at least 400 px, face centred. The build trims uniform borders and fits logos inside 480×240, and crops photos to 160×160 squares.
 
-To load files into Airtable without dragging them in by hand (for example a batch processed with the circle-crop tooling), drop them into `uploads/`, push, and import each one by its `https://raw.githubusercontent.com/<owner>/<repo>/main/uploads/<file>` URL; Airtable copies the file, after which `uploads/` can be emptied. Airtable skips a URL it has imported before, so append `?v=<date>` when replacing an image.
+To load files into Airtable without dragging them in by hand (for example a batch processed with the circle-crop tooling), Airtable's attachment API needs a URL it can fetch. **Do not commit the files to this repo for that purpose**: the repo is public and anything committed stays in its history for good, which would permanently associate an undercover charity or founder with AIM. Use a transient GitHub release asset instead, which lives outside git history and can be deleted:
+
+```
+gh release create img-staging --target main --prerelease --title "Image staging" --notes "Transient; assets deleted after import."
+cp photo.webp $(openssl rand -hex 8).webp          # opaque name: the URL is public while it exists
+gh release upload img-staging <hex>.webp
+# import into Airtable by https://github.com/<owner>/<repo>/releases/download/img-staging/<hex>.webp,
+# passing the real name in the attachment's "filename" so Airtable stores it sensibly
+# wait until the attachment's url is on airtableusercontent.com (Airtable copies asynchronously), then:
+gh release delete img-staging --cleanup-tag --yes
+```
+
+Airtable skips a URL it has imported before, so never reuse a staging filename; a fresh random name each time also avoids the five-minute raw-content cache. `uploads/` is gitignored and must stay that way.
 
 If a row has no attachment, the build falls back to a local, untracked `assets/logos/<charity id>.webp` or `assets/founders/<charity id>/<founder slug>.webp`; this exists only for one-off bulk loads and is not part of the normal workflow. The build lists every published charity without a logo and every founder without a photo.
 
 ## Publishing rules
 
-A charity is published only when **Website ready?** is ticked, **Undercover?** and **Exclude from website** are unticked, and **Status** is Active, Shutdown or Merged. The build applies these in the Airtable filter formula *and* re-checks them in code. Only the fields listed in `config/publish.json → allowlist` are ever read from the API or written to the output. Cause tag names must match in three places: the Airtable multi-select option, `config/publish.json → causeTags`, and the colour map at the top of `public/widget.js` (a rename there means re-pasting the snippet). A blurb may contain links written as `[text](https://example.org)`; the widget renders them as links and shows everything else as plain text. Cards are ordered by **Sort order** (lower first, blanks alphabetically after), and Shutdown/Merged charities always come after active ones regardless of Sort order. Founders are published only for published charities; their **LinkedIn** field (a URL on Website Founders) turns the founder's name into a link, and anything that isn't a linkedin.com URL is dropped with a warning.
+A charity is published only when **Website ready?** is ticked, **Undercover?** and **Exclude from website** are unticked, and **Status** is Active, Shutdown or Merged. The build applies these in the Airtable filter formula *and* re-checks them in code. Only the fields listed in `config/publish.json → allowlist` are ever read from the API or written to the output. Cause tag names must match in three places: the Airtable multi-select option, `config/publish.json → causeTags`, and the colour map at the top of `public/widget.js` (a rename there means re-pasting the snippet). A blurb may contain links written as `[text](https://example.org)`; the widget renders them as links and shows everything else as plain text. Cards are ordered by **Sort order** (lower first, blanks alphabetically after), and Shutdown/Merged charities always come after active ones regardless of Sort order. Founders are published only for published charities, and a founder row with its own **Undercover?** ticked is dropped entirely, so an individual can be held back even when their charity is public: no name, role, photo or LinkedIn is published and the card shows only the other founders (the build logs how many were held back). Their **LinkedIn** field (a URL on Website Founders) turns the founder's name into a link, and anything that isn't a linkedin.com URL is dropped with a warning.
 
 ### Stealth-mode counts
 
