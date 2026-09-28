@@ -519,7 +519,7 @@
       }
       var shownReal = Math.min(visible.length, list.length);
       statusEl.textContent = list.length
-        ? 'Showing ' + shownReal + ' of ' + list.length + (list.length === 1 ? ' charity' : ' charities') + (stealthCause ? ', plus ' + stealthFor(stealthCause) + ' in stealth mode' : '')
+        ? 'Showing ' + shownReal + ' of ' + list.length + (list.length === 1 ? ' charity' : ' charities') + (stealthCause ? ', plus ' + stealthFor(stealthCause) + ' more not listed here' : '')
         : 'No charities match';
       var n = data.charities.length + stealth().total;
       var tpl = options.title || (n >= 10 ? 'Meet all {n} charities' : 'Meet our charities');
@@ -596,5 +596,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.9.2' };
+  global.AimDirectory = { mount: mount, version: '0.9.3' };
 })(window);
