@@ -35,9 +35,6 @@
     var t = Date.parse(s.generatedAt || '');
     return !(t > 0) || (Date.now() - t) < SNAPSHOT_MAX_AGE_DAYS * 86400000;
   }
-  var NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-  function numberWord(n) { return NUMBER_WORDS[n] || String(n); }
-  function capitalise(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
   var GLOBAL = 'Global';
   var MAX_COUNTRIES = 3;
   var MAX_AVATARS = 3;
@@ -490,12 +487,12 @@
       var cardId = rootId + '-card-stealth';
       var ghosts = el('span', { class: 'aim-dir__ghosts', 'aria-hidden': 'true' }, el('i'), el('i'), el('i'));
       var logo = el('div', { class: 'aim-dir__logo aim-dir__logo--stealth' }, ghosts);
-      var title = n === 1 ? '1 charity in stealth mode' : n + ' charities in stealth mode';
+      var title = n === 1 ? '1 more charity' : n + ' more charities';
       // The cause is never named here, and no cause chip is shown: the card already only appears
       // while that cause is the active filter, so naming it adds nothing and reads as a label.
-      var text = n === 1
-        ? 'Not every charity we incubate is ready to be public. One of our charities is still working quietly; we\u2019ll list it here when it\u2019s ready.'
-        : 'Not every charity we incubate is ready to be public. ' + capitalise(numberWord(n)) + ' of our charities are still working quietly; we\u2019ll list them here when they\u2019re ready.';
+      var text = 'We have incubated more charities than this page shows. Some are working towards a public launch, '
+        + 'some work under a partner\u2019s name rather than a brand of their own, and some prefer to keep a low profile. '
+        + 'We\u2019ll update this list as that changes.';
       var body = el('div', { class: 'aim-dir__body' },
         el('h3', { class: 'aim-dir__name', id: cardId + '-name', text: title }),
         el('p', { class: 'aim-dir__blurb', text: text }));
@@ -599,5 +596,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.9.1' };
+  global.AimDirectory = { mount: mount, version: '0.9.2' };
 })(window);
