@@ -486,22 +486,19 @@
       return li;
     }
     /** A placeholder card standing in for charities that exist but aren't public yet. Counts only; no names. */
-    function stealthCard(cause, n) {
+    function stealthCard(n) {
       var cardId = rootId + '-card-stealth';
       var ghosts = el('span', { class: 'aim-dir__ghosts', 'aria-hidden': 'true' }, el('i'), el('i'), el('i'));
       var logo = el('div', { class: 'aim-dir__logo aim-dir__logo--stealth' }, ghosts);
-      var label = causeLabel(cause).toLowerCase();
       var title = n === 1 ? '1 charity in stealth mode' : n + ' charities in stealth mode';
+      // The cause is never named here, and no cause chip is shown: the card already only appears
+      // while that cause is the active filter, so naming it adds nothing and reads as a label.
       var text = n === 1
-        ? 'Not every charity we incubate is ready to be public. One of our ' + label + ' charities is still working quietly; we\u2019ll list it here when it\u2019s ready.'
-        : 'Not every charity we incubate is ready to be public. ' + capitalise(numberWord(n)) + ' of our ' + label + ' charities are still working quietly; we\u2019ll list them here when they\u2019re ready.';
-      var s = CAUSE_STYLES[cause] || FALLBACK_STYLE;
-      var tags = el('ul', { class: 'aim-dir__tags', 'aria-label': 'Cause' },
-        el('li', { class: 'aim-dir__tag aim-dir__tag--cause', style: '--chip-bg:' + s.bg + ';--chip-text:' + s.text, text: causeLabel(cause) }));
+        ? 'Not every charity we incubate is ready to be public. One of our charities is still working quietly; we\u2019ll list it here when it\u2019s ready.'
+        : 'Not every charity we incubate is ready to be public. ' + capitalise(numberWord(n)) + ' of our charities are still working quietly; we\u2019ll list them here when they\u2019re ready.';
       var body = el('div', { class: 'aim-dir__body' },
         el('h3', { class: 'aim-dir__name', id: cardId + '-name', text: title }),
-        el('p', { class: 'aim-dir__blurb', text: text }),
-        tags);
+        el('p', { class: 'aim-dir__blurb', text: text }));
       return el('li', { class: 'aim-dir__card aim-dir__card--stealth', id: cardId, tabindex: '-1', 'aria-labelledby': cardId + '-name' }, logo, body);
     }
     function renderResults(opts) {
@@ -510,7 +507,7 @@
       var items = stealthCause ? list.concat([{ stealthCause: stealthCause, id: 'stealth' }]) : list;
       var visible = items.slice(0, state.shown);
       clear(gridEl); clear(footerEl);
-      append(gridEl, visible.map(function (item) { return item.stealthCause ? stealthCard(item.stealthCause, stealthFor(item.stealthCause)) : card(item); }));
+      append(gridEl, visible.map(function (item) { return item.stealthCause ? stealthCard(stealthFor(item.stealthCause)) : card(item); }));
       if (!list.length) {
         append(footerEl, el('div', { class: 'aim-dir__empty' },
           el('p', { text: mode() === 'search' ? 'No charities match "' + state.query.trim() + '".' : 'No charities match these filters.' }),
@@ -602,5 +599,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.9.0' };
+  global.AimDirectory = { mount: mount, version: '0.9.1' };
 })(window);
