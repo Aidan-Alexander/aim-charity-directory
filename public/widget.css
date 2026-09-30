@@ -59,7 +59,7 @@
 .aim-dir .aim-dir__sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* ---- header ---- */
-/* The title matches the Highlights carousel's "Highlights" label above it: the site's heading font and weight
+/* The title ("Explore all N charities") matches the carousel's "From across the portfolio" label above it: the site's heading font and weight
    and the same fluid size. Keep the two in step. */
 .aim-dir .aim-dir__title {
   grid-area: title;

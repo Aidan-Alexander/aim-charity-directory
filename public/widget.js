@@ -498,7 +498,7 @@
       }
       var li = el('li', { class: 'aim-dir__card' + (c.url ? ' aim-dir__card--link' : ''), id: cardId, tabindex: '-1', 'aria-labelledby': cardId + '-name' }, logo, body);
       if (c.url) {
-        // Convenience only: the name and website links remain the accessible way in. Links/buttons inside keep their own behaviour.
+        // Convenience only: the name and website links remain the accessible way in. Links/buttons inside keep their own behavior.
         li.addEventListener('click', function (e) {
           if (e.defaultPrevented || e.button !== 0) return;
           if (e.target.closest && e.target.closest('a, button, select, input')) return;
@@ -516,7 +516,7 @@
       var title = n === 1 ? '1 more charity' : n + ' more charities';
       // The cause is never named here, and no cause chip is shown: the card already only appears
       // while that cause is the active filter, so naming it adds nothing and reads as a label.
-      var text = 'We have incubated more charities than this page shows. Some are working towards a public launch, '
+      var text = 'We have incubated more charities than this page shows. Some are working toward a public launch, '
         + 'some work under a partner\u2019s name rather than a brand of their own, and some prefer to keep a low profile. '
         + 'We\u2019ll update this list as that changes.';
       var body = el('div', { class: 'aim-dir__body' },
@@ -548,7 +548,7 @@
         ? 'Showing ' + shownReal + ' of ' + list.length + (list.length === 1 ? ' charity' : ' charities') + (stealthCause ? ', plus ' + stealthFor(stealthCause) + ' more not listed here' : '')
         : 'No charities match';
       var n = data.charities.length + stealth().total;
-      var tpl = options.title || (n >= 10 ? 'Meet all {n} charities' : 'Meet our charities');
+      var tpl = options.title || (n >= 10 ? 'Explore all {n} charities' : 'Explore our charities');
       titleEl.textContent = tpl.replace('{n}', String(n));
     }
     function render(opts) {
@@ -622,5 +622,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.10.0' };
+  global.AimDirectory = { mount: mount, version: '0.10.1' };
 })(window);
