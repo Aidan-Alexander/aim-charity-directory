@@ -1,11 +1,13 @@
 /* AIM charity directory widget. No dependencies, no network calls except the optional live-data
    refresh. Usage:
-     AimDirectory.mount(rootElement, { data, dataUrl, imageBase, title, pageSize })
+     AimDirectory.mount(rootElement, { data, dataUrl, imageBase, title, pageSize, fontHeading })
    - data:      charities.json content (rendered immediately, e.g. the inline snapshot)
    - dataUrl:   optional URL of the live charities.json; fetched in the background and only
                 re-rendered when its content differs from `data`
    - imageBase: prefix for relative image paths (the GitHub Pages URL when embedded elsewhere)
    - title:     heading text; "{n}" is replaced with the number of charities
+   - fontHeading: optional font-family for the title and charity names (default: the site's heading
+                font, copied from the nearest heading above the widget)
    Everything rendered is built with DOM APIs and textContent, never innerHTML. */
 (function (global) {
   'use strict';
@@ -129,6 +131,29 @@
       if (pFont && pFont !== rootFont) root.style.setProperty('--aim-font-body', pFont);
     } catch (e) { /* leave fonts as they are */ }
   }
+  /** Headings (title, charity names, initials) use the site's heading font: copy family and weight from the
+      nearest real heading above the widget, skipping headings inside Code Blocks. The Highlights carousel
+      does exactly the same, so the two widgets match each other and the site. */
+  function adoptHeadingFont(root) {
+    try {
+      var hs = document.querySelectorAll('h1, h2, h3, h4'), src = null;
+      for (var i = 0; i < hs.length; i++) {
+        var h = hs[i];
+        if (root.contains(h) || !h.textContent.trim() || (h.closest && h.closest('.sqs-block-code, .code-block, .aim-spot'))) continue;
+        if (!src) src = h;                                                             // first heading on the page, as a fallback
+        if (h.compareDocumentPosition(root) & Node.DOCUMENT_POSITION_FOLLOWING) src = h; // ...but prefer the last one above us
+      }
+      if (!src) return;
+      var cs = getComputedStyle(src), seen = {}, stack = [];
+      (cs.fontFamily + ', Georgia, serif').split(',').forEach(function (f) {
+        f = f.trim();
+        var k = f.replace(/['"]/g, '').toLowerCase();
+        if (f && !seen[k]) { seen[k] = 1; stack.push(f); }
+      });
+      root.style.setProperty('--aim-font-heading', stack.join(', '));
+      root.style.setProperty('--aim-heading-weight', cs.fontWeight);
+    } catch (e) { /* keep the CSS fallback */ }
+  }
   function cohortCompare(a, b) {
     var ya = parseInt(a, 10) || 0, yb = parseInt(b, 10) || 0;
     if (ya !== yb) return yb - ya; // newest first
@@ -212,6 +237,7 @@
     if (options.fontBody) root.style.setProperty('--aim-font-body', options.fontBody);
     else adoptHostFont(root);
     if (options.fontHeading) root.style.setProperty('--aim-font-heading', options.fontHeading);
+    else adoptHeadingFont(root);
 
     function resolve(src) { return /^(https?:)?\/\//i.test(src) || (src.charAt(0) === '/' && !imageBase) ? src : imageBase + src; }
     function clearSearch() { state.query = ''; searchInput.value = ''; }
@@ -596,5 +622,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.9.3' };
+  global.AimDirectory = { mount: mount, version: '0.10.0' };
 })(window);

@@ -1,7 +1,8 @@
 /* AIM charity directory widget — every rule is scoped under .aim-dir so nothing leaks in or out.
    Colours sampled from design/desktop.png and design/mobile.png; a few text tones are darkened
-   for WCAG AA contrast (noted inline). Fonts: the body font is inherited from the host page,
-   the heading font can be overridden with --aim-font-heading. */
+   for WCAG AA contrast (noted inline). Fonts: the body font is inherited from the host page; the title,
+   charity names and initials use the site's heading font and weight, copied at runtime from the nearest
+   heading above the widget (as the Highlights carousel does), with --aim-font-heading as the fallback. */
 
 .aim-dir {
   --aim-burgundy: #8C2334;
@@ -16,7 +17,8 @@
   --aim-chip-bg: #F1EADC;            /* cohort / country chips */
   --aim-chip-text: #6F5440;          /* mockup #93725A darkened for contrast */
   --aim-hover: rgba(140, 35, 52, 0.07);
-  --aim-font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --aim-font-heading: "Playfair Display", Georgia, "Times New Roman", serif;   /* fallback; the script sets the site's */
+  --aim-heading-weight: 400;
   --aim-gap: 28px;
 
   display: grid;
@@ -57,13 +59,15 @@
 .aim-dir .aim-dir__sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* ---- header ---- */
+/* The title matches the Highlights carousel's "Highlights" label above it: the site's heading font and weight
+   and the same fluid size. Keep the two in step. */
 .aim-dir .aim-dir__title {
   grid-area: title;
   align-self: center;
   font-family: var(--aim-font-heading);
-  font-weight: 400;
-  font-size: 46px;
-  line-height: 1.1;
+  font-weight: var(--aim-heading-weight);
+  font-size: clamp(24px, calc(18px + 0.9vw), 30px);
+  line-height: 1.15;
   color: var(--aim-burgundy);
 }
 .aim-dir .aim-dir__search { grid-area: search; position: relative; align-self: center; }
@@ -149,7 +153,7 @@
 }
 .aim-dir .aim-dir__logo > img { max-width: 84%; max-height: 104px; width: auto; height: auto; object-fit: contain; }
 .aim-dir .aim-dir__monogram {
-  font-family: var(--aim-font-heading); font-size: 40px; line-height: 1;
+  font-family: var(--aim-font-heading); font-weight: var(--aim-heading-weight); font-size: 40px; line-height: 1;
   color: var(--aim-burgundy); opacity: 0.6; letter-spacing: 0.02em;
 }
 .aim-dir .aim-dir__avatars { position: absolute; right: 14px; bottom: -6px; display: flex; gap: 8px; }
@@ -167,7 +171,7 @@
 .aim-dir .aim-dir__avatar--link { cursor: pointer; }
 .aim-dir .aim-dir__avatar--link:hover { transform: scale(1.12); box-shadow: 0 4px 12px rgba(140, 35, 52, 0.28); z-index: 1; }
 .aim-dir .aim-dir__body { display: flex; flex: 1 1 auto; flex-direction: column; gap: 12px; padding: 30px 22px 28px; }
-.aim-dir .aim-dir__name { font-family: var(--aim-font-heading); font-weight: 400; font-size: 26px; line-height: 1.2; color: var(--aim-burgundy); }
+.aim-dir .aim-dir__name { font-family: var(--aim-font-heading); font-weight: var(--aim-heading-weight); font-size: 26px; line-height: 1.2; color: var(--aim-burgundy); }
 .aim-dir .aim-dir__name a:hover { text-decoration: none; }
 .aim-dir .aim-dir__name a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 .aim-dir .aim-dir__founders { font-size: 15px; color: var(--aim-text); }
@@ -226,7 +230,6 @@
     grid-template-areas: "title" "filters" "search" "results";
     row-gap: 22px;
   }
-  .aim-dir .aim-dir__title { font-size: 32px; }
   .aim-dir .aim-dir__filters { gap: 18px; }
   /* One scrollable row per facet: the last chip peeks past the edge and a fade marks the overflow. */
   .aim-dir .aim-dir__options {
@@ -294,7 +297,7 @@
   text-transform: none; letter-spacing: normal; font-style: normal; text-shadow: none; text-align: left;
   font-variant: normal; word-spacing: normal;
 }
-.aim-dir .aim-dir__title { line-height: 1.1; }
+.aim-dir .aim-dir__title { line-height: 1.15; }
 .aim-dir .aim-dir__name { line-height: 1.2; }
 .aim-dir .aim-dir__founders, .aim-dir .aim-dir__site { line-height: 1.5; }
 .aim-dir .aim-dir__blurb { line-height: 1.55; }
