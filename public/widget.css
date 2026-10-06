@@ -263,6 +263,12 @@
 }
 @media (max-width: 599px) {
   .aim-dir .aim-dir__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  /* Larger founder photos once a card is full width, dropped to straddle the logo box's lower edge. */
+  .aim-dir .aim-dir__avatars { bottom: -32px; gap: 9px; }
+  .aim-dir .aim-dir__avatar { width: 64px; height: 64px; font-size: 16px; }
+  /* Dropped so the circles straddle the logo box's lower edge evenly (32px in, 32px below). The body's
+     top padding grows by the same amount so the charity name keeps its clearance. */
+  .aim-dir .aim-dir__body { padding-top: 44px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .aim-dir .aim-dir__opt, .aim-dir .aim-dir__more, .aim-dir .aim-dir__clear, .aim-dir .aim-dir__tag--more { transition: background-color 120ms ease, color 120ms ease; }
