@@ -75,6 +75,22 @@
     return svg;
   }
 
+  /* ---------- deep links ---------- */
+  /** The search term carried by the page URL: ?q=term (or ?charity=term), with #q=term and #directory?q=term
+      accepted too for hosts whose redirects strip query strings. Empty when the URL carries none. */
+  function queryFromUrl() {
+    try {
+      var loc = global.location;
+      var params = new URLSearchParams(loc.search);
+      var q = params.get('q') || params.get('charity') || '';
+      if (!q && loc.hash) {
+        var m = /(?:^#|[?&])q=([^&]*)/.exec(loc.hash);
+        if (m) q = decodeURIComponent(m[1].replace(/\+/g, ' '));
+      }
+      return String(q).replace(/\s+/g, ' ').trim().slice(0, 100);
+    } catch (e) { return ''; }
+  }
+
   /* ---------- text helpers ---------- */
   function fold(s) {
     return String(s === null || s === undefined ? '' : s).normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -233,6 +249,11 @@
     var state = { cause: null, region: null, cohort: null, query: '', shown: pageSize, expanded: {} };
     var snapshot = options.data ? normaliseData(options.data) : null;
     var data = null;
+    /* Deep link: /our-charities?q=healthier+hens opens the directory with that search applied and scrolls to it,
+       so an old per-charity URL can be redirected straight to its card. Opt out with { urlQuery: false }. */
+    var urlQuery = options.urlQuery === false ? '' : queryFromUrl();
+    var scrollPending = !!urlQuery;
+    state.query = urlQuery;
 
     if (options.fontBody) root.style.setProperty('--aim-font-body', options.fontBody);
     else adoptHostFont(root);
@@ -254,6 +275,7 @@
       el('label', { class: 'aim-dir__sr', for: rootId + '-search', text: 'Search charities' }),
       searchInput,
       svgIcon('M15.5 15.5 21 21M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z'));
+    if (urlQuery) searchInput.value = urlQuery;
     var causeList = el('ul', { class: 'aim-dir__options', 'aria-labelledby': rootId + '-cause-label' });
     var regionList = el('ul', { class: 'aim-dir__options', 'aria-labelledby': rootId + '-region-label' });
     var cohortSelect = el('select', {
@@ -297,12 +319,18 @@
       return c._hay;
     }
     function searchResults() {
-      var terms = fold(state.query).split(/\s+/).filter(Boolean);
-      return data.charities.filter(function (c) {
+      var q = fold(state.query).trim();
+      var terms = q.split(/\s+/).filter(Boolean);
+      var hits = data.charities.filter(function (c) {
         var hay = haystack(c);
         for (var i = 0; i < terms.length; i++) if (hay.indexOf(terms[i]) === -1) return false;
         return true;
       });
+      // Cards whose name contains the whole query come first: a search (or deep link) for "Healthier Hens"
+      // wants that card at the top, not every blurb that happens to mention it. The usual order holds within each group.
+      return hits.map(function (c, i) { return { c: c, i: i, inName: fold(c.name).indexOf(q) !== -1 ? 0 : 1 }; })
+        .sort(function (a, b) { return a.inName - b.inName || a.i - b.i; })
+        .map(function (x) { return x.c; });
     }
     function filtered(skip) {
       var m = mode();
@@ -570,7 +598,15 @@
     }
     function showData(fresh) {
       if (data && comparable(fresh) === comparable(data)) return false;
-      data = fresh; render(); return true;
+      data = fresh; render();
+      if (scrollPending) { scrollPending = false; scrollToDirectory(); }
+      return true;
+    }
+    /** Bring the directory into view after a deep link: the page's own #directory anchor when the widget sits inside it, else the widget. */
+    function scrollToDirectory() {
+      var anchor = document.getElementById('directory');
+      var target = anchor && anchor.contains(root) ? anchor : root;
+      global.requestAnimationFrame(function () { target.scrollIntoView({ block: 'start' }); });
     }
     function fetchLive(url) {
       if (!global.fetch) return Promise.reject(new Error('no fetch'));
@@ -622,5 +658,5 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoMount); else autoMount();
 
-  global.AimDirectory = { mount: mount, version: '0.10.1' };
+  global.AimDirectory = { mount: mount, version: '0.11.0' };
 })(window);
