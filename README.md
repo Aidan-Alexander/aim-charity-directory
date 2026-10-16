@@ -3,6 +3,9 @@
 Embeddable "our charities" directory for the Ambitious Impact (AIM) Squarespace site, fed from the **AIM Website Content** Airtable base.
 
 ```
+MEL base (Charities → Places of operation)        read-only, always
+   │  scripts/sync-from-mel.mjs  — nightly, before the build; writes the website base's Countries only
+   ▼
 Airtable (Website + Website Founders)
    │  scripts/build.mjs  — nightly GitHub Action + manual dispatch
    ▼
@@ -18,15 +21,18 @@ then fetches the live JSON and re-renders only if it changed
 | Path | What |
 | --- | --- |
 | `config/publish.json` | Base/table IDs, publish rules, **field allowlist**, agreed cause tags |
+| `config/sync.json` | MEL → website sync: both bases' table and field ids, which fields are synced, UN → short country names |
 | `data/continents.json` | Country → continent lookup (owned here, not in Airtable) |
 | `scripts/build.mjs` | Pull Airtable → transform → rehost images → `public/charities.json` |
-| `scripts/lib/` | `airtable.mjs` (REST client), `transform.mjs` (pure transform), `images.mjs` (rehosting) |
+| `scripts/lib/` | `airtable.mjs` (REST client, read), `airtable-write.mjs` (schema + writes, website base only), `transform.mjs` (pure transform), `images.mjs` (rehosting), `mel-sync.mjs` (pure sync logic) |
+| `scripts/sync-from-mel.mjs` | Nightly MEL → website sync: Countries follow MEL's Places of operation; new MEL charities get a website row (see [Syncing Countries from MEL](#syncing-countries-from-mel)) |
+| `scripts/sync-from-mel.test.mjs` | Unit tests for the sync logic (`npm test`) |
 | `scripts/verify-allowlist.mjs` | Fails if the published JSON contains anything outside the allowlist |
 | `scripts/make-snippet.mjs` | Builds `public/snippet.html` (the Squarespace code block: widget + inline data snapshot + live URL) and `public/demo.html` (self-contained preview) |
 | `public/widget.css`, `public/widget.js` | The widget itself: dependency-free, every style scoped under `.aim-dir` |
 | `public/index.html` | Preview page that fetches `charities.json` (add `?bleed=1` for the theme-bleed stress test) |
 | `public/` | Everything that gets deployed to GitHub Pages (`charities.json` tracked; images, snippet and demo are build outputs) |
-| `.github/workflows/build.yml` | Nightly / manual / on-push build and Pages deployment |
+| `.github/workflows/build.yml` | Nightly MEL sync, then build and Pages deployment (manual runs too; a push only rebuilds) |
 | `design/` | Figma exports (desktop + mobile) |
 
 ## Running the build locally
@@ -86,9 +92,53 @@ Charities that are Active with **Undercover?** ticked (and **Exclude from websit
 
 `/our-charities?q=healthier+hens` opens the page with "healthier hens" already in the search box, the results filtered to it, and the page scrolled to the directory (the page's `#directory` section when the widget sits inside one, else the widget itself). The term is matched exactly like a typed search, so every word must appear somewhere in the charity's name, founders, blurb, cohort, causes or countries: use the charity's name, and prefer one that matches a single card. `#q=healthier+hens` and `#directory?q=healthier+hens` do the same for hosts whose redirects strip query strings. The old per-charity pages on charityentrepreneurship.com are pointed at these links from Squarespace's URL mappings. `{ urlQuery: false }` on `mount()` switches the behaviour off.
 
+## Syncing Countries from MEL
+
+MEL (the research team's base, *Research Team - CEIP Database*) is the one place where a charity's places of operation are maintained. Every night, before the build, `scripts/sync-from-mel.mjs` copies them into the website base's **Countries** field, and the build then publishes the website base as before. MEL is only ever read: the script registers the MEL base as read-only in code before it does anything else, and every write function refuses a request aimed at it, whatever token the process was given.
+
+**Token.** The sync has its own personal access token, read from the environment variable `MEL_SYNC_TOKEN` (repository secret of the same name) and nowhere else. Scopes: `data.records:read` on the MEL base; `data.records:read`, `data.records:write` and `schema.bases:read` on the website base (the schema scope is what lets it find the override checkbox by name). Never reuse `AIRTABLE_TOKEN2`, which stays read-only on the website base alone. Same handling rules as the build token: never commit it, never paste it into chat, never echo it; locally it lives in `~/.zprofile`.
+
+**What a charity's Countries become.** Each link in MEL's *Places of operation* is turned into a website option: a place of type *Country or area* is itself; a *Subnational entity* contributes its parent country (its *Is part of* link of country type); "Global" and "Europe" are kept as the website options of the same name; every other region and income group is dropped. UN names become the short names the website uses (`config/sync.json → countryNameMap`: "Viet Nam" → "Vietnam", "United Kingdom of Great Britain and Northern Ireland" → "United Kingdom", ...). Writes use typecast, so a country that is not yet a Countries option is added automatically; the dry run lists those, and the ones missing from `data/continents.json` (add them there, or they only show under "All" on the site).
+
+**When a row is left alone.**
+
+- MEL's Places of operation is blank, or lists only regions and income groups: **blank never clears the website**.
+- The row's **Countries: manual** checkbox is ticked: the row is curated by hand (Animal Policy International keeps "Europe" while MEL lists Belgium). The script finds the checkbox by name in the base schema at run time, falls back to the id recorded in `config/sync.json` if it has been renamed, and refuses to apply if neither resolves.
+- The computed list already equals the current one (order does not matter).
+- The row has no MEL Charity ID, or shares one with another row (reported with suggested matches, never written).
+
+**Hand-curated rows are still watched.** The sync computes MEL's list for every linked row on every run and remembers it in the row's **Countries (from MEL)** field, a long-text field the sync owns (comma-separated, sorted, `(none)` when MEL has nothing; never edit it). When the remembered list changes for a row with **Countries: manual** ticked, i.e. MEL gained or lost a country for a charity whose website list is curated, the run flags it in the job log, the step summary and the Slack digest under "Manual-override rows where MEL changed", additions first, together with MEL's full list, the website's current list and the instruction to untick the checkbox if MEL should win. A flag is raised once, when MEL changes, never for a standing difference, and it counts as a change, so the digest posts even on a night with no Countries writes. Like the checkbox, the field is found by name at run time (id fallback in `config/sync.json`) and the script refuses to apply without it. The remembered value is written last, after the digest, so a failed post flags the same change again the next night.
+
+Only **Countries** is written to existing rows. Status, Cohort label and Undercover? are computed from MEL too and any difference is reported as "not synced"; to start writing one, add its key to `config/sync.json → sync.fields` and an override checkbox under `overrideFieldsByName`. Nothing else in a row (Blurb, Logo, Website ready?, Sort order, ...) is ever touched: updates are PATCH requests carrying the synced field alone.
+
+**New rows.** A MEL charity with no website row gets one: Display name (the MEL name, edit freely afterwards), MEL Charity ID, Cohort label, Status, Countries, Countries (from MEL), and Undercover? ticked when MEL's Undercover? is non-blank. Website ready? is left unticked, so nothing is published until someone completes the row.
+
+**Running it locally.**
+
+```bash
+export MEL_SYNC_TOKEN=...                                          # in your own shell only
+npm run sync:dry-run                                               # full planned diff; nothing written
+node scripts/sync-from-mel.mjs --dry-run --dump-raw raw/mel-sync   # also keep the fetched records (gitignored raw/)
+node scripts/sync-from-mel.mjs --dry-run --from-raw raw/mel-sync   # offline re-run from that dump (no token; --apply refused)
+npm run sync:apply                                                 # write the planned changes to the website base
+npm test                                                           # unit tests of the diff logic
+```
+
+Flags: `--digest` posts a short summary to the Slack incoming webhook in `SLACK_WEBHOOK_URL`, only when something changed: a Countries write, a new row or a manual-row flag (or, in a dry run, would change); `--redact` names only rows that are already public on the website, everything else appears as `[hidden] rec...` (the Action always passes it: on a public repository the job logs and step summaries are public, and the sync sees undercover and unannounced charities; the Slack digest keeps full names); `--summary FILE` writes a markdown table (defaults to the Actions step summary).
+
+**In the Action.** The `sync` job runs before `build` on the nightly schedule and on manual runs, not on pushes. Its mode is the *sync_mode* input of a manual run, else the repository variable **`MEL_SYNC_MODE`**, else `apply`:
+
+| `MEL_SYNC_MODE` | What happens every night |
+| --- | --- |
+| `apply` (default) | Auto-apply: Countries are written, every change is in the job log, and the Slack digest (secret `MEL_SYNC_SLACK_WEBHOOK`, an incoming webhook for the agreed channel) lists what changed. Nothing is posted on a night with no changes |
+| `dry-run` | Stage for approval: nothing is written; the planned diff is in the job log and step summary and the digest says what is pending. To apply, run the workflow by hand with *sync_mode* = apply |
+| `off` | The job is skipped |
+
+So the first nightly run after this lands will write, provided the secret, the **Countries: manual** checkbox and the **Countries (from MEL)** field exist (without them the job fails and writes nothing). To look before it does, run the workflow by hand with *sync_mode* = dry-run, or `npm run sync:dry-run` locally. The build runs even when the sync fails, so the site never goes stale because of it, but the failed job still turns the run red.
+
 ## Deployment
 
-`.github/workflows/build.yml` runs every night at 03:17 UTC, on every push to `main`, and on demand (Actions tab → *Build and deploy directory* → *Run workflow*). It pulls Airtable with the repository secret **`AIRTABLE_TOKEN2`**, builds `public/`, runs the allowlist check, generates the snippet, commits a changed `public/charities.json` back to `main`, and deploys `public/` to GitHub Pages:
+`.github/workflows/build.yml` runs every night at 03:17 UTC, on every push to `main`, and on demand (Actions tab → *Build and deploy directory* → *Run workflow*). Nightly and manual runs start with the MEL sync job described above; then the build pulls Airtable with the repository secret **`AIRTABLE_TOKEN2`**, builds `public/`, runs the allowlist check, generates the snippet, commits a changed `public/charities.json` back to `main`, and deploys `public/` to GitHub Pages:
 
 | URL | What |
 | --- | --- |

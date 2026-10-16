@@ -1,17 +1,18 @@
-// Read-only Airtable REST client.
-// The token comes from the AIRTABLE_TOKEN environment variable and is never logged.
+// Read-only Airtable REST client (listing records). Writes live in airtable-write.mjs and are used
+// only by the MEL -> website sync, never by the build.
+// Tokens come from environment variables and are never logged.
 
 const API_ROOT = 'https://api.airtable.com/v0';
 
 export function getToken(env = process.env) {
-  const token = (env.AIRTABLE_TOKEN || '').trim();
+  return getTokenFromEnv('AIRTABLE_TOKEN', '  export AIRTABLE_TOKEN=...\n  npm run build', env);
+}
+
+/** Read a token from the named environment variable; the error message never contains the value. */
+export function getTokenFromEnv(name, hint = `  export ${name}=...`, env = process.env) {
+  const token = (env[name] || '').trim();
   if (!token) {
-    throw new Error(
-      'AIRTABLE_TOKEN is not set.\n' +
-        'Export it in your own shell (never commit it), then re-run:\n' +
-        '  export AIRTABLE_TOKEN=...\n' +
-        '  npm run build'
-    );
+    throw new Error(`${name} is not set.\nExport it in your own shell (never commit it), then re-run:\n${hint}`);
   }
   return token;
 }
@@ -37,7 +38,8 @@ export function buildPublishFormula(conditions) {
 
 /**
  * List every record in a table, following pagination.
- * `fields` limits which fields Airtable returns (so unpublished fields are never downloaded).
+ * `fields` limits which fields Airtable returns (so unpublished fields are never downloaded); names or field ids.
+ * `returnFieldsByFieldId` keys each record's `fields` by field id instead of name (the sync uses this).
  */
 export async function listAllRecords({
   token,
@@ -45,6 +47,7 @@ export async function listAllRecords({
   tableId,
   fields = [],
   filterByFormula,
+  returnFieldsByFieldId = false,
   pageSize = 100,
   fetchImpl = fetch,
   log = () => {},
@@ -57,6 +60,7 @@ export async function listAllRecords({
     params.set('pageSize', String(pageSize));
     for (const f of [...new Set(fields)]) params.append('fields[]', f);
     if (filterByFormula) params.set('filterByFormula', filterByFormula);
+    if (returnFieldsByFieldId) params.set('returnFieldsByFieldId', 'true');
     if (offset) params.set('offset', offset);
 
     const url = `${API_ROOT}/${baseId}/${tableId}?${params.toString()}`;
@@ -71,16 +75,33 @@ export async function listAllRecords({
   return records;
 }
 
-async function requestJson(url, token, fetchImpl, attempt = 1) {
-  const res = await fetchImpl(url, { headers: { Authorization: `Bearer ${token}` } });
+/**
+ * One JSON request against the Airtable API. GET by default; pass { method, body } for writes.
+ * Retries a 429 after the 30 second back-off Airtable asks for, and a 5xx a couple of times.
+ * Neither the thrown message nor the logged URL ever contains the token.
+ */
+export async function requestJson(url, token, fetchImpl = fetch, { method = 'GET', body } = {}, attempt = 1) {
+  const headers = { Authorization: `Bearer ${token}` };
+  const init = { method, headers };
+  if (body !== undefined) {
+    headers['Content-Type'] = 'application/json';
+    init.body = JSON.stringify(body);
+  }
+  const res = await fetchImpl(url, init);
   if (res.status === 429 && attempt <= 3) {
-    await sleep(30_000); // Airtable asks for a 30 second back-off after a 429
-    return requestJson(url, token, fetchImpl, attempt + 1);
+    await sleep(30_000);
+    return requestJson(url, token, fetchImpl, { method, body }, attempt + 1);
+  }
+  if (res.status >= 500 && attempt <= 3) {
+    await sleep(2_000 * attempt);
+    return requestJson(url, token, fetchImpl, { method, body }, attempt + 1);
   }
   if (!res.ok) {
     const text = await res.text().catch(() => '');
     // Neither the URL path nor the body contains the token.
-    throw new Error(`Airtable responded ${res.status} ${res.statusText} for ${url.replace(/\?.*$/, '')}\n${text.slice(0, 600)}`);
+    throw new Error(`Airtable responded ${res.status} ${res.statusText} for ${method} ${url.replace(/\?.*$/, '')}\n${text.slice(0, 600)}`);
   }
   return res.json();
 }
+
+export { API_ROOT, sleep };

@@ -1,0 +1,105 @@
+{
+  "$comment": "Nightly MEL -> website sync (scripts/sync-from-mel.mjs). MEL is read-only, always. Fields are addressed by FIELD ID in both bases so a rename cannot silently break the mapping; the one exception is the override checkbox, which is looked up by NAME at run time (see website.overrideFieldsByName). The website base's Countries follow MEL's 'Places of operation'; Status, Cohort label and Undercover? are computed too but only written when listed under sync.fields.",
+  "mel": {
+    "baseId": "app6tmBJhcfCS7FLs",
+    "baseName": "Research Team - CEIP Database",
+    "tables": {
+      "charities": {
+        "id": "tblSsWP0lp1fH9kk6",
+        "name": "Charities",
+        "fields": {
+          "name": "fld9XSWkG77ZbS4v7",
+          "places": "fldNDOXeHoDGHVBMP",
+          "status": "fldPcl3rJcq4bG3yd",
+          "cohort": "fldHgivUHKXfwyWM9",
+          "undercover": "fldTz3tMn65qPFBTc",
+          "previousNames": "fldfklh1DvvJT2ARq"
+        }
+      },
+      "places": {
+        "id": "tblVueDUF02gPnZHx",
+        "name": "Places",
+        "fields": {
+          "name": "fldMjutsw11d2Gppp",
+          "type": "fldhidyXVMKiXzqtj",
+          "partOf": "fldvoPt2ko0aIHVjh"
+        }
+      },
+      "cohorts": {
+        "id": "tbl1OLEILJzlfYJTX",
+        "name": "Program/cohort",
+        "fields": {
+          "name": "fldIja8U94pd0yhms"
+        }
+      }
+    },
+    "placeTypes": {
+      "$comment": "Values of Places -> Type. A country is listed as itself; a subnational entity contributes its parent country (the 'Is part of' link of type country); the regions below are kept as the website option of the same name; every other region and income group is dropped.",
+      "country": "Country or area",
+      "subnational": "Subnational entity"
+    },
+    "regionsKeptAsOptions": ["Global", "Europe"]
+  },
+  "website": {
+    "baseId": "apppCVIGEKcsMaMxU",
+    "baseName": "AIM Website Content",
+    "table": { "id": "tbl1gOfrePq9Kzv35", "name": "Website" },
+    "fields": {
+      "displayName": "fldgh6oOKudrGHlvK",
+      "melCharityId": "fldovX1ebglEW8dYs",
+      "countries": "flduQjPdYesh4OQAc",
+      "status": "fld0ZJp81mde5515m",
+      "cohortLabel": "fldmWZpfdC8Yd3c7m",
+      "websiteReady": "fldqsaNbJoMf8jkXr",
+      "undercover": "fldA72UfjLbkwOkj6",
+      "excludeFromWebsite": "fldkJlELtNnkrtupM"
+    },
+    "overrideFieldsByName": {
+      "$comment": "Checkbox per synced field: ticked = this row is curated by hand, the sync never writes that field. Resolved from the base schema by name at run time; --apply refuses to run if a listed checkbox is missing.",
+      "countries": "Countries: manual"
+    },
+    "overrideFieldIds": {
+      "$comment": "Known ids of the checkboxes above, used only as a fallback (with a warning) when no field of that name exists, i.e. someone renamed it. The name lookup wins when both resolve.",
+      "countries": "fldXQcC73J3XDKZXT"
+    },
+    "stateFieldsByName": {
+      "$comment": "Long-text field per synced field, OWNED BY THE SYNC: MEL's derived value as of the last run, written for every linked row (comma-separated, sorted; '(none)' when MEL has nothing). It is what lets a hand-curated row be flagged once, when MEL changes, instead of every night for as long as it differs. Resolved by name at run time; --apply refuses to run if a listed field is missing. Never edit by hand.",
+      "countries": "Countries (from MEL)"
+    },
+    "stateFieldIds": {
+      "$comment": "Known ids of the state fields above, fallback when renamed (see overrideFieldIds).",
+      "countries": "fldA4RUnM2BetxaRt"
+    }
+  },
+  "sync": {
+    "$comment": "fields: which computed fields are written to existing rows (keys of the registry in scripts/lib/mel-sync.mjs: countries, status, cohortLabel, undercover). Add a key here, add its override checkbox above, and the nightly job starts writing it. createMissingRows: a MEL charity with no website row gets one (Display name, MEL Charity ID, Cohort label, Status, Countries; Undercover? ticked when MEL says so; Website ready? left unticked).",
+    "fields": ["countries"],
+    "createMissingRows": true
+  },
+  "countryNameMap": {
+    "$comment": "MEL uses UN names; the website's Countries options and data/continents.json use the common short names. Add a line here when a new UN-style name shows up (the dry run lists target names that are not yet a Countries option or not in continents.json).",
+    "United Kingdom of Great Britain and Northern Ireland": "United Kingdom",
+    "United States of America": "United States",
+    "Viet Nam": "Vietnam",
+    "United Republic of Tanzania": "Tanzania",
+    "Venezuela (Bolivarian Republic of)": "Venezuela",
+    "Bolivia (Plurinational State of)": "Bolivia",
+    "Lao People's Democratic Republic": "Laos",
+    "Republic of Korea": "South Korea",
+    "Democratic People's Republic of Korea": "North Korea",
+    "Czechia": "Czech Republic",
+    "Iran (Islamic Republic of)": "Iran",
+    "Russian Federation": "Russia",
+    "Syrian Arab Republic": "Syria",
+    "Republic of Moldova": "Moldova",
+    "Micronesia (Federated States of)": "Micronesia",
+    "Brunei Darussalam": "Brunei",
+    "State of Palestine": "Palestine",
+    "China, Hong Kong Special Administrative Region": "Hong Kong",
+    "China, Macao Special Administrative Region": "Macao"
+  },
+  "cohortLabel": {
+    "$comment": "MEL cohort name -> website Cohort label. Trimmed (MEL has trailing spaces on some names), then each key below is replaced by its value. Convention on the website field: '2019', '2025 H1', '2024 Effective Giving'.",
+    "replace": { " EGI": " Effective Giving" }
+  }
+}

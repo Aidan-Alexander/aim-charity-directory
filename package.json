@@ -12,7 +12,10 @@
     "build:offline": "node scripts/build.mjs --from-raw raw",
     "verify": "node scripts/verify-allowlist.mjs",
     "preview": "node scripts/preview.mjs",
-    "snippet": "node scripts/make-snippet.mjs --demo public/demo.html"
+    "snippet": "node scripts/make-snippet.mjs --demo public/demo.html",
+    "sync:dry-run": "node scripts/sync-from-mel.mjs --dry-run",
+    "sync:apply": "node scripts/sync-from-mel.mjs --apply",
+    "test": "node --test"
   },
   "license": "UNLICENSED",
   "dependencies": {

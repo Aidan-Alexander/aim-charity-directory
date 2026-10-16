@@ -2,10 +2,16 @@ name: Build and deploy directory
 
 on:
   schedule:
-    - cron: "17 3 * * *"        # nightly, 03:17 UTC
+    - cron: "17 3 * * *"        # nightly, 03:17 UTC: sync Countries from MEL, then build
   workflow_dispatch:            # "Run workflow" button in the Actions tab
+    inputs:
+      sync_mode:
+        description: "MEL -> website sync before the build: apply (write Countries), dry-run (report only, nothing written), off (skip). 'default' = the repository variable MEL_SYNC_MODE, or apply when that is unset."
+        type: choice
+        default: default
+        options: [default, dry-run, apply, off]
   push:
-    branches: [main]
+    branches: [main]            # a push rebuilds the site only; the sync runs on the schedule and on demand
 
 permissions:
   contents: read                # nothing is written back: the data is a build output, published to Pages only
@@ -17,7 +23,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Step 1: make the website base's Countries follow MEL (scripts/sync-from-mel.mjs). MEL is only ever read.
+  # Mode: workflow input, else the repository variable MEL_SYNC_MODE, else apply (auto-apply nightly, with a Slack
+  # digest of what changed). Set MEL_SYNC_MODE=dry-run to stage changes for approval instead, off to skip the job.
+  sync:
+    if: github.event_name != 'push' && ((inputs.sync_mode != 'default' && inputs.sync_mode) || vars.MEL_SYNC_MODE || 'apply') != 'off'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      SYNC_MODE: ${{ (inputs.sync_mode != 'default' && inputs.sync_mode) || vars.MEL_SYNC_MODE || 'apply' }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync Countries from MEL (${{ env.SYNC_MODE }})
+        # --redact: this repository is public, so its logs and step summaries are public. Only rows that are
+        # already on the website are named; everything else appears as "[hidden] rec...". The Slack digest
+        # (internal channel) carries full names.
+        run: |
+          case "$SYNC_MODE" in
+            dry-run|apply) ;;
+            *) echo "::error::MEL_SYNC_MODE must be dry-run, apply or off (got '$SYNC_MODE')"; exit 1 ;;
+          esac
+          node scripts/sync-from-mel.mjs "--$SYNC_MODE" --redact --digest
+        env:
+          MEL_SYNC_TOKEN: ${{ secrets.MEL_SYNC_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.MEL_SYNC_SLACK_WEBHOOK }}
+
+  # Step 2: build and publish. Runs after the sync (needs:), and still runs when the sync is skipped or fails,
+  # so a broken sync can never leave the site stale; the failed sync job still turns the run red.
   build:
+    needs: sync
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
