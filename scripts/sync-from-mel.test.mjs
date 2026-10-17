@@ -8,10 +8,12 @@ import { fileURLToPath } from 'node:url';
 import {
   cohortLabelFrom,
   countriesFromPlaces,
+  describeChange,
   formatDigest,
   formatPlan,
   formatStepSummary,
   hasChanges,
+  humanList,
   indexCohorts,
   indexPlaces,
   label,
@@ -343,7 +345,8 @@ test('output: drift flags appear in the plan, the digest (with the untick instru
   assert.equal(p.drift.length, 2);
   const digest = formatDigest(p);
   assert.match(digest, /2 flagged/);
-  assert.match(digest, /Animal Ask: added in MEL: United Kingdom; removed in MEL: Vietnam\. MEL now: United Kingdom; website keeps: Global/);
+  assert.match(digest, /Animal Ask: MEL added United Kingdom; MEL removed Vietnam\. MEL now lists United Kingdom; the website shows Global/);
+  assert.match(digest, /Hand-curated rows where MEL changed/);
   assert.match(digest, /Untick "Countries: manual"/);
   assert.match(digest, /Secret/);
   const open = formatPlan(p, { redact: false }).join('\n');
@@ -378,4 +381,17 @@ test('first real run: the state field empty on every row means no baseline, so n
   assert.equal(p.drift.length, 0);
   assert.deepEqual(p.stateUpdates.map((s) => s.websiteId).sort(), ['recW1', 'recW2']);
   assert.equal(p.updates.length, 0);
+});
+
+test('digest: plain-English header and change lines, in the wording Aidan asked for', () => {
+  const p = plan([melRecord('recM1', 'Radius Institute for Road Safety', ['recUK', 'recIndia'])], [websiteRow('recW1', 'Radius Institute for Road Safety', 'recM1', ['United Kingdom'])]);
+  const digest = formatDigest(p, { mode: 'apply', when: new Date('2026-10-17T03:17:00Z') });
+  assert.match(digest, /^Sync between charity directory on website and MEL airtable \(2026-10-17 \| 1 updated, 0 created, 0 flagged, 0 skipped, 0 warnings\)/);
+  assert.match(digest, /• Radius Institute for Road Safety: Implementing countries changed from United Kingdom to India and United Kingdom/);
+  assert.match(formatDigest(p, { mode: 'dry-run' }), /dry run, nothing was changed/);
+  assert.equal(humanList(['A']), 'A');
+  assert.equal(humanList(['A', 'B']), 'A and B');
+  assert.equal(humanList(['A', 'B', 'C']), 'A, B and C');
+  assert.equal(describeChange({ key: 'countries', before: [], after: ['Kenya'] }), 'Implementing countries set to Kenya');
+  assert.equal(describeChange({ key: 'status', label: 'Status', before: 'Active', after: 'Shutdown' }), 'Status changed from Active to Shutdown');
 });

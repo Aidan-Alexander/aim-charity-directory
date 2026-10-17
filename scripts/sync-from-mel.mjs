@@ -269,7 +269,7 @@ main().catch(async (err) => {
   console.error(`\nSync failed: ${err.message}`);
   const webhook = (process.env.SLACK_WEBHOOK_URL || '').trim();
   if (process.argv.includes('--digest') && webhook) {
-    await fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: `MEL -> website sync FAILED: ${err.message.split('\n')[0]}` }) }).catch(() => {});
+    await fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: `Sync between charity directory on website and MEL airtable FAILED: ${err.message.split('\n')[0]}` }) }).catch(() => {});
   }
   process.exit(1);
 });

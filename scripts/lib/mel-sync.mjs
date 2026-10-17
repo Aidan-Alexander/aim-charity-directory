@@ -553,28 +553,54 @@ export function formatPlan(plan, { mode = 'dry-run', redact = false } = {}) {
   return L;
 }
 
+/** "A", "A and B", "A, B and C". */
+export function humanList(items) {
+  const a = arr(items).map(str).filter(Boolean);
+  if (a.length <= 1) return a[0] || '';
+  return `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`;
+}
+
+/** How each synced field is talked about in the Slack digest, for people without context on the pipeline. */
+const DIGEST_PHRASES = {
+  countries: { noun: 'Implementing countries', text: (v) => (arr(v).length ? humanList(normaliseCountries(v)) : 'none') },
+  status: { noun: 'Status', text: (v) => str(v) || 'blank' },
+  cohortLabel: { noun: 'Cohort label', text: (v) => str(v) || 'blank' },
+  undercover: { noun: 'Undercover flag', text: (v) => (v ? 'ticked' : 'unticked') },
+};
+
+/** One plain-English sentence for a field change, e.g. "Implementing countries changed from Botswana to Botswana and Zambia". */
+export function describeChange(f) {
+  const p = DIGEST_PHRASES[f.key] || { noun: f.label, text: (v) => String(v) };
+  if (f.key === 'countries' && !arr(f.before).length) return `${p.noun} set to ${p.text(f.after)}`;
+  return `${p.noun} changed from ${p.text(f.before)} to ${p.text(f.after)}`;
+}
+
 /** Short Slack message. Full names: this goes to an internal channel, not a public log. */
-export function formatDigest(plan, { mode = 'dry-run', when = new Date(), maxLines = 25 } = {}) {
+export function formatDigest(plan, { mode = 'apply', when = new Date(), maxLines = 25 } = {}) {
   const date = when.toISOString().slice(0, 10);
-  const head = mode === 'apply' ? `MEL -> website sync ${date}: applied` : `MEL -> website sync ${date}: pending (dry run, nothing written)`;
+  const counts = `${plan.updates.length} updated, ${plan.creates.length} created, ${plan.drift.length} flagged, ${plan.skipped.length} skipped, ${plural(plan.warnings.length, 'warning')}`;
+  const title = mode === 'apply' ? 'Sync between charity directory on website and MEL airtable' : 'Sync between charity directory on website and MEL airtable – dry run, nothing was changed';
+  const head = `${title} (${date} | ${counts})`;
   const lines = [];
-  for (const u of plan.updates) for (const f of u.fields) lines.push(`• ${u.name}: ${f.label} ${f.beforeText} -> ${f.afterText}`);
-  for (const c of plan.creates) lines.push(`• new row: ${c.name} (${c.summary.Status}, ${c.summary['Cohort label']}, ${c.summary.Countries})`);
+  for (const u of plan.updates) for (const f of u.fields) lines.push(`• ${u.name}: ${describeChange(f)}`);
+  for (const c of plan.creates) {
+    lines.push(`• ${c.name}: new website row created, not yet published (status ${c.summary.Status}, cohort ${c.summary['Cohort label']}, countries ${c.summary.Countries})`);
+  }
   const shown = lines.slice(0, maxLines);
   if (lines.length > maxLines) shown.push(`… and ${lines.length - maxLines} more`);
-  const counts = `${plan.updates.length} updated, ${plan.creates.length} created, ${plan.drift.length} flagged, ${plan.skipped.length} skipped, ${plural(plan.warnings.length, 'warning')}`;
   let drift = '';
   if (plan.drift.length) {
     const items = plan.drift.map((d) => {
       const parts = [];
-      if (d.added.length) parts.push(`added in MEL: ${d.added.join(', ')}`);
-      if (d.removed.length) parts.push(`removed in MEL: ${d.removed.join(', ')}`);
-      return `• ${d.name}: ${parts.join('; ') || `${d.label} changed in MEL`}. MEL now: ${d.melText}; website keeps: ${d.websiteText}. Untick "${d.overrideName}" to let the sync apply MEL's list.`;
+      if (d.added.length) parts.push(`MEL added ${humanList(d.added)}`);
+      if (d.removed.length) parts.push(`MEL removed ${humanList(d.removed)}`);
+      const what = parts.join('; ') || `${d.label} changed in MEL`;
+      return `• ${d.name}: ${what}. MEL now lists ${d.melText}; the website shows ${d.websiteText}. Untick "${d.overrideName}" to let the sync apply MEL's list.`;
     });
-    drift = `\nManual-override rows where MEL changed (${plan.drift[0].label} not written):\n${items.join('\n')}`;
+    drift = `\nHand-curated rows where MEL changed (the website was left as it is):\n${items.join('\n')}`;
   }
   const tail = plan.warnings.length ? `\nWarnings: ${plan.warnings.map((w) => (w.name ? `${w.name}: ` : '') + w.text).join(' | ')}` : '';
-  return `${head} (${counts})\n${shown.join('\n')}${drift}${tail}`.trim();
+  return `${head}\n${shown.join('\n')}${drift}${tail}`.trim();
 }
 
 /** Markdown for the GitHub Actions step summary (public on a public repo, hence redacted like the log). */
